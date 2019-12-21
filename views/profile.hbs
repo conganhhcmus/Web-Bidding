@@ -1,0 +1,91 @@
+<div class="container bootstrap snippet">
+    <div class="row" >
+        <div class="col-sm-3">
+            <!--left col-->
+            <div class="text-center" style="margin-top: 70px;">
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" width="220"
+                    alt="avatar">
+            </div>
+            </hr><br>
+            <a href="/home"><button class="btn" style="margin-left: 20px"><i class="fa fa-home"></i> Home</button></a>
+            <a href="/account/login"><button class="btn" style="margin-left: 5px"><i class="fa fa-sign-out-alt"></i> Sign-out</button></a>
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9">
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <hr>
+                    <form class="form" action="/account/profile" method="POST">
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="first_name">
+                                    <h4 style="color: red; font-weight: bold">Username</h4>
+                                </label>
+                                <input type="text" class="form-control" name="username" id="username"
+                                    placeholder="Your username" value="{{user.f_Username}}" title="Username" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Fullname">
+                                    <h4 style="color: red; font-weight: bold">Fullname</h4>
+                                </label>
+                                <input type="text" class="form-control" name="fullname" id="fullname"
+                                    placeholder="Your name (null)" value="{{user.f_Name}}" title="Fullname" {{disabled}}>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="phone">
+                                    <h4 style="color: red; font-weight: bold">DOB</h4>
+                                </label>
+                                <input type="date" class="form-control" name="dob" id="dob"
+                                    placeholder="Your dob (null)" value="{{user.f_DOB}}" {{disabled}}>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="email">
+                                    <h4 style="color: red; font-weight: bold">Email</h4>
+                                </label>
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Your email (null)" value="{{user.f_Email}}" title="Email" {{disabled}}>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="password">
+                                    <h4 style="color: red; font-weight: bold">Password</h4>
+                                </label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Your password *" value="{{user.f_Password}}" title="Passowrd" {{disabled}}>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" id="saveBtn" type="submit" {{disabled}}><i
+                                        class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg btn-success" onclick="changeData()" id="changeBtn" ><i
+                                        class="glyphicon glyphicon-repeat"></i>
+                                    Change Infomation</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <!--/col-9-->
+        </div>
+        <!--/row-->
+    </div>
+</div>
