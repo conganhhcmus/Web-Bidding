@@ -6,7 +6,7 @@ function createConnnection() {
         port: '3306',
         user: 'root',
         password: 'vansenha11',
-        database: 'mydb',
+        database: 'AUCTION',
     });
 };
 
@@ -60,12 +60,11 @@ exports.update = (tbName, tbName1, value, id) => {
             }
         });
 
-        const sql = `UPDATE ${tbName} SET ${tbName1}='${value}' WHERE f_ID = ${id} `;
+        const sql = `UPDATE ${tbName} SET ${tbName1}='${value}' WHERE ID = ${id} `;
         con.query(sql, (error, results, fields) => {
             if(error) {
                 reject(error);
             }
-            console.log(results);
             resole(results);
         });
 

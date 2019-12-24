@@ -2,25 +2,22 @@ const express = require('express');
 const router = express.Router();
 const accountM = require('../models/account.M');
 const hash = require("../utils/hash");
-//const passport = require('passport');
-const Recaptcha = require('recaptcha').Recaptcha;
-
-var PUBLIC_KEY  = 'YOUR_PUBLIC_KEY',
-    PRIVATE_KEY = 'YOUR_PRIVATE_KEY';
 
 
 router.get('/login', async (req, res) => {
-    var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY);
     req.session.destroy();
     res.render('login', { 
         layout: 'login',
-        recaptcha_form: recaptcha.toHTML(),     
+        title: 'Login Page',  
      });
 });
 
 router.get('/register', async (req, res) => {
     req.session.destroy(); 
-    res.render('register', { layout: 'login' });
+    res.render('register', { 
+        layout: 'login',
+        title: 'Register', 
+    });
 });
 
 router.post('/login', async (req, res) => {
@@ -56,11 +53,11 @@ router.post('/login', async (req, res) => {
         return;
     }
 
-    const CHash = await hash.comparePassword(password,user.f_Password);
+    const CHash = await hash.comparePassword(password,user.PASSWORD);
 
     if (CHash) {
         req.session.User = {
-            id: user.f_ID,
+            id: user.ID,
         };
         res.redirect('/home')
         return;
@@ -121,12 +118,12 @@ router.post('/createAccount', async (req, res) => {
         var pwHash = await hash.getHashPassword(password);
 
         const user = {
-            f_Username: username,
-            f_Password: pwHash,
-            f_Name: 'Name',
-            f_Email: email,
-            f_DOB: '2000-01-01',
-            f_Permission: 0,
+            USERNAME: username,
+            PASSWORD: pwHash,
+            FULL_NAME: 'Name',
+            EMAIL: email,
+            DOB: '2000-01-01',
+            PERMISSION: 0,
         };
         const uId = await accountM.add(user);
 
@@ -176,25 +173,21 @@ router.post('/profile', async (req, res) => {
     const n_dob = req.body.dob  || '2000-01-01';
 
 
-    if(user.f_Name !== n_name){
-        req.session.User.fullname = n_name;
-        var changedRows = await accountM.update('f_Name',n_name,id);
+    if(user.FULL_NAME !== n_name){
+        var changedRows = await accountM.update('FULL_NAME',n_name,id);
     }
 
-    if(user.f_Email !== n_email){
-        req.session.User.email = n_email;
-        var changedRows = await accountM.update('f_Email',n_email,id);
+    if(user.EMAIL !== n_email){
+        var changedRows = await accountM.update('EMAIL',n_email,id);
     }
 
-    if(user.f_DOB !== n_dob){
-        req.session.User.dob = n_dob;
-        var changedRows = await accountM.update('f_DOB',n_dob,id);
+    if(user.DOB !== n_dob){
+        var changedRows = await accountM.update('DOB',n_dob,id);
     }
 
-    if(user.f_Password !== n_password){
+    if(user.PASSWORD !== n_password){
         const pwH = await hash.getHashPassword(n_password);
-        req.session.User.password = pwH;
-        var changedRows = await accountM.update('f_Password',pwH,id);
+        var changedRows = await accountM.update('PASSWORD',pwH,id);
     }
 
     user = await accountM.getByID(id);

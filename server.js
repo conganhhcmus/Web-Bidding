@@ -9,7 +9,7 @@ const app = express();
 
 // set handle-bar
 const hbs = exphbs.create({
-    defaultLayout: 'main',
+    defaultLayout: 'home',
     extname: 'hbs',
 });
 
@@ -48,13 +48,6 @@ app.get('/',function(req,res){
 // error
 require('./middleware/error')(app);
 
-// passport
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use((res,req,next) => {
-//         res.locals.user = req.user;
-//         next();
-// })
 
 // run app
 app.listen(port,function(){
