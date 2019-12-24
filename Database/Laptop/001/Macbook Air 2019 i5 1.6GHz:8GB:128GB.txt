@@ -1,0 +1,57 @@
+Sản phẩm: Laptop Apple Macbook Air 2019 i5 1.6GHz/8GB/128GB (MVFM2SA/A)
+Giá: 27.990.000₫
+Thông tin:
+
+Bộ xử lý
+
+Công nghệ CPU	Intel Core i5 Coffee Lake
+Loại CPU	Hãng không công bố
+Tốc độ CPU	1.60 GHz
+Tốc độ tối đa	Turbo Boost 3.6 GHz
+Tốc độ Bus	
+
+Bộ nhớ, RAM, Ổ cứng
+
+RAM	8 GB
+Loại RAM	DDR3
+Tốc độ Bus RAM	2133 MHz
+Hỗ trợ RAM tối đa	Không hỗ trợ nâng cấp
+Ổ cứng	SSD: 128 GB
+
+Màn hình
+
+Kích thước màn hình	13.3 inch
+Độ phân giải	Retina (2560 x 1600)
+Công nghệ màn hình	Công nghệ IPS, LED Backlit
+Màn hình cảm ứng	Không
+
+Đồ họa và Âm thanh
+
+Thiết kế card	Card đồ họa tích hợp
+Card đồ họa	Intel UHD Graphics 617
+Công nghệ âm thanh	3 microphones, Headphones, Loa kép (2 kênh)
+
+Cổng kết nối & tính năng mở rộng
+
+Cổng giao tiếp	2 x Thunderbolt 3 (USB-C)
+Kết nối không dây	Bluetooth 4.2, Wi-Fi 802.11 a/b/g/n/ac
+Khe đọc thẻ nhớ	Không
+Ổ đĩa quang	Không
+Webcam	FaceTime Camera
+Đèn bàn phím	Có
+Tính năng khác	Bảo mật vân tay, Hỗ trợ eGPU rời
+
+PIN
+
+Loại PIN	PIN liền
+Thông tin Pin	Khoảng 10 giờ
+
+Hệ điều hành
+
+Hệ điều hành	Mac OS
+
+Kích thước & trọng lượng
+
+Kích thước	Dài 304.1 mm - Rộng 212.1 mm - Dày 4.1 đến 15.6 mm
+Trọng lượng	1.25 kg
+Chất liệu	Vỏ kim loại nguyên khối

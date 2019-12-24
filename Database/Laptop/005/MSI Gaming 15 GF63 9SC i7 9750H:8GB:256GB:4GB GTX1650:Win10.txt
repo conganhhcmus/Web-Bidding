@@ -1,0 +1,57 @@
+Sản phẩm: Laptop MSI Gaming 15 GF63 9SC i7 9750H/8GB/256GB/4GB GTX1650/Win10 (070VN)
+Giá: 25.490.000₫
+Thông tin:
+
+Bộ xử lý
+
+Công nghệ CPU	Intel Core i7 Coffee Lake
+Loại CPU	9750H
+Tốc độ CPU	2.60 GHz
+Tốc độ tối đa	Turbo Boost 4.5 GHz
+Tốc độ Bus	
+
+Bộ nhớ, RAM, Ổ cứng
+
+RAM	8 GB
+Loại RAM	DDR4 (2 khe)
+Tốc độ Bus RAM	2666 MHz
+Hỗ trợ RAM tối đa	32 GB
+Ổ cứng	SSD 256GB NVMe PCIe, Hỗ trợ khe cắm HDD SATA
+
+Màn hình
+
+Kích thước màn hình	15.6 inch
+Độ phân giải	Full HD (1920 x 1080)
+Công nghệ màn hình	60Hz, Tấm nền IPS, Màn hình chống chói
+Màn hình cảm ứng	Không
+
+Đồ họa và Âm thanh
+
+Thiết kế card	Card đồ họa rời
+Card đồ họa	GeForce® GTX 1650 Max-Q Design
+Công nghệ âm thanh	Nahimic 3
+
+Cổng kết nối & tính năng mở rộng
+
+Cổng giao tiếp	HDMI 2.0, 3 x USB 3.1, LAN (RJ45), USB Type-C
+Kết nối không dây	Bluetooth v5.0, Wi-Fi 802.11 a/b/g/n/ac
+Khe đọc thẻ nhớ	Không
+Ổ đĩa quang	Không
+Webcam	HD webcam
+Đèn bàn phím	Có
+Tính năng khác	Không
+
+PIN
+
+Loại PIN	PIN liền
+Thông tin Pin	Li - Polymer 3 cell
+
+Hệ điều hành
+
+Hệ điều hành	Windows 10 Home SL
+
+Kích thước & trọng lượng
+
+Kích thước	Dài 359 mm - Rộng 254 mm - Dày 21.7 mm
+Trọng lượng	1.86 kg
+Chất liệu	Vỏ kim loại
