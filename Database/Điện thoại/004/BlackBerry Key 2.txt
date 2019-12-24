@@ -1,0 +1,70 @@
+Sản phẩm: BlackBerry Key 2
+Giá: 15.990.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD
+Độ phân giải	1080 x 1620 Pixels
+Màn hình rộng	4.5"
+Mặt kính cảm ứng	Kính cường lực Corning Gorilla Glass 3
+
+Camera sau
+
+Độ phân giải	Chính 12 MP & Phụ 12 MP
+Quay phim	Quay phim 4K 2160p@30fps
+Đèn Flash	Đèn LED 2 tông màu
+Chụp ảnh nâng cao	Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR, Toàn cảnh (Panorama)
+
+Camera trước
+
+Độ phân giải	8 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	Tự động lấy nét (AF), Quay video Full HD, Nhận diện khuôn mặt
+Hệ điều hành - CPU
+Hệ điều hành	Android 8.1 (Oreo)
+Chipset (hãng SX CPU)	Snapdragon 660 8 nhân
+Tốc độ CPU	4 nhân 2.2 GHz & 4 nhân 1.8 GHz
+Chip đồ họa (GPU)	Adreno 512
+
+Bộ nhớ & Lưu trữ
+
+RAM	6 GB
+Bộ nhớ trong	64 GB
+Bộ nhớ còn lại (khả dụng)	Đang cập nhật
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 256 GB
+
+Kết nối
+
+Mạng di động	Hỗ trợ 4G
+SIM	2 Nano SIM
+Wifi	Wi-Fi 802.11 a/b/g/n/ac, Dual-band, Wi-Fi Direct, Wi-Fi hotspot
+GPS	BDS, A-GPS, GLONASS
+Bluetooth	LE, v5.0
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	3.5 mm
+Kết nối khác	OTG
+
+Thiết kế & Trọng lượng
+
+Thiết kế	Nguyên khối
+Chất liệu	Khung kim loại & Mặt lưng kính cường lực
+Kích thước	Dài 151.4 mm - Ngang 71.8 mm - Dày 8.5 mm
+Trọng lượng	168 g
+
+Thông tin pin & Sạc
+
+Dung lượng pin	3500 mAh
+Loại pin	Pin chuẩn Li-Ion
+Công nghệ pin	Tiết kiệm pin, Sạc nhanh Quick Charge 3.0
+Tiện ích
+Bảo mật nâng cao	Mở khóa bằng vân tay
+Tính năng đặc biệt	Sạc pin nhanh
+Ghi âm	Có, microphone chuyên dụng chống ồn
+Radio	Có
+Xem phim	3GP, AVI, H.264(MPEG4-AVC), DivX
+Nghe nhạc	MP3, WAV, AAC, OGG, FLAC
+
+Thông tin khác
+
+Thời điểm ra mắt	11/2018

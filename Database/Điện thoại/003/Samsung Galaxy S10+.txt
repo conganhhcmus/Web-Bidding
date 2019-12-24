@@ -1,0 +1,87 @@
+Sản phẩm: Samsung Galaxy S10+
+Giá:
+	- 128GB: 22.990.000₫
+	- 512GB: 28.990.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	Dynamic AMOLED
+Độ phân giải	2K+ (1440 x 3040 Pixels)
+Màn hình rộng	6.4"
+Mặt kính cảm ứng	Kính cường lực Corning Gorilla Glass 6
+
+Camera sau
+
+Độ phân giải	Chính 12 MP & Phụ 12 MP, 16 MP
+Quay phim	Quay phim siêu chậm 960 fps, Quay phim FullHD 1080p@240fps, Quay phim 4K 2160p@60fps
+Đèn Flash	Có
+Chụp ảnh nâng cao	Quay siêu chậm (Super Slow Motion), Điều chỉnh khẩu độ, Lấy nét theo pha (PDAF), A.I Camera, Ban đêm (Night Mode), Trôi nhanh thời gian (Time Lapse), Quay chậm (Slow Motion), Xoá phông, Zoom quang học, Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR, Toàn cảnh (Panorama), Chống rung quang học (OIS), Làm đẹp (Beautify), Chuyên nghiệp (Pro)
+
+Camera trước
+
+Độ phân giải	Chính 10 MP & Phụ 8 MP
+Videocall	Có
+Thông tin khác	Làm đẹp (Beautify), Quay video Full HD, Tự động lấy nét (AF), HDR, Xoá phông, Quay phim 4K, Nhãn dán (AR Stickers), Flash màn hình, Chụp bằng cử chỉ, Nhận diện khuôn mặt
+
+Hệ điều hành - CPU
+
+Hệ điều hành	Android 9.0 (Pie)
+Chipset (hãng SX CPU)	Exynos 9820 8 nhân
+Tốc độ CPU	2 nhân 2.7 GHz, 2 nhân 2.3 GHz & 4 nhân 1.9 GHz
+Chip đồ họa (GPU)	Mali-G76 MP12
+
+Bộ nhớ & Lưu trữ
+
+RAM	8 GB
+Bộ nhớ trong	512 GB
+Bộ nhớ còn lại (khả dụng)	Khoảng 480 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 512 GB
+
+Kết nối
+
+Mạng di động	Hỗ trợ 4G
+SIM	2 SIM Nano (SIM 2 chung khe thẻ nhớ)
+Wifi	Dual-band, Wi-Fi 802.11 a/b/g/n/ac/ax, Wi-Fi Direct, Wi-Fi hotspot
+GPS	BDS, A-GPS, GLONASS
+Bluetooth	A2DP, LE, apt-X, v5.0
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	3.5 mm
+Kết nối khác	NFC, OTG
+
+Thiết kế & Trọng lượng
+
+Thiết kế	Nguyên khối
+Chất liệu	Khung kim loại & Mặt lưng kính cường lực
+Kích thước	Dài 157.6 mm - Ngang 74.1 mm - Dày 7.8 mm
+Trọng lượng	175 g
+Thông tin pin & Sạc
+Dung lượng pin	4100 mAh
+Loại pin	Pin chuẩn Li-Ion
+Công nghệ pin	Tiết kiệm pin, Siêu tiết kiệm pin, Sạc pin nhanh, Sạc pin không dây, Sạc ngược không dây
+
+Tiện ích
+
+Bảo mật nâng cao	Mở khoá khuôn mặt, Mở khoá vân tay dưới màn hình
+Tính năng đặc biệt	Thu nhỏ màn hình sử dụng một tay
+Samsung Pay
+Nhân bản ứng dụng
+Samsung DeX
+Dolby Audio™
+Trợ lý ảo Samsung Bixby
+Màn hình luôn hiển thị AOD
+Chặn tin nhắn
+Ghi âm cuộc gọi
+Chặn cuộc gọi
+Sạc pin nhanh
+Chạm 2 lần sáng màn hình
+Chuẩn Kháng nước, Chuẩn kháng bụi
+Đèn pin
+Ghi âm	Có, microphone chuyên dụng chống ồn
+Radio	Không
+Xem phim	H.265, 3GP, MP4, AVI, WMV, H.264(MPEG4-AVC), DivX, WMV9, Xvid
+Nghe nhạc	Lossless, Midi, MP3, WAV, WMA, AAC++, eAAC+, OGG, AC3, FLAC
+
+Thông tin khác
+
+Thời điểm ra mắt	02/2019
