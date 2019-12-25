@@ -479,6 +479,7 @@ textarea.input {
 \*----------------------------*/
 
 .category-nav {
+  margin-left: 0px;
   float: left;
   width: 270px;
 }
