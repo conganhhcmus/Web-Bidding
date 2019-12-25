@@ -48,14 +48,15 @@
 
                 <!-- Search -->
                 <div class="header-search">
-                    <form>
-                        <input class="input search-input" type="text" placeholder="Enter your keyword">
-                        <select class="input search-categories" style="width: 140px">
+                    <form method="GET" action="/home/product/search">
+                        <input class="input search-input" name="name_search" type="text" placeholder="Enter your keyword">
+                        <select class="input search-categories" name="selected_option" style="width: 140px">
                             <option value="0">All Categories</option>
-                            <option value="1">Category 01</option>
-                            <option value="1">Category 02</option>
+                            <option value="2">Điện thoại di động</option>
+                            <option value="3">Máy tính xách tay</option>
+                            <option value="4">Đồng hờ</option>
                         </select>
-                        <button class="search-btn"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
                 <!-- /Search -->
