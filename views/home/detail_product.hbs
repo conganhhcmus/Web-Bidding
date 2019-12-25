@@ -1,0 +1,104 @@
+<div class="single_product">
+	<div class="container-fluid" style=" background-color: #fff; padding: 11px;">
+		<div class="row">
+			<div class="col-lg-2 order-lg-1 order-2">
+				<ul class="image_list">
+					<li class="active" data-image="/images/product/{{img.[0].HASH_NAME}}"><a data-target="#pic-1"
+							data-toggle="tab"><img src="/images/product/{{img.[0].HASH_NAME}}" alt=""></a></li>
+
+					<li data-image="/images/product/{{img.[1].HASH_NAME}}"><a data-target="#pic-2" data-toggle="tab"><img src="/images/product/{{img.[1].HASH_NAME}}" alt=""></a></li>
+
+					<li data-image="/images/product/{{img.[2].HASH_NAME}}"><a data-target="#pic-3"
+							data-toggle="tab"><img src="/images/product/{{img.[2].HASH_NAME}}" alt=""></a></li>
+				</ul>
+			</div>
+			<div class="col-lg-4 order-lg-2 order-1">
+				<div class="preview-pic tab-content image_selected">
+					<div class="tab-pane active" id="pic-1"><img src="/images/product/{{img.[0].HASH_NAME}}" />
+					</div>
+					<div class="tab-pane" id="pic-2"><img src="/images/product/{{img.[1].HASH_NAME}}" /></div>
+					<div class="tab-pane" id="pic-3"><img src="/images/product/{{img.[2].HASH_NAME}}" /></div>
+				</div>
+			</div>
+			<div class="col-lg-6 order-3">
+				<div class="product_description">
+					<div class="product_name"><h1>{{pro.[0].PRODUCT_NAME}}</h1></div>
+					<div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5
+							Star</span> <span class="rating-review">{{pro.[0].EXTENSION_FLAG}} Reviews</span></div>
+					<div> <span class="product_price">{{pro.[0].CURRENT_PRICE}}</span>
+						<hr>
+						<div>
+							{{{ pro.[0].DESCRIPTION}}}
+						</div>
+
+					</div>
+					<hr class="singleline">
+					<div class="order_info d-flex flex-row">
+						<form action="#">
+					</div>
+					<div class="row">
+						<div class="col-xs-6"> <button type="button" class="btn btn-primary shop-button">Add to
+								Cart</button> <button type="button" class="btn btn-success shop-button">Buy Now</button>
+							<div class="product_fav"><i class="fa fa-heart"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row row-underline">
+			<div class="col-md-6"> <span class=" deal-text">Other product</span> </div>
+			<div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-4">
+				<a href="/home/{{ps.[0].ID}}/products">
+					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 350px">
+						<div class="bbb_combo">
+							<div class="bbb_combo_image"><img class="bbb_combo_image"
+									src="/images/product/{{ps.[0].imgSrc.HASH_NAME}}" alt=""></div>
+							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
+									style="margin-top: -4px;"><h5>{{ps.[0].CURRENT_PRICE}}</h5></span> <span
+									class="ml-auto fs-10">{{ps.[0].EXTENSION_FLAG}} Reviews</span>
+							</div> <span><h3>{{ps.[0].PRODUCT_NAME}}</h3></span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-md-4">
+				<a href="/home/{{ps.[1].ID}}/products">
+					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 350px">
+						<div class="bbb_combo">
+							<div class="bbb_combo_image"><img class="bbb_combo_image"
+									src="/images/product/{{ps.[1].imgSrc.HASH_NAME}}" alt=""></div>
+							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
+									style="margin-top: -4px;"><h5>{{ps.[1].CURRENT_PRICE}}</h5></span> <span
+									class="ml-auto fs-10">{{ps.[1].EXTENSION_FLAG}} Reviews</span>
+							</div> <span><h3>{{ps.[1].PRODUCT_NAME}}</h3></span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-md-4">
+				<a href="/home/{{ps.[2].ID}}/products">
+					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 350px">
+						<div class="bbb_combo">
+							<div class="bbb_combo_image"><img class="bbb_combo_image"
+									src="/images/product/{{ps.[2].imgSrc.HASH_NAME}}" alt=""></div>
+							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
+									style="margin-top: -4px;"><h5>{{ps.[2].CURRENT_PRICE}}</h5></span> <span
+									class="ml-auto fs-10">{{ps.[2].EXTENSION_FLAG}} Reviews</span>
+							</div> <span><h3>{{ps.[2].PRODUCT_NAME}}</h3></span>
+						</div>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+	</div>
+
+</div>
