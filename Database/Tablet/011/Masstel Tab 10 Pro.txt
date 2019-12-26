@@ -1,0 +1,61 @@
+Sản phẩm: Máy tính bảng Masstel Tab 10 Pro
+Giá: 2.590.000₫ 
+Thông tin: 
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD
+Độ phân giải	1280 x 800 pixels
+Kích thước màn hình	10.1"
+
+Chụp ảnh & Quay phim
+
+Camera sau	5 MP
+Quay phim	Có quay phim
+Tính năng camera	Đèn Flash, Tự động lấy nét
+Camera trước	2 MP
+
+Cấu hình
+
+Hệ điều hành	Android 9.0 (Pie)
+Loại CPU (Chipset)	MediaTek MT6580 4 nhân
+Tốc độ CPU	1.3 GHz
+Chip đồ hoạ (GPU)	Mali-400
+RAM	2 GB
+Bộ nhớ trong (ROM)	16 GB
+Bộ nhớ khả dụng	Khoảng 10 GB
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	32 GB
+Cảm biến	Tiệm cận
+
+Kết nối
+
+Số khe SIM	2 SIM
+Loại SIM	SIM thường
+Thực hiện cuộc gọi	Có
+Hỗ trợ 3G	Có 3G
+Hỗ trợ 4G	Không hỗ trợ 4G
+WiFi	Có
+Bluetooth	Có
+GPS	GPS
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Hỗ trợ OTG	Có
+Kết nối khác	OTG
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Có
+Tính năng đặc biệt	Không
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Nhựa + Kim loại
+Kích thước	Dài 250 mm - Ngang 160 mm - Dày 9 mm
+Trọng lượng	550.5 g
+
+Pin & Dung lượng
+
+Loại pin	Lithium - Polymer
+Dung lượng pin	5000 mAh

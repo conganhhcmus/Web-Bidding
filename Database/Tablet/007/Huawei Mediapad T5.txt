@@ -1,0 +1,61 @@
+Sản phẩm: Máy tính bảng Huawei Mediapad T5 10.1 inch
+Giá: 5.390.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD Full HD
+Độ phân giải	1920 x 1280 pixels
+Kích thước màn hình	10.1"
+
+Chụp ảnh & Quay phim
+
+Camera sau	5 MP
+Quay phim	Full HD 1080p@30fps
+Tính năng camera	Chế độ làm đẹp, Chế độ ánh sáng yếu, Nhận diện nụ cười
+Camera trước	2 MP
+
+Cấu hình
+
+Hệ điều hành	Android 8.0
+Loại CPU (Chipset)	Kirin 650 8 nhân
+Tốc độ CPU	1.7 GHz
+Chip đồ hoạ (GPU)	Mali-T830
+RAM	3 GB
+Bộ nhớ trong (ROM)	32 GB
+Bộ nhớ khả dụng	
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	256 GB
+Cảm biến	Rung, Tiệm cận, Gia tốc
+
+Kết nối
+
+Số khe SIM	1 SIM
+Loại SIM	Micro sim
+Thực hiện cuộc gọi	Có
+Hỗ trợ 3G	Có
+Hỗ trợ 4G	4G LTE
+WiFi	Wi-Fi 802.11 a/b/g/n/ac
+Bluetooth	4.2
+GPS	GPS
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Hỗ trợ OTG	Có
+Kết nối khác	Không
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Không
+Tính năng đặc biệt	Loa kép stereo, Không
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Kim loại
+Kích thước	Dài 243 mm - Ngang 164 mm - Dày 7.8 mm
+Trọng lượng	470 g
+
+Pin & Dung lượng
+
+Loại pin	Lithium - Polymer
+Dung lượng pin	5100 mAh

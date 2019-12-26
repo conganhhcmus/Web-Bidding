@@ -1,0 +1,61 @@
+Sản phẩm: Máy tính bảng Mobell Tab 8 Pro
+Giá: 2.250.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD
+Độ phân giải	1280 x 800 pixels
+Kích thước màn hình	8"
+
+Chụp ảnh & Quay phim
+
+Camera sau	8 MP
+Quay phim	Có quay phim
+Tính năng camera	Đèn Flash, Tự động lấy nét, Chạm lấy nét, Nhận diện khuôn mặt, Nhận diện nụ cười, Panorama
+Camera trước	5 MP
+
+Cấu hình
+
+Hệ điều hành	Android 5.1
+Loại CPU (Chipset)	MediaTek MTK 8321 4 nhân
+Tốc độ CPU	1.33 GHz
+Chip đồ hoạ (GPU)	Mali-400 MP
+RAM	1 GB
+Bộ nhớ trong (ROM)	16 GB
+Bộ nhớ khả dụng	10.5 GB
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	32 GB
+Cảm biến	Tiệm cận, Gia tốc, Ánh sáng
+
+Kết nối
+
+Số khe SIM	2 SIM
+Loại SIM	Nano SIM, SIM 2 chung khe thẻ nhớ
+Thực hiện cuộc gọi	Có
+Hỗ trợ 3G	Có 3G ( tốc độ Download 21 Mbps, Upload 5.76 Mbps)
+Hỗ trợ 4G	Không hỗ trợ 4G
+WiFi	Wi-Fi 802.11 b/g/n, Wi-Fi Direct, Wi-Fi hotspot
+Bluetooth	4.0
+GPS	A-GPS
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Hỗ trợ OTG	Có
+Kết nối khác	Không
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Có
+Tính năng đặc biệt	Dolby Audio™
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Mặt lưng nhôm
+Kích thước	Dài 209 mm - Ngang 121 mm - Dày 7.9 mm
+Trọng lượng	236 g
+
+Pin & Dung lượng
+
+Loại pin	Lithium - Ion
+Dung lượng pin	5200 mAh

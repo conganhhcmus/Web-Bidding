@@ -1,0 +1,59 @@
+Sản phẩm: Máy tính bảng Lenovo Tab E7 TB-7104I
+Giá: 1.890.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD
+Độ phân giải	1024 x 600 pixels
+Kích thước màn hình	7"
+Chụp ảnh & Quay phim
+Camera sau	2 MP
+Quay phim	Có quay phim
+Tính năng camera	Tự động lấy nét, Chạm lấy nét, Nhận diện khuôn mặt
+Camera trước	0.3 MP
+
+Cấu hình
+
+Hệ điều hành	Android Go 8.1
+Loại CPU (Chipset)	Mediatek MT8167D 6 nhân
+Tốc độ CPU	1.3 GHz
+Chip đồ hoạ (GPU)	Integrated IMG GE8300 Graphics
+RAM	1 GB
+Bộ nhớ trong (ROM)	16 GB
+Bộ nhớ khả dụng	12,8 GB
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	128 GB
+Cảm biến	Rung, Tiệm cận, Gia tốc
+
+Kết nối
+
+Số khe SIM	1 SIM
+Loại SIM	SIM thường
+Thực hiện cuộc gọi	Có
+Hỗ trợ 3G	Có 3G
+Hỗ trợ 4G	Không hỗ trợ 4G
+WiFi	Wi-Fi 802.11 b/g/n
+Bluetooth	4.0
+GPS	A-GPS
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Hỗ trợ OTG	Không
+Kết nối khác	Không
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Không
+Tính năng đặc biệt	Không
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Nhựa
+Kích thước	Dài 193.2 mm - Ngang 110.5 mm - Dày 10.3 mm
+Trọng lượng	271.7 g
+
+Pin & Dung lượng
+
+Loại pin	Lithium - Ion
+Dung lượng pin	2750mAh

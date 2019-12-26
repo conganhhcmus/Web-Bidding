@@ -1,0 +1,61 @@
+Sản phẩm: Máy tính bảng Samsung Galaxy Tab S6
+Giá: 18.490.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	Super AMOLED
+Độ phân giải	2560 x 1600 pixels
+Kích thước màn hình	10.5"
+
+Chụp ảnh & Quay phim
+
+Camera sau	Chính 13 MP & Phụ 5 MP
+Quay phim	Ultra HD@30fps
+Tính năng camera	Chế độ làm đẹp, Chụp hình góc rộng, Chụp hình góc siêu rộng, Tự động lấy nét, Chạm lấy nét, Nhận diện khuôn mặt, HDR, Panorama
+Camera trước	8 MP
+
+Cấu hình
+
+Hệ điều hành	Android 9.0 (Pie)
+Loại CPU (Chipset)	Snapdragon 855 8 nhân
+Tốc độ CPU	1 nhân 2.84 GHz, 3 nhân 2.41 GHz & 4 nhân 1.78 GHz
+Chip đồ hoạ (GPU)	Adreno 640
+RAM	6 GB
+Bộ nhớ trong (ROM)	128 GB
+Bộ nhớ khả dụng	Đang cập nhật
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	512 GB
+Cảm biến	Rung, Gia tốc, Ánh sáng
+
+Kết nối
+
+Số khe SIM	1 SIM
+Loại SIM	Nano Sim
+Thực hiện cuộc gọi	Có
+Hỗ trợ 3G	Có 3G
+Hỗ trợ 4G	4G LTE
+WiFi	Wi-Fi 802.11 a/b/g/n/ac, Wi-Fi Direct, Dual-band, Wi-Fi hotspot
+Bluetooth	LE, A2DP, 5.0
+GPS	GPS, GLONASS
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	Không
+Hỗ trợ OTG	Có
+Kết nối khác	OTG
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Không
+Tính năng đặc biệt	Dolby Atmos, Hỗ trợ bút S Pen, Sạc pin nhanh, Âm thanh AKG, Mở khoá vân tay dưới màn hình, Samsung DeX
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Kim loại
+Kích thước	Dài 244.5 mm - Ngang 159.5 mm - Dày 5.7 mm
+Trọng lượng	420 g
+
+Pin & Dung lượng
+
+Loại pin	Li-Po
+Dung lượng pin	7040 mAh

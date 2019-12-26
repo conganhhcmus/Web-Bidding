@@ -1,0 +1,61 @@
+Sản phẩm: Máy tính bảng Lenovo Tab E10 TB-X104L Đen
+Giá: 3.590.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD
+Độ phân giải	1280 x 800 pixels
+Kích thước màn hình	10.1"
+
+Chụp ảnh & Quay phim
+
+Camera sau	5 MP
+Quay phim	Có quay phim, HD 720p
+Tính năng camera	Chạm lấy nét, Nhận diện khuôn mặt, Nhận diện nụ cười
+Camera trước	2 MP
+
+Cấu hình
+
+Hệ điều hành	Android 8.0
+Loại CPU (Chipset)	Snapdragon 210 4 nhân
+Tốc độ CPU	1.33 GHz
+Chip đồ hoạ (GPU)	Integrated Qualcomm Adreno 304 GPU
+RAM	2 GB
+Bộ nhớ trong (ROM)	16 GB
+Bộ nhớ khả dụng	Khoảng 12 GB
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	128 GB
+Cảm biến	La bàn
+
+Kết nối
+
+Số khe SIM	1 SIM
+Loại SIM	Nano Sim
+Thực hiện cuộc gọi	Không
+Hỗ trợ 3G	Có 3G
+Hỗ trợ 4G	4G LTE
+WiFi	Wi-Fi 802.11 b/g/n
+Bluetooth	4.0
+GPS	A-GPS
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Hỗ trợ OTG	Có
+Kết nối khác	MHL, Miracast
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Có
+Tính năng đặc biệt	Dolby Atmos
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Nhựa ABS
+Kích thước	Dài 247 mm - Ngang 171 mm - Dày 7 mm
+Trọng lượng	522 g
+
+Pin & Dung lượng
+
+Loại pin	Lithium - Ion
+Dung lượng pin	4850 mAh

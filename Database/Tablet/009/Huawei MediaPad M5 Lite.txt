@@ -1,0 +1,61 @@
+Sản phẩm: Máy tính bảng Huawei MediaPad M5 Lite
+Giá: 7.990.000₫
+Thông tin:
+
+Màn hình
+
+Công nghệ màn hình	IPS LCD Full HD
+Độ phân giải	1920 x 1200 pixels
+Kích thước màn hình	10.1"
+
+Chụp ảnh & Quay phim
+
+Camera sau	8 MP
+Quay phim	Full HD 1080p (1920 x 1080 pixels)
+Tính năng camera	Chế độ làm đẹp, Tự động lấy nét, Panorama
+Camera trước	8 MP
+
+Cấu hình
+
+Hệ điều hành	Android 8.0
+Loại CPU (Chipset)	Kirin 659
+Tốc độ CPU	1.7 GHz
+Chip đồ hoạ (GPU)	Mali-T830
+RAM	4 GB
+Bộ nhớ trong (ROM)	64 GB
+Bộ nhớ khả dụng	Đang cập nhật
+Thẻ nhớ ngoài	Micro SD
+Hỗ trợ thẻ tối đa	256 GB
+Cảm biến	Rung
+
+Kết nối
+
+Số khe SIM	1 SIM
+Loại SIM	Nano Sim
+Thực hiện cuộc gọi	Có
+Hỗ trợ 3G	Có
+Hỗ trợ 4G	4G LTE
+WiFi	Wi-Fi 802.11 a/b/g/n/ac
+Bluetooth	4.2
+GPS	A-GPS, GPS, GLONASS
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	3.5 mm
+Hỗ trợ OTG	Không
+Kết nối khác	Không
+
+Chức năng khác
+
+Ghi âm	Có
+Radio	Không
+Tính năng đặc biệt	Mở khóa bằng vân tay, Hỗ trợ bút M Pen, Sạc pin nhanh
+
+Thiết kế & Trọng lượng
+
+Chất liệu	Kim loại
+Kích thước	Dài 243.4 mm - Ngang 162.2 mm - Dày 7.7 mm
+Trọng lượng	475 g
+
+Pin & Dung lượng
+
+Loại pin	Lithium - Polymer
+Dung lượng pin	7500 mAh
