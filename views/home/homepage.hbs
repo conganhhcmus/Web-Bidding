@@ -167,18 +167,14 @@
 				<div class="row">
 					<div id="product-slick-1" class="product-slick">
 
-						{{#each ps.[1]}}
+						{{#each top5Price}}
 						<!-- Product Single -->
 						<div class="product product-single">
 							<div class="product-thumb">
-								<div class="product-label">
-									<span>New</span>
-									<span class="sale">-20%</span>
-								</div>
 								<ul class="product-countdown">
-									<li><span>00 H</span></li>
-									<li><span>00 M</span></li>
-									<li><span>00 S</span></li>
+									<li><span>{{HOURS}} H</span></li>
+									<li><span>{{MINUTES}} M</span></li>
+									<li><span>{{SECONDS}} S</span></li>
 								</ul>
 								<a href="/home/{{ID}}/products"><button class="main-btn quick-view"><i
 											class="fa fa-search-plus"></i> Quick
@@ -186,7 +182,7 @@
 								<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
 							</div>
 							<div class="product-body">
-								<h3 class="product-price">{{CURRENT_PRICE}} <del class="product-old-price">$45.00</del>
+								<h3 class="product-price">{{CURRENT_PRICE_VND}} VND
 								</h3>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -232,18 +228,14 @@
 				<div class="row">
 					<div id="product-slick-2" class="product-slick">
 
-						{{#each ps.[2]}}
+						{{#each top5End}}
 						<!-- Product Single -->
 						<div class="product product-single">
 							<div class="product-thumb">
-								<div class="product-label">
-									<span>New</span>
-									<span class="sale">-20%</span>
-								</div>
 								<ul class="product-countdown">
-									<li><span>00 H</span></li>
-									<li><span>00 M</span></li>
-									<li><span>00 S</span></li>
+									<li><span>{{HOURS}} H</span></li>
+									<li><span>{{MINUTES}} M</span></li>
+									<li><span>{{SECONDS}} S</span></li>
 								</ul>
 								<a href="/home/{{ID}}/products"><button class="main-btn quick-view"><i
 											class="fa fa-search-plus"></i> Quick
@@ -251,7 +243,7 @@
 								<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
 							</div>
 							<div class="product-body">
-								<h3 class="product-price">{{CURRENT_PRICE}} <del class="product-old-price">$45.00</del>
+								<h3 class="product-price">{{CURRENT_PRICE_VND}} VND
 								</h3>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -277,58 +269,12 @@
 			</div>
 			<!-- /Product Slick -->
 		</div>
-		<!-- /row -->
+		<!-- /row -->	
 	</div>
 	<!-- /container -->
 </div>
 <!-- /section -->
 
-<!-- section -->
-<div class="section section-grey">
-	<!-- container -->
-	<div class="container">
-		<!-- row -->
-		<div class="row">
-			<!-- banner -->
-			<div class="col-md-8">
-				<div class="banner banner-1">
-					<img src="/images/banner13.jpg" alt="">
-					<div class="banner-caption text-center">
-						<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50%
-								OFF</span></h1>
-						<button class="primary-btn">Shop Now</button>
-					</div>
-				</div>
-			</div>
-			<!-- /banner -->
-
-			<!-- banner -->
-			<div class="col-md-4 col-sm-6">
-				<a class="banner banner-1" href="#">
-					<img src="/images/banner11.jpg" alt="">
-					<div class="banner-caption text-center">
-						<h2 class="white-color">NEW COLLECTION</h2>
-					</div>
-				</a>
-			</div>
-			<!-- /banner -->
-
-			<!-- banner -->
-			<div class="col-md-4 col-sm-6">
-				<a class="banner banner-1" href="#">
-					<img src="/images/banner12.jpg" alt="">
-					<div class="banner-caption text-center">
-						<h2 class="white-color">NEW COLLECTION</h2>
-					</div>
-				</a>
-			</div>
-			<!-- /banner -->
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- /container -->
-</div>
-<!-- /section -->
 
 <!-- section -->
 <div class="section">
@@ -339,24 +285,20 @@
 			<!-- section title -->
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2 class="title">Latest Product</h2>
+					<h2 class="title">Top 4 Price</h2>
 				</div>
 			</div>
 			<!-- section title -->
 
-			{{#each ps.[2]}}
+			{{#each top5Price}}
 			<!-- Product Single -->
 			<div class="col-md-3">
 				<div class="product product-single">
 					<div class="product-thumb">
-						<div class="product-label">
-							<span>New</span>
-							<span class="sale">-20%</span>
-						</div>
 						<ul class="product-countdown">
-							<li><span>00 H</span></li>
-							<li><span>00 M</span></li>
-							<li><span>00 S</span></li>
+							<li><span>{{HOURS}} H</span></li>
+							<li><span>{{MINUTES}} M</span></li>
+							<li><span>{{SECONDS}} S</span></li>
 						</ul>
 						<a href="/home/{{ID}}/products"><button class="main-btn quick-view"><i
 									class="fa fa-search-plus"></i> Quick
@@ -364,7 +306,7 @@
 						<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
 					</div>
 					<div class="product-body">
-						<h3 class="product-price">{{CURRENT_PRICE:}} <del class="product-old-price">$45.00</del></h3>
+						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
 						<div class="product-rating">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -372,7 +314,7 @@
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star-o empty"></i>
 						</div>
-						<h2 class="product-name"><a href="#">{{PRODUCT_NAME:}}</a></h2>
+						<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
 						<div class="product-btns">
 							<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 							<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
@@ -392,24 +334,20 @@
 			<!-- section title -->
 			<div class="col-md-12">
 				<div class="section-title">
-					<h2 class="title">Picked For You</h2>
+					<h2 class="title">Top 4 Nearly Finished</h2>
 				</div>
 			</div>
 			<!-- section title -->
 
-			{{#each ps.[1]}}
+			{{#each top5End}}
 			<!-- Product Single -->
 			<div class="col-md-3">
 				<div class="product product-single">
 					<div class="product-thumb">
-						<div class="product-label">
-							<span>New</span>
-							<span class="sale">-20%</span>
-						</div>
 						<ul class="product-countdown">
-							<li><span>00 H</span></li>
-							<li><span>00 M</span></li>
-							<li><span>00 S</span></li>
+							<li><span>{{HOURS}} H</span></li>
+							<li><span>{{MINUTES}} M</span></li>
+							<li><span>{{SECONDS}} S</span></li>
 						</ul>
 						<a href="/home/{{ID}}/products"><button class="main-btn quick-view"><i
 									class="fa fa-search-plus"></i> Quick
@@ -417,7 +355,7 @@
 						<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
 					</div>
 					<div class="product-body">
-						<h3 class="product-price">{{CURRENT_PRICE:}} <del class="product-old-price">$45.00</del></h3>
+						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
 						<div class="product-rating">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>

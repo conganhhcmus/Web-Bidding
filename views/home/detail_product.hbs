@@ -22,10 +22,13 @@
 			</div>
 			<div class="col-lg-6 order-3">
 				<div class="product_description">
-					<div class="product_name"><h1>{{pro.[0].PRODUCT_NAME}}</h1></div>
+					<div class="product_name">{{pro.[0].PRODUCT_NAME}}</div>
+					<h5>Ngày đăng: {{pro.[0].start_date}}</h5>
+					<h5>Time left: {{pro.[0].time_left}}</h5>
 					<div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5
 							Star</span> <span class="rating-review">{{pro.[0].EXTENSION_FLAG}} Reviews</span></div>
-					<div> <span class="product_price">{{pro.[0].CURRENT_PRICE}}</span>
+					<div style="font-size: 20px">CURRENT PRICE: {{pro.[0].CURRENT_PRICE_VND}} VND</div>
+					<div style="font-size: 20px">BUYNOW PRICE: {{pro.[0].BUYNOW_PRICE_VND}} VND</div>
 						<hr>
 						<div>
 							{{{ pro.[0].DESCRIPTION}}}
@@ -54,12 +57,12 @@
 
 			<div class="col-md-4">
 				<a href="/home/{{ps.[0].ID}}/products">
-					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 350px">
+					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
 						<div class="bbb_combo">
 							<div class="bbb_combo_image"><img class="bbb_combo_image"
 									src="/images/product/{{ps.[0].imgSrc.HASH_NAME}}" alt=""></div>
 							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
-									style="margin-top: -4px;"><h5>{{ps.[0].CURRENT_PRICE}}</h5></span> <span
+									style="margin-top: -4px;"><h5>{{ps.[0].CURRENT_PRICE_VND}} VND</h5></span> <span
 									class="ml-auto fs-10">{{ps.[0].EXTENSION_FLAG}} Reviews</span>
 							</div> <span><h3>{{ps.[0].PRODUCT_NAME}}</h3></span>
 						</div>
@@ -69,12 +72,12 @@
 
 			<div class="col-md-4">
 				<a href="/home/{{ps.[1].ID}}/products">
-					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 350px">
+					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
 						<div class="bbb_combo">
 							<div class="bbb_combo_image"><img class="bbb_combo_image"
 									src="/images/product/{{ps.[1].imgSrc.HASH_NAME}}" alt=""></div>
 							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
-									style="margin-top: -4px;"><h5>{{ps.[1].CURRENT_PRICE}}</h5></span> <span
+									style="margin-top: -4px;"><h5>{{ps.[1].CURRENT_PRICE_VND}} VND</h5></span> <span
 									class="ml-auto fs-10">{{ps.[1].EXTENSION_FLAG}} Reviews</span>
 							</div> <span><h3>{{ps.[1].PRODUCT_NAME}}</h3></span>
 						</div>
@@ -84,12 +87,12 @@
 
 			<div class="col-md-4">
 				<a href="/home/{{ps.[2].ID}}/products">
-					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 350px">
+					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
 						<div class="bbb_combo">
 							<div class="bbb_combo_image"><img class="bbb_combo_image"
 									src="/images/product/{{ps.[2].imgSrc.HASH_NAME}}" alt=""></div>
 							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
-									style="margin-top: -4px;"><h5>{{ps.[2].CURRENT_PRICE}}</h5></span> <span
+									style="margin-top: -4px;"><h5>{{ps.[2].CURRENT_PRICE_VND}} VND</h5></span> <span
 									class="ml-auto fs-10">{{ps.[2].EXTENSION_FLAG}} Reviews</span>
 							</div> <span><h3>{{ps.[2].PRODUCT_NAME}}</h3></span>
 						</div>
