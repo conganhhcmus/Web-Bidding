@@ -4,82 +4,37 @@ const accountM = require('../models/account.M');
 const hash = require("../utils/hash");
 const passport = require('passport');
 
-router.post('/login', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-      if (err) { return next(err); }
-      if (!user) { return res.redirect('/account/register'); }
-      req.logIn(user, function(err) {
-        if (err) { console.log('ko nhan dien', user); return next(err); }
-        return res.redirect('/');
-      });
-    }) (req, res, next);
-  }
+// Đăng nhập dùng passport
+router.post('/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) { return next(err); }
+        if (!user) {
+            return res.render('login', {
+                layout: 'login',
+                error: 'Thông tin đăng nhập chưa chính xác',
+                title: 'Đăng nhập'
+            });
+        }
+        req.logIn(user, function (err) {
+            if (err) { return next(err); }
+            return res.redirect('/');
+        });
+    })(req, res, next);
+}
 );
 
 router.get('/login', async (req, res) => {
-    req.session.destroy();
-    res.render('login', { 
+    res.render('login', {
         layout: 'login',
-        title: 'Login Page',  
-     });
+        title: 'Đăng nhập',
+    });
 });
 
 router.get('/register', async (req, res) => {
-    req.session.destroy(); 
-    res.render('register', { 
+    res.render('register', {
         layout: 'login',
-        title: 'Register', 
+        title: 'Register',
     });
-});
-
-router.post('/login', async (req, res) => {
-    const username = req.body.username.toString();
-    const password = req.body.password.toString();
-
-    // không có username
-    if (username === "") {
-        res.render('login', {  
-            layout: 'login',       
-            error: '(*) Username is null',
-        });
-        return;
-    }
-
-    // không có password
-    if (password === "") {
-        res.render('login', {   
-            layout: 'login',        
-            error: '(*) Password is null',
-        });
-        return;
-    }
-
-    const user = await accountM.getByUserName(username);
-
-    // không tồn tại user name
-    if (user === null) {
-        res.render('login', { 
-            layout: 'login',           
-            error: '(*) Username is not exist !',
-        });
-        return;
-    }
-
-    const CHash = await hash.comparePassword(password,user.PASSWORD);
-
-    if (CHash) {
-        req.session.User = {
-            id: user.ID,
-        };
-        res.redirect('/home')
-        return;
-    }
-
-    res.render('login', {     
-        layout: 'login',   
-        error: '(*) The wrong password !',
-    });
-    return;
 });
 
 router.post('/createAccount', async (req, res) => {
@@ -90,8 +45,8 @@ router.post('/createAccount', async (req, res) => {
 
     // password null
     if (password === "") {
-        res.render('register', {    
-            layout: 'login',        
+        res.render('register', {
+            layout: 'login',
             error: '(*) Your password is null !'
         })
         return;
@@ -99,8 +54,8 @@ router.post('/createAccount', async (req, res) => {
 
     // pass word - confirm password are different
     if (password !== confirm_password) {
-        res.render('register', {  
-            layout: 'login',          
+        res.render('register', {
+            layout: 'login',
             error: '(*) Password and Confirm-Password are different!'
         })
         return;
@@ -111,20 +66,20 @@ router.post('/createAccount', async (req, res) => {
 
     // username is already existed
     if (user_DB !== null) {
-        res.render('register', {  
-            layout: 'login',         
+        res.render('register', {
+            layout: 'login',
             error: '(*) Username is already existed!'
         });
         return;
     }
     // email is already used
-    else if(email_DB !== null){
-        res.render('register', {  
-            layout: 'login',           
+    else if (email_DB !== null) {
+        res.render('register', {
+            layout: 'login',
             error: '(*) Email is already used!'
         });
         return;
-    }   
+    }
     else {
 
         var pwHash = await hash.getHashPassword(password);
@@ -143,7 +98,7 @@ router.post('/createAccount', async (req, res) => {
             id: uId,
             user: user,
         };
-        
+
         res.redirect('/account/profile');
         return;
     }
@@ -151,7 +106,7 @@ router.post('/createAccount', async (req, res) => {
 });
 
 router.get('/profile', async (req, res) => {
-    if(typeof req.session.User === "undefined"){
+    if (typeof req.session.User === "undefined") {
         res.redirect('/account/login');
         return;
     }
@@ -167,8 +122,8 @@ router.get('/profile', async (req, res) => {
 
 
 router.post('/profile', async (req, res) => {
-    if(typeof req.session.User === "undefined"){
-        res.render('profile',{
+    if (typeof req.session.User === "undefined") {
+        res.render('profile', {
             layout: 'login',
             disabled: 'disabled',
             user: null,
@@ -182,24 +137,24 @@ router.post('/profile', async (req, res) => {
     const n_name = req.body.fullname;
     const n_password = req.body.password;
     const n_email = req.body.email;
-    const n_dob = req.body.dob  || '2000-01-01';
+    const n_dob = req.body.dob || '2000-01-01';
 
 
-    if(user.FULL_NAME !== n_name){
-        var changedRows = await accountM.update('FULL_NAME',n_name,id);
+    if (user.FULL_NAME !== n_name) {
+        var changedRows = await accountM.update('FULL_NAME', n_name, id);
     }
 
-    if(user.EMAIL !== n_email){
-        var changedRows = await accountM.update('EMAIL',n_email,id);
+    if (user.EMAIL !== n_email) {
+        var changedRows = await accountM.update('EMAIL', n_email, id);
     }
 
-    if(user.DOB !== n_dob){
-        var changedRows = await accountM.update('DOB',n_dob,id);
+    if (user.DOB !== n_dob) {
+        var changedRows = await accountM.update('DOB', n_dob, id);
     }
 
-    if(user.PASSWORD !== n_password){
+    if (user.PASSWORD !== n_password) {
         const pwH = await hash.getHashPassword(n_password);
-        var changedRows = await accountM.update('PASSWORD',pwH,id);
+        var changedRows = await accountM.update('PASSWORD', pwH, id);
     }
 
     user = await accountM.getByID(id);
@@ -212,5 +167,9 @@ router.post('/profile', async (req, res) => {
     return;
 });
 
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
 module.exports = router;

@@ -56,7 +56,8 @@ passport.use(new LocalStrategy(
         if (!user) {
             return done(null, false, { message: 'Incorrect username.' });
         }
-        if (user.PASSWORD !== password) {
+        const CHash = await hash.comparePassword(password, user.PASSWORD);
+        if (!CHash) {
             return done(null, false, { message: 'Incorrect password.' });
         }
         return done(null, user);
@@ -66,6 +67,8 @@ passport.use(new LocalStrategy(
 app.use('/account',require('./controllers/account.C'));
 // product
 app.use('/product',require('./controllers/product.C'));
+// cate
+app.use('/category',require('./controllers/category.C'));
 // admin page
 app.use('/admin',require('./controllers/admin.C'));
 
