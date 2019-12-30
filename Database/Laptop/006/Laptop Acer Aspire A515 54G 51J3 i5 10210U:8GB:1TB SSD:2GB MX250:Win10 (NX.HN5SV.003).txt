@@ -1,0 +1,42 @@
+Sản phẩm: Laptop Acer Aspire A515 54G 51J3 i5 10210U/8GB/1TB SSD/2GB MX250/Win10 (NX.HN5SV.003)
+Giá: 17.990.000₫
+Thông tin:
+
+Bộ xử lý
+Công nghệ CPU	Intel Core i5 Comet Lake
+Loại CPU	10210U
+Tốc độ CPU	1.60 GHz
+Tốc độ tối đa	Turbo Boost 4.2 GHz
+Tốc độ Bus	
+Bộ nhớ, RAM, Ổ cứng
+RAM	8 GB
+Loại RAM	DDR4 (1 khe)
+Tốc độ Bus RAM	2400 MHz
+Hỗ trợ RAM tối đa	20 GB
+Ổ cứng	SSD 1024 GB M.2 PCIe, Hỗ trợ khe cắm HDD SATA
+Màn hình
+Kích thước màn hình	15.6 inch
+Độ phân giải	Full HD (1920 x 1080)
+Công nghệ màn hình	60Hz, Acer ComfyView
+Màn hình cảm ứng	Không
+Đồ họa và Âm thanh
+Thiết kế card	Card đồ họa rời
+Card đồ họa	NVIDIA GeForce MX250 2GB
+Công nghệ âm thanh	Realtek High Definition Audio
+Cổng kết nối & tính năng mở rộng
+Cổng giao tiếp	2 x USB 3.1, HDMI, LAN (RJ45), USB 2.0, USB Type-C
+Kết nối không dây	Bluetooth 4.2, Wi-Fi 6 - 802.11ax
+Khe đọc thẻ nhớ	Không
+Ổ đĩa quang	Không
+Webcam	HD webcam
+Đèn bàn phím	Có
+Tính năng khác	Không
+PIN
+Loại PIN	PIN liền
+Thông tin Pin	Li-Ion 3 cell
+Hệ điều hành
+Hệ điều hành	Windows 10 Home SL
+Kích thước & trọng lượng
+Kích thước	Dài 363.4 mm - Rộng 250.5 mm - Dày 17.95 mm
+Trọng lượng	1.7 kg
+Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại

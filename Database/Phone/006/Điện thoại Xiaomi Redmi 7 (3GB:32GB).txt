@@ -1,0 +1,57 @@
+Sản phẩm: Điện thoại Xiaomi Redmi 7 (3GB/32GB)
+Giá: 3.290.000₫
+Thông tin:
+
+Màn hình
+Công nghệ màn hình	IPS LCD
+Độ phân giải	HD+ (720 x 1520 Pixels)
+Màn hình rộng	6.26"
+Mặt kính cảm ứng	Kính cường lực Corning Gorilla Glass 5
+Camera sau
+Độ phân giải	Chính 12 MP & Phụ 2 MP
+Quay phim	Quay phim FullHD 1080p@30fps, Quay phim FullHD 1080p@60fps
+Đèn Flash	Có
+Chụp ảnh nâng cao	Xoá phông, Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR
+Camera trước
+Độ phân giải	8 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	Quay video HD, Quay video Full HD, Tự động lấy nét (AF)
+Hệ điều hành - CPU
+Hệ điều hành	Android 9.0 (Pie)
+Chipset (hãng SX CPU)	Snapdragon 632 8 nhân
+Tốc độ CPU	1.8 GHz
+Chip đồ họa (GPU)	Adreno 506
+Bộ nhớ & Lưu trữ
+RAM	3 GB
+Bộ nhớ trong	32 GB
+Bộ nhớ còn lại (khả dụng)	Khoảng 22 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 512 GB
+Kết nối
+Mạng di động	Hỗ trợ 4G
+SIM	2 Nano SIM
+Wifi	Wi-Fi 802.11 b/g/n, Wi-Fi Direct, Wi-Fi hotspot
+GPS	BDS, A-GPS, GLONASS
+Bluetooth	A2DP, LE, v4.2
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Kết nối khác	Hồng Ngoại
+Thiết kế & Trọng lượng
+Thiết kế	Nguyên khối
+Chất liệu	Khung & Mặt lưng nhựa
+Kích thước	Dài 158.7 mm - Ngang 75.6 mm - Dày 8.5 mm
+Trọng lượng	180 g
+Thông tin pin & Sạc
+Dung lượng pin	4000 mAh
+Loại pin	Pin chuẩn Li-Po
+Công nghệ pin	Tiết kiệm pin
+Tiện ích
+Bảo mật nâng cao	Mở khóa bằng vân tay, Mở khoá khuôn mặt
+Tính năng đặc biệt	Chặn tin nhắn
+Chặn cuộc gọi
+Đèn pin
+Ghi âm	Có, microphone chuyên dụng chống ồn
+Radio	Có
+Xem phim	H.265, MP4, H.264(MPEG4-AVC)
+Nghe nhạc	MP3, WAV, AAC, FLAC
+Thông tin khác
+Thời điểm ra mắt	03/2019

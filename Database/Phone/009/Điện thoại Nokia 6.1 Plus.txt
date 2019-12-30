@@ -1,0 +1,57 @@
+Sản phẩm: Điện thoại Nokia 6.1 Plus
+Giá: 3.590.000₫
+Thông tin:
+
+Màn hình
+Công nghệ màn hình	IPS LCD
+Độ phân giải	Full HD+ (1080 x 2280 Pixels)
+Màn hình rộng	5.8"
+Mặt kính cảm ứng	Kính cường lực Corning Gorilla Glass 3
+Camera sau
+Độ phân giải	Chính 16 MP & Phụ 5 MP
+Quay phim	Quay phim FullHD 1080p@30fps, Quay phim 4K 2160p@30fps
+Đèn Flash	Đèn LED 2 tông màu
+Chụp ảnh nâng cao	Xoá phông, Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR, Toàn cảnh (Panorama), Làm đẹp (Beautify)
+Camera trước
+Độ phân giải	16 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	Nhãn dán (AR Stickers), Nhận diện khuôn mặt, Quay video Full HD, Tự động lấy nét (AF), HDR, Làm đẹp (Beautify)
+Hệ điều hành - CPU
+Hệ điều hành	Android 8 Oreo (Android One)
+Chipset (hãng SX CPU)	Snapdragon 636 8 nhân
+Tốc độ CPU	1.8 GHz
+Chip đồ họa (GPU)	Adreno 509
+Bộ nhớ & Lưu trữ
+RAM	4 GB
+Bộ nhớ trong	64 GB
+Bộ nhớ còn lại (khả dụng)	Khoảng 51 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 400 GB
+Kết nối
+Mạng di động	Hỗ trợ 4G
+SIM	2 SIM Nano (SIM 2 chung khe thẻ nhớ)
+Wifi	Wi-Fi 802.11 a/b/g/n/ac, Dual-band, Wi-Fi Direct, Wi-Fi hotspot
+GPS	BDS, A-GPS, GLONASS
+Bluetooth	LE, A2DP, v5.0
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	3.5 mm
+Kết nối khác	USB 2.0
+Thiết kế & Trọng lượng
+Thiết kế	Nguyên khối
+Chất liệu	Khung kim loại & Mặt lưng kính cường lực
+Kích thước	Dài 147.2 mm - Ngang 71 mm - Dày 8 mm
+Trọng lượng	153 g
+Thông tin pin & Sạc
+Dung lượng pin	3060 mAh
+Loại pin	Pin chuẩn Li-Ion
+Công nghệ pin	Tiết kiệm pin
+Tiện ích
+Bảo mật nâng cao	Mở khóa bằng vân tay
+Tính năng đặc biệt	Chặn tin nhắn
+Chặn cuộc gọi
+Đèn pin
+Ghi âm	Không
+Radio	Có
+Xem phim	3GP, MP4, WMV
+Nghe nhạc	AMR, MP3, WAV, AAC, OGG, FLAC
+Thông tin khác
+Thời điểm ra mắt	08/2018

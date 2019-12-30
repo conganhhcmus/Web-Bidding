@@ -1,0 +1,61 @@
+Sản phẩm: Điện thoại Samsung Galaxy A20
+Giá: 4.190.000₫
+Thông tin:
+
+Màn hình
+Công nghệ màn hình	Super AMOLED
+Độ phân giải	HD+ (720 x 1560 Pixels)
+Màn hình rộng	6.4"
+Mặt kính cảm ứng	Kính cường lực Corning Gorilla Glass
+Camera sau
+Độ phân giải	Chính 13 MP & Phụ 5 MP
+Quay phim	Quay phim FullHD 1080p@30fps
+Đèn Flash	Có
+Chụp ảnh nâng cao	Xoá phông, Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR, Toàn cảnh (Panorama), Làm đẹp (Beautify)
+Camera trước
+Độ phân giải	8 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	Quay video HD, Làm đẹp (Beautify), Tự động lấy nét (AF)
+Hệ điều hành - CPU
+Hệ điều hành	Android 9.0 (Pie)
+Chipset (hãng SX CPU)	Exynos 7884 8 nhân
+Tốc độ CPU	2 nhân 1.6 GHz & 6 nhân 1.35 GHz
+Chip đồ họa (GPU)	Mali-G71
+Bộ nhớ & Lưu trữ
+RAM	3 GB
+Bộ nhớ trong	32 GB
+Bộ nhớ còn lại (khả dụng)	Khoảng 22 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 512 GB
+Kết nối
+Mạng di động	Hỗ trợ 4G
+SIM	2 Nano SIM
+Wifi	Wi-Fi 802.11 b/g/n, Wi-Fi Direct, Wi-Fi hotspot
+GPS	BDS, A-GPS, GLONASS
+Bluetooth	LE, A2DP, v4.2
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	3.5 mm
+Kết nối khác	Không
+Thiết kế & Trọng lượng
+Thiết kế	Nguyên khối
+Chất liệu	Khung & Mặt lưng nhựa
+Kích thước	Dài 158.4 mm - Ngang 74.7 mm - Dày 7.8 mm
+Trọng lượng	169 g
+Thông tin pin & Sạc
+Dung lượng pin	4000 mAh
+Loại pin	Pin chuẩn Li-Ion
+Công nghệ pin	Tiết kiệm pin, Sạc pin nhanh
+Tiện ích
+Bảo mật nâng cao	Mở khóa bằng vân tay, Mở khoá khuôn mặt
+Tính năng đặc biệt	Nhân bản ứng dụng
+Mặt kính 2.5D
+Chặn tin nhắn
+Ghi âm cuộc gọi
+Đèn pin
+Chặn cuộc gọi
+Dolby Audio™
+Ghi âm	Có, microphone chuyên dụng chống ồn
+Radio	Có
+Xem phim	3GP, MP4, AVI, WMV
+Nghe nhạc	AMR, Midi, MP3, WAV, WMA, AAC, OGG, FLAC
+Thông tin khác
+Thời điểm ra mắt	04/2019

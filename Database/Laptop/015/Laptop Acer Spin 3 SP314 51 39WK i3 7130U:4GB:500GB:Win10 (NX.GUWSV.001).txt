@@ -1,0 +1,42 @@
+Sản phẩm: Laptop Acer Spin 3 SP314 51 39WK i3 7130U/4GB/500GB/Win10 (NX.GUWSV.001)
+Giá: 11.990.000₫
+Thông tin:
+
+Bộ xử lý
+Công nghệ CPU	Intel Core i3 Kabylake
+Loại CPU	7130U
+Tốc độ CPU	2.70 GHz
+Tốc độ tối đa	Không
+Tốc độ Bus	
+Bộ nhớ, RAM, Ổ cứng
+RAM	4 GB
+Loại RAM	DDR4 (On board)
+Tốc độ Bus RAM	2133 MHz
+Hỗ trợ RAM tối đa	Không hỗ trợ nâng cấp
+Ổ cứng	HDD: 500 GB, Hỗ trợ khe cắm SSD M.2 PCIe
+Màn hình
+Kích thước màn hình	14 inch
+Độ phân giải	Full HD (1920 x 1080)
+Công nghệ màn hình	Tấm nền IPS, Màn hình Wide View, Viền màn hình mỏng, LED Backlit, Acer ComfyView, Lật, Xoay 360 độ
+Màn hình cảm ứng	Có
+Đồ họa và Âm thanh
+Thiết kế card	Card đồ họa tích hợp
+Card đồ họa	Intel® HD Graphics 620
+Công nghệ âm thanh	Acer TrueHarmony, Loa kép (2 kênh), Combo Microphone & Headphone
+Cổng kết nối & tính năng mở rộng
+Cổng giao tiếp	2 x USB 3.0, HDMI, USB 2.0
+Kết nối không dây	Bluetooth 4.1, Wi-Fi 802.11 a/b/g/n/ac
+Khe đọc thẻ nhớ	SD, SDHC, SDXC
+Ổ đĩa quang	Không
+Webcam	1 MP, HD webcam
+Đèn bàn phím	Không
+Tính năng khác	USB Charge, 2x2 Wi-Fi antenna, Multi TouchPad, Micro kép
+PIN
+Loại PIN	PIN liền
+Thông tin Pin	Li-Ion 3 cell
+Hệ điều hành
+Hệ điều hành	Windows 10 Home SL
+Kích thước & trọng lượng
+Kích thước	Dài 335 mm - Rộng 230 mm - Dày 20.8 mm
+Trọng lượng	1.7 kg
+Chất liệu	Vỏ nhựa

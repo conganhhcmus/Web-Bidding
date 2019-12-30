@@ -1,0 +1,59 @@
+Sản phẩm: Điện thoại Samsung Galaxy A20s 32GB
+Giá: 4.390.000₫
+Thông tin:
+
+Màn hình
+Công nghệ màn hình	IPS LCD
+Độ phân giải	HD+ (720 x 1520 Pixels)
+Màn hình rộng	6.5"
+Mặt kính cảm ứng	Mặt kính cong 2.5D
+Camera sau
+Độ phân giải	Chính 13 MP & Phụ 8 MP, 5 MP
+Quay phim	Quay phim FullHD 1080p@30fps
+Đèn Flash	Có
+Chụp ảnh nâng cao	Xoá phông, Góc siêu rộng (Ultrawide), Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR, Toàn cảnh (Panorama), Làm đẹp (Beautify)
+Camera trước
+Độ phân giải	8 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	Tự động lấy nét (AF), Quay video HD, Nhận diện khuôn mặt, Làm đẹp (Beautify), Quay video Full HD
+Hệ điều hành - CPU
+Hệ điều hành	Android 9.0 (Pie)
+Chipset (hãng SX CPU)	Snapdragon 450 8 nhân
+Tốc độ CPU	1.8 GHz
+Chip đồ họa (GPU)	Adreno 506
+Bộ nhớ & Lưu trữ
+RAM	3 GB
+Bộ nhớ trong	32 GB
+Bộ nhớ còn lại (khả dụng)	Khoảng 24 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 512 GB
+Kết nối
+Mạng di động	Hỗ trợ 4G
+SIM	2 Nano SIM
+Wifi	Wi-Fi 802.11 b/g/n, Wi-Fi Direct, Wi-Fi hotspot
+GPS	BDS, A-GPS, GLONASS
+Bluetooth	LE, A2DP, v5.0
+Cổng kết nối/sạc	USB Type-C
+Jack tai nghe	3.5 mm
+Kết nối khác	OTG
+Thiết kế & Trọng lượng
+Thiết kế	Nguyên khối
+Chất liệu	Khung & Mặt lưng nhựa
+Kích thước	Dài 163.3 mm - Ngang 77.5 mm - Dày 8 mm
+Trọng lượng	183 g
+Thông tin pin & Sạc
+Dung lượng pin	4000 mAh
+Loại pin	Pin chuẩn Li-Po
+Công nghệ pin	Tiết kiệm pin, Sạc pin nhanh
+Tiện ích
+Bảo mật nâng cao	Mở khóa bằng vân tay, Mở khoá khuôn mặt
+Tính năng đặc biệt	Nhân bản ứng dụng
+Mặt kính 2.5D
+Chặn cuộc gọi
+Chặn tin nhắn
+Đèn pin
+Ghi âm	Có, microphone chuyên dụng chống ồn
+Radio	Không
+Xem phim	3GP, MP4, AVI, WMV
+Nghe nhạc	Midi, AMR, MP3, WAV, WMA, AAC, OGG, FLAC
+Thông tin khác
+Thời điểm ra mắt	10/2019

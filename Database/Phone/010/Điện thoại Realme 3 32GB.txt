@@ -1,0 +1,57 @@
+Sản phẩm: Điện thoại Realme 3 32GB
+Giá: 2.990.000₫
+Thông tin:
+
+Màn hình
+Công nghệ màn hình	IPS LCD
+Độ phân giải	HD+ (720 x 1520 Pixels)
+Màn hình rộng	6.22"
+Mặt kính cảm ứng	Kính cường lực Corning Gorilla Glass 3
+Camera sau
+Độ phân giải	Chính 13 MP & Phụ 2 MP
+Quay phim	Quay phim FullHD 1080p@30fps
+Đèn Flash	Có
+Chụp ảnh nâng cao	Xoá phông, Tự động lấy nét (AF), Chạm lấy nét, Nhận diện khuôn mặt, HDR, Làm đẹp (Beautify)
+Camera trước
+Độ phân giải	13 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	HDR, Tự động lấy nét (AF), Làm đẹp (Beautify)
+Hệ điều hành - CPU
+Hệ điều hành	Android 9.0 (Pie)
+Chipset (hãng SX CPU)	MediaTek Helio P60 8 nhân
+Tốc độ CPU	2.0 GHz
+Chip đồ họa (GPU)	Mali-G72 MP3
+Bộ nhớ & Lưu trữ
+RAM	3 GB
+Bộ nhớ trong	32 GB
+Bộ nhớ còn lại (khả dụng)	Khoảng 20 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 256 GB
+Kết nối
+Mạng di động	Hỗ trợ 4G
+SIM	2 Nano SIM
+Wifi	Wi-Fi 802.11 b/g/n, Wi-Fi hotspot
+GPS	A-GPS, GLONASS
+Bluetooth	LE, A2DP, v4.2
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Kết nối khác	Không
+Thiết kế & Trọng lượng
+Thiết kế	Nguyên khối
+Chất liệu	Khung & Mặt lưng nhựa
+Kích thước	Dài 156.1 mm - Ngang 75.6 mm - Dày 8.3 mm
+Trọng lượng	175 g
+Thông tin pin & Sạc
+Dung lượng pin	4230 mAh
+Loại pin	Pin chuẩn Li-Ion
+Công nghệ pin	Tiết kiệm pin
+Tiện ích
+Bảo mật nâng cao	Mở khóa bằng vân tay, Mở khoá khuôn mặt
+Tính năng đặc biệt	Chặn tin nhắn
+Chặn cuộc gọi
+Đèn pin
+Ghi âm	Có
+Radio	Có
+Xem phim	3GP, MP4, AVI, WMV
+Nghe nhạc	AMR, MP3, WAV, WMA, AAC, OGG, FLAC
+Thông tin khác
+Thời điểm ra mắt	04/2019

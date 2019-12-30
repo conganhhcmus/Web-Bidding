@@ -1,0 +1,42 @@
+Sản phẩm: Laptop Dell Inspiron 3593 i7 1065G7/8GB/512GB/2GB MX230/Win10 (70197459)
+Giá: 22.390.000₫
+Thông tin:
+
+Bộ xử lý
+Công nghệ CPU	Intel Core i7 Ice Lake
+Loại CPU	1065G7
+Tốc độ CPU	1.30 GHz
+Tốc độ tối đa	Turbo Boost 3.9 GHz
+Tốc độ Bus	
+Bộ nhớ, RAM, Ổ cứng
+RAM	8 GB
+Loại RAM	DDR4 (2 khe)
+Tốc độ Bus RAM	2666 MHz
+Hỗ trợ RAM tối đa	16 GB
+Ổ cứng	SSD 512 GB M.2 PCIe, Hỗ trợ khe cắm HDD SATA
+Màn hình
+Kích thước màn hình	15.6 inch
+Độ phân giải	Full HD (1920 x 1080)
+Công nghệ màn hình	60Hz, Anti-Glare, LED Backlit
+Màn hình cảm ứng	Không
+Đồ họa và Âm thanh
+Thiết kế card	Card đồ họa rời
+Card đồ họa	NVIDIA GeForce MX230 2GB
+Công nghệ âm thanh	Realtek High Definition Audio
+Cổng kết nối & tính năng mở rộng
+Cổng giao tiếp	2 x USB 3.1, HDMI, LAN (RJ45), USB 2.0, USB Type-C
+Kết nối không dây	Bluetooth, Wi-Fi 802.11 a/b/g/n/ac
+Khe đọc thẻ nhớ	SD
+Ổ đĩa quang	Có (đọc, ghi dữ liệu)
+Webcam	HD webcam
+Đèn bàn phím	Không
+Tính năng khác	Không
+PIN
+Loại PIN	PIN liền
+Thông tin Pin	Li-Ion 3 cell
+Hệ điều hành
+Hệ điều hành	Windows 10 Home SL
+Kích thước & trọng lượng
+Kích thước	Dài 380 mm - Rộng 258 mm - Dày 22.7 mm
+Trọng lượng	2.28 kg
+Chất liệu	Vỏ nhựa

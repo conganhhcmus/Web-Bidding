@@ -1,0 +1,42 @@
+Sản phẩm: Laptop Dell Inspiron 3579 i5 8300H/8GB/1TB+128GB/4GB GTX1050Ti/Win10 (G5I5423W)
+Giá: 24.890.000₫
+Thông tin:
+
+Bộ xử lý
+Công nghệ CPU	Intel Core i5 Coffee Lake
+Loại CPU	8300H
+Tốc độ CPU	2.30 GHz
+Tốc độ tối đa	Turbo Boost 4.0 GHz
+Tốc độ Bus	
+Bộ nhớ, RAM, Ổ cứng
+RAM	8 GB
+Loại RAM	DDR4 (2 khe)
+Tốc độ Bus RAM	2666 MHz
+Hỗ trợ RAM tối đa	32 GB
+Ổ cứng	SSD 128GB M2 PCIe, HDD: 1 TB SATA3
+Màn hình
+Kích thước màn hình	15.6 inch
+Độ phân giải	Full HD (1920 x 1080)
+Công nghệ màn hình	60Hz, Tấm nền IPS, Anti-Glare, LED Backlit
+Màn hình cảm ứng	Không
+Đồ họa và Âm thanh
+Thiết kế card	Card đồ họa rời
+Card đồ họa	NVIDIA GeForce GTX 1050Ti, 4GB
+Công nghệ âm thanh	Waves MaxxAudio
+Cổng kết nối & tính năng mở rộng
+Cổng giao tiếp	HDMI 1.4, 2 x USB 3.1, USB 2.0
+Kết nối không dây	Bluetooth v5.0, Wi-Fi 802.11 a/b/g/n/ac
+Khe đọc thẻ nhớ	SD
+Ổ đĩa quang	Không
+Webcam	HD webcam
+Đèn bàn phím	Có
+Tính năng khác	Bảo mật vân tay
+PIN
+Loại PIN	PIN liền
+Thông tin Pin	Li-Ion 4 cell
+Hệ điều hành
+Hệ điều hành	Windows 10 Home SL
+Kích thước & trọng lượng
+Kích thước	Dài 380 mm - Rộng 258 mm - Dày 23 mm
+Trọng lượng	2.35 kg
+Chất liệu	Vỏ nhựa

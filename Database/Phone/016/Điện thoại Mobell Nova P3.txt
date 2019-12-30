@@ -1,0 +1,55 @@
+Sản phẩm: Điện thoại Mobell Nova P3
+Giá: 1.650.000₫
+Thông tin:
+
+Màn hình
+Công nghệ màn hình	IPS LCD
+Độ phân giải	HD (720 x 1280 Pixels)
+Màn hình rộng	5.5"
+Mặt kính cảm ứng	Kính thường
+Camera sau
+Độ phân giải	8 MP
+Quay phim	Có quay phim
+Đèn Flash	Có
+Chụp ảnh nâng cao	Tự động lấy nét (AF), Chạm lấy nét, Làm đẹp (Beautify)
+Camera trước
+Độ phân giải	8 MP
+Videocall	Hỗ trợ VideoCall thông qua ứng dụng
+Thông tin khác	Làm đẹp (Beautify)
+Hệ điều hành - CPU
+Hệ điều hành	Android 7.0 (Nougat)
+Chipset (hãng SX CPU)	MediaTek MT6580 4 nhân
+Tốc độ CPU	1.3 GHz
+Chip đồ họa (GPU)	Mali-400 MP
+Bộ nhớ & Lưu trữ
+RAM	2 GB
+Bộ nhớ trong	16 GB
+Bộ nhớ còn lại (khả dụng)	11.7 GB
+Thẻ nhớ ngoài	MicroSD, hỗ trợ tối đa 32 GB
+Kết nối
+Mạng di động	3G
+SIM	2 Micro SIM
+Wifi	Wi-Fi 802.11 b/g/n, Wi-Fi Direct, Wi-Fi hotspot
+GPS	A-GPS
+Bluetooth	v4.0
+Cổng kết nối/sạc	Micro USB
+Jack tai nghe	3.5 mm
+Kết nối khác	OTG
+Thiết kế & Trọng lượng
+Thiết kế	Pin rời
+Chất liệu	Khung & Mặt lưng nhựa
+Kích thước	Dài 154.6 mm - Ngang 77.3 mm - Dày 8.6 mm
+Trọng lượng	180 g
+Thông tin pin & Sạc
+Dung lượng pin	3250 mAh
+Loại pin	Pin chuẩn Li-Ion
+Công nghệ pin	Tiết kiệm pin
+Tiện ích
+Bảo mật nâng cao	Không
+Tính năng đặc biệt	Sạc pin cho thiết bị khác
+Ghi âm	Có
+Radio	Có
+Xem phim	3GP, MP4, AVI, WMV
+Nghe nhạc	MP3, WAV, WMA
+Thông tin khác
+Thời điểm ra mắt	11/2016
