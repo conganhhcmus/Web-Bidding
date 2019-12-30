@@ -30,6 +30,7 @@
 
 <body>
     {{> home/header }}
+    {{> admin/navigation }}
     {{{ body }}}
     {{> home/footer }}
 
@@ -41,5 +42,15 @@
 <script src="/assets/js/nouislider.min.js"></script>
 <script src="/assets/js/jquery.zoom.min.js"></script>
 <script src="/assets/js/main.js"></script>
-
+<script>
+    $('#verifyDeleteCategory').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var name = button.data('catname');
+        var id = button.data('catid');
+        var modal = $(this)
+        modal.find('#catName').text(name);
+        modal.find('#delLink').attr('href', 'category/' + id + '/delete');
+    });
+    
+</script>
 </html>

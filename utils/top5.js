@@ -1,4 +1,4 @@
-const productM = require('../models/products.M');
+const productM = require('../models/product.M');
 const imageM = require('../models/image.M')
 const utils = require('./utilsFunction');
 

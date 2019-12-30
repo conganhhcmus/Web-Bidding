@@ -3,6 +3,14 @@ const run = db.errorHandle;
 const tbName = 'user';
 
 module.exports = {
+    all: async (offset, limit) => {
+        const sql = `SELECT * FROM ${tbName} ${limit ? 'LIMIT ' + limit : ''} ${offset ? 'OFFSET ' + offset : ''}`;
+        const [rows, err] = await run(db.load(sql));
+        if (err) throw err;
+        return rows;
+    },
+
+
     add: async user => {
         const id = await db.add(tbName,user);
         return id;
@@ -36,6 +44,7 @@ module.exports = {
         return null;
     },
 
+
     getByID: async id => {
         let sql = `SELECT * FROM ${tbName} WHERE ID = '${id}'`;
         const rs= await db.load(sql);
@@ -43,5 +52,7 @@ module.exports = {
             return rs[0];
         }
         return null;
-    }
+    },
+
+    
 };

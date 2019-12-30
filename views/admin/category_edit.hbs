@@ -1,0 +1,53 @@
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap">
+
+            <!-- Row start -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <h3 class="panel-title">Chỉnh sửa danh mục</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <form class="form-horizontal row-border" action="" method="POST">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Tên danh mục</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="cat_name" class="form-control" value="{{category.CAT_NAME}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Chọn danh mục cha</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" name="cat_id">
+                                            <option value="-1">-</option>
+                                            {{#each pCategories}}
+                                            <option value="{{ID}}"{{#if selected}} selected{{/if}}>{{CAT_NAME}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                {{#if isSuccessful}}
+                                <div class="alert alert-success">
+                                    Cập nhật thành công.
+                                </div>
+                                {{/if}}
+                                <button type="submit" class="btn btn-default center-block"><i class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></i> Lưu</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row end -->
+        </div>
+
+
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>

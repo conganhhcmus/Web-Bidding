@@ -4,6 +4,10 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const port = 3000;
+const LocalStrategy = require('passport-local').Strategy
+const run = require('./utils/extensionFunc').errorHandle;
+const hash = require('./utils/hash');
+const accountM = require('./models/account.M');
 
 const app = express();
 
@@ -25,25 +29,50 @@ app.use(session({
     cookie: { maxAge: 60000 }
 }));
 
-//
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // set engine
 app.engine('hbs', hbs.engine);
 app.set('view engine','hbs');
+
 app.use(express.static(__dirname + "/public"));
 
+passport.serializeUser(function (user, done) {
+    done(null, user.ID);
+});
 
+passport.deserializeUser(async function (id, done) {
+    const [user, err] = await run(accountM.getByID(id));
+    done(err, user);
+});
+
+passport.use(new LocalStrategy(
+    async function (username, password, done) {
+        const [user, err] = await run(accountM.getByUserName(username));
+        if (err) { return done(err); }
+        if (!user) {
+            return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (user.PASSWORD !== password) {
+            return done(null, false, { message: 'Incorrect password.' });
+        }
+        return done(null, user);
+    }
+));
 // account
 app.use('/account',require('./controllers/account.C'));
-// home
-app.use('/home',require('./controllers/home.C'));
+// product
+app.use('/product',require('./controllers/product.C'));
+// admin page
+app.use('/admin',require('./controllers/admin.C'));
 
+// home
+app.use('/',require('./controllers/home.C'));
 
 //app.use('/cat', require('./controllers/category'));
-
-app.get('/',function(req,res){
-    res.redirect('/home');
-});
 
 // error
 require('./middleware/error')(app);

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="/assets/css/HP.slick.css" />
+  <link type="text/css" rel="stylesheet" href="/assets/css/HP.slick-theme.css" />
+
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="/assets/css/HP.nouislider.min.css" />
+
+  <!-- Font Awesome Icon -->
+  <link href="/assets/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom stylesheet -->
+  <link type="text/css" rel="stylesheet" href="/assets/css/HP.style.css" />
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link type="text/css" rel="stylesheet" href="/assets/css/image-uploader.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+</head>
+
+<body>
+  {{> home/header }}
+  {{> admin/navigation }}
+  {{{ body }}}
+  {{> home/footer }}
+
+</body>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<script src="/assets/js/nouislider.min.js"></script>
+<script src="/assets/js/jquery.zoom.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/image-uploader.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+  $('.input-images-2').imageUploader();
+
+  CKEDITOR.replace('editor');
+  $('#datetimepicker1').datetimepicker();
+  $('#datetimepicker2').datetimepicker();
+
+</script>
+
+</html>

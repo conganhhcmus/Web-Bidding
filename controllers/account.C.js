@@ -2,7 +2,19 @@ const express = require('express');
 const router = express.Router();
 const accountM = require('../models/account.M');
 const hash = require("../utils/hash");
+const passport = require('passport');
 
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) { return next(err); }
+      if (!user) { return res.redirect('/account/register'); }
+      req.logIn(user, function(err) {
+        if (err) { console.log('ko nhan dien', user); return next(err); }
+        return res.redirect('/');
+      });
+    }) (req, res, next);
+  }
+);
 
 router.get('/login', async (req, res) => {
     req.session.destroy();

@@ -1,0 +1,90 @@
+
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap">
+
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordred table-striped">
+                        <thead>
+
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </thead>
+                        <tbody>
+                            {{#each users}}
+                            <tr>
+                                <td>{{ID}}</td>
+                                <td>{{USERNAME}}</td>
+                                <td>{{EMAIL}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="category/{{ID}}/edit" class="btn btn-primary">
+                                            <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" data-toggle="modal" data-target="#verifyDeleteCategory" data-catname="{{CAT_NAME}}" data-catid="{{ID}}" class="btn btn-danger">
+                                            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+
+                    </table>
+                    <a href="/admin/category/create" title="Thêm danh mục mới" class="btn btn-success">
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Thêm danh mục mới
+                    </a>
+                    <div class="clearfix"></div>
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li class="active"><a href="?page=1">1</a></li>
+                        <li><a href="?page=2">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>
+
+
+
+
+<div class="modal fade" id="verifyDeleteCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Xác nhận xóa danh mục</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>Cảnh báo!</strong> Vui lòng xác nhận bạn đang thực hiện thao tác xóa danh mục <strong><span id="catName"></span></strong>. Sau khi xóa danh mục này, bạn không thể khôi phục được nữa.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <a id="delLink" href="" class="btn btn-primary">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap">
+
+            <!-- Row start -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <h3 class="panel-title">Thêm sản phẩm</h3>
+                        </div>
+
+                        <div class="panel-body">
+
+
+                            <form method="POST" action="" name="form-example-2" id="form-example-2"
+                                enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="name" class="active">Tên sản phẩm</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="Nhập tên sản phẩm...">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="active">Hình ảnh (chọn ít nhất 3 hình)</label>
+                                    <div class="input-images-2" style="padding-top: .5rem;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category" class="active">Danh mục sản phẩm</label>
+                                        <select class="form-control" name="category" id="category">
+                                            {{#each categories}}
+                                            <option value="{{ID}}">{{#if PARENT_ID}}&nbsp;&nbsp;&nbsp;{{/if}} {{CAT_NAME}}</option>
+                                            {{/each}}
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="editor" class="active">Mô tả sản phẩm</label>
+                                    <textarea class="form-control" id="editor" name="editor"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bidding_increment" class="active">Bước giá</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VNĐ</span>
+                                        <input type="text" class="form-control" name="bidding_increment"
+                                            placeholder="Nhập bước giá">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="starting_price" class="active">Giá khởi điểm</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VNĐ</span>
+                                        <input type="text" class="form-control" name="starting_price"
+                                            placeholder="Nhập giá khởi điểm">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="buynow_price" class="active">Giá mua ngay (nếu có)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">VNĐ</span>
+                                        <input type="text" class="form-control" name="buynow_price"
+                                            placeholder="Nhập giá mua ngay (nếu có)">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="start_time" class="active">Thời gian khởi điểm</label>
+                                    <div class="input-group date" id="datetimepicker1">
+                                        <input type="text" class="form-control" name="start_time" id="start_time" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="end_time" class="active">Thời gian kết thúc</label>
+                                    <div class="input-group date" id="datetimepicker2">
+                                        <input type="text" class="form-control" name="end_time" id="end_time" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="extension" value="true" checked>Tự động gia hạn thêm 10 phút.</label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Gửi sản phẩm</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row end -->
+        </div>
+
+
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>
