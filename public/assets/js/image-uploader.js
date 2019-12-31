@@ -1,5 +1,6 @@
 /*! Image Uploader - v1.0.0 - 15/07/2019
  * Copyright (c) 2019 Christian Bayer; Licensed MIT */
+let dataTransfer = new DataTransfer();
 
 (function ($) {
 
@@ -10,7 +11,7 @@
             preloaded: [],
             imagesInputName: 'images',
             preloadedInputName: 'preloaded',
-            label: 'Drag & Drop files here or click to browse'
+            label: 'Kéo thả các file ảnh vào đây hoặc nhấn để chọn'
         };
 
         // Get instance
@@ -60,7 +61,6 @@
         };
 
 
-        let dataTransfer = new DataTransfer();
 
         let createContainer = function () {
 
@@ -161,15 +161,14 @@
             $button.on("click", function (e) {
                 // Prevent browser default event and stop propagation
                 prevent(e);
-
                 // If is not a preloaded image
-                if ($container.data('index')) {
+                if ($container.data('index') >= 0) {
 
                     // Get the image index
                     let index = parseInt($container.data('index'));
 
                     // Update other indexes
-                    $container.find('.uploaded-image[data-index]').each(function (i, cont) {
+                    $('.uploaded-image[data-index]').each(function (i, cont) {
                         if (i > index) {
                             $(cont).attr('data-index', i - 1);
                         }
@@ -183,10 +182,10 @@
                 $container.remove();
 
                 // If there is no more uploaded files
-                if (!$container.find('.uploaded-image').length) {
+                if ($('.uploaded-image').length === 0) {
 
                     // Remove the 'has-files' class
-                    $container.removeClass('has-files');
+                    $('.image-uploader').removeClass('has-files');
 
                 }
 

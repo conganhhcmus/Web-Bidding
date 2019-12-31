@@ -52,11 +52,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 
 <script>
-  $('.input-images-2').imageUploader();
+    $(document).ready(() => {
+      $('.input-images-2').imageUploader();
 
-  CKEDITOR.replace('editor');
-  $('#datetimepicker1').datetimepicker();
-  $('#datetimepicker2').datetimepicker();
+      CKEDITOR.replace('editor');
+      $('#datetimepicker1').datetimepicker();
+      $('#datetimepicker2').datetimepicker();
+
+      $('#product_create_submit').click((e) => {
+        // Validation
+        if (dataTransfer.files.length < 3) {
+         alert('Cần chọn ít nhất 3 ảnh minh họa.');
+         return false;
+        }
+        if (dataTransfer.files.length > 20) {
+          alert('Số ảnh minh họa cần nhỏ hơn 20.');
+         return false;
+        }
+        if ($('#form-product-create').find('input[name=name]').val().length == 0) {
+          alert('Tên sản phẩm không được bỏ trống.');
+         return false;
+        }
+        if ($('#form-product-create').find('input[name=starting_price]').val().length === 0 || isNaN($('#form-product-create').find('input[name=starting_price]').val())) {
+          alert('Giá khởi điểm phải là số nguyên.');
+         return false;
+        }
+        if ($('#form-product-create').find('input[name=bidding_increment]').val().length === 0 || isNaN($('#form-product-create').find('input[name=bidding_increment]').val())) {
+          alert('Bước giá phải là số nguyên.');
+         return false;
+        }
+        if ($('#form-product-create').find('input[name=buynow_price]').val().length > 0 && isNaN($('#form-product-create').find('input[name=buynow_price]').val())) {
+          alert('Giá mua ngay phải là số nguyên.');
+         return false;
+        }
+        if (isNaN(Date.parse($('#form-product-create').find('input[name=start_time]').val())) || isNaN(Date.parse($('#form-product-create').find('input[name=end_time]').val()))) {
+          alert('Ngày giờ sai định dạng. Ngày giờ phải ở dạng: 12/31/2019 13:50.');
+         return false;
+        }
+        else if (Date.parse($('#form-product-create').find('input[name=start_time]').val()) >= Date.parse($('#form-product-create').find('input[name=end_time]').val())) {
+          alert('Thời gian kết thúc phải đi sau thời gian bắt đầu.');
+         return false;
+        }
+
+
+      })
+    })
 
 </script>
 

@@ -31,6 +31,14 @@ module.exports = {
         return rows[0];
     },
 
+    getChildren: async id => {
+        const sql = `SELECT * FROM ${tbName} WHERE PARENT_ID='${id}'`;
+        const [rows, err] = await run(db.load(sql));
+        if (err) throw err;
+        return rows;
+    },
+
+
     getNameByID: async id => {
         const sql = `SELECT CAT_NAME FROM ${tbName} WHERE ID='${id}'`;
         const [rows, err] = await run(db.load(sql));
@@ -57,6 +65,11 @@ module.exports = {
     createParentCategory: async (name) => {
         let id = await db.add(tbName, {CAT_NAME: name});
         return id;
+    },
+
+    deleteCategory: async (id) => {
+        let rows = await db.delete(tbName, "ID", id);
+        return rows; 
     },
 };
 

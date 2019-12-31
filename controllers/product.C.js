@@ -11,40 +11,41 @@ const multiUpload = require('../middleware/upload');
 const utils = require('../utils/utilsFunction');
 const sort = require('../utils/sort');
 
-// Xác thực tài khoản
-router.get('/', (req, res, next) => {
-    if (req.isAuthenticated() && req.user.PERMISSION == 1) {
-        res.redirect('/admin/category');
-    } else {
-        res.redirect('/admin/category');
+// Tạo sản phẩm mới - GET
+router.get('/create', (req, res, next) => {
+    if (!req.isAuthenticated() || req.user.PERMISSION == -1) {
+        return next(createError(403));
+    }
+    next();
+},
+    async (req, res, next) => {
+        try {
+            // Lấy các danh mục
+            let categories = await categoryM.all();
+            // Render
+            res.render('product/product_create', {
+                layout: 'product',
+                categories,
+                user: req.user,
+                cats: categories,
+                title: 'Thêm sản phẩm'
+            });
+        }
+        catch (err) {
+            console.log(err);
+            next(createError(500));
+        }
+    });
 
-        //        next(createError(403));
+// TODO: 
+// Tạo sản phẩm mới - POST
+router.post('/create', (req, res, next) => {
+    if (!req.isAuthenticated() || req.user.PERMISSION == -1) {
+        return next(createError(403));
     }
     next();
 });
 
-// Tạo sản phẩm mới - GET
-router.get('/create', async (req, res, next) => {
-    try {
-        // Lấy các danh mục
-        let categories = await categoryM.all();
-        // Render
-        res.render('product/product_create', {
-            layout: 'product',
-            categories,
-            user: req.user,
-            cats: categories,
-            title: 'Thêm sản phẩm'
-        });
-    }
-    catch (err) {
-        console.log(err);
-        next(createError(500));
-    }
-});
-
-// TODO: 
-// Tạo sản phẩm mới - POST
 router.post('/create', multiUpload, async function (req, res, next) {
     try {
         // Validation
@@ -54,26 +55,26 @@ router.post('/create', multiUpload, async function (req, res, next) {
         if (req.body.name.length == 0) {
             return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Tên sản phẩm không được bỏ trống.", layout: 'home' });
         }
-        if (isNaN(req.body.starting_price)) {
+        if (req.body.starting_price.length === 0 || isNaN(req.body.starting_price)) {
             return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Giá khởi điểm phải là số nguyên.", layout: 'home' });
         }
-        if (isNaN(req.body.bidding_increment)) {
+        if (req.body.bidding_increment.length === 0 || isNaN(req.body.bidding_increment)) {
             return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Bước giá phải là số nguyên.", layout: 'home' });
         }
         if (req.body.buynow_price.length > 0 && isNaN(req.body.buynow_price)) {
             return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Giá mua ngay phải là số nguyên.", layout: 'home' });
         }
         if (isNaN(Date.parse(req.body.start_time)) || isNaN(Date.parse(req.body.end_time))) {
-            return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Ngày giờ sai định dạng. Ví dụ: 12/31/2019 13:50.", layout: 'home' });
+            return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Ngày giờ sai định dạng. Ngày giờ phải ở dạng: 12/31/2019 13:50.", layout: 'home' });
         }
         if ((Date.parse(req.body.start_time)) > (Date.parse(req.body.end_time))) {
-            return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Ngày bắt đầu không được sau ngày kết thúc.", layout: 'home' });
+            return res.render('errors/error', { title: "Dữ liệu không hợp lệ", msg: "Thời gian kết thúc phải đi sau thời gian bắt đầu.", layout: 'home' });
         }
 
         // Thêm sản phẩm
         let productId = await productM.createProduct(req.body.name,
             req.body.category,
-            1,
+            req.user.ID,
             req.body.starting_price,
             req.body.bidding_increment,
             new Date(Date.parse(req.body.start_time)).toISOString().slice(0, 19).replace('T', ' '),
@@ -92,7 +93,7 @@ router.post('/create', multiUpload, async function (req, res, next) {
         // Cập nhật ảnh chính
         await productM.updateProductImg(productId, imgId);
         // Chuyển về sản phẩm
-        return res.redirect('/home/' + productId + '/products')
+        return res.redirect('/product/' + productId)
     } catch (err) {
         console.log(err);
         next(createError(500));
@@ -143,10 +144,10 @@ router.get('/search', async (req, res, next) => {
     for (var i = 0; i < parseInt(pro.length); i++) {
         pro[i].imgSrc = (await imageM.allByProID(pro[i].ID))[0];
         var temp = new Date(pro[i].END_TIME);
-        var a = parseInt(temp.getTime()/1000 - today.getTime()/1000);
-        pro[i].HOURS = parseInt(a/3600);
-        pro[i].MINUTES = parseInt((a - pro[i].HOURS*3600)/60);
-        pro[i].SECONDS = a - pro[i].HOURS*3600 - pro[i].MINUTES*60;
+        var a = parseInt(temp.getTime() / 1000 - today.getTime() / 1000);
+        pro[i].HOURS = parseInt(a / 3600);
+        pro[i].MINUTES = parseInt((a - pro[i].HOURS * 3600) / 60);
+        pro[i].SECONDS = a - pro[i].HOURS * 3600 - pro[i].MINUTES * 60;
 
         // set vnd money
         pro[i].CURRENT_PRICE_VND = await utils.getMoneyVNDString(pro[i].CURRENT_PRICE);
@@ -231,7 +232,7 @@ router.get('/:id', async (req, res, next) => {
             img: img,
             ps: ps,
         });
-    } catch(err) {
+    } catch (err) {
         console.log(err);
         next(createError(500));
     }

@@ -5,7 +5,7 @@ function createConnnection() {
         host: 'localhost',
         port: '3306',
         user: 'root',
-        password: 'vansenha11',
+        password: '123456',
         database: 'AUCTION',
     });
 };
@@ -50,8 +50,8 @@ exports.add = (tbName, entity) => {
     });
 }
 
-exports.update = (tbName, tbName1, value, id) => {
-    return new Promise((resole, reject) => {
+exports.update = (tbName, entity, name, value) => {
+    return new Promise((resolve, reject) => {
         const con = createConnnection();
         con.connect(err => {
             if(err){
@@ -59,12 +59,12 @@ exports.update = (tbName, tbName1, value, id) => {
             }
         });
 
-        const sql = `UPDATE ${tbName} SET ${tbName1}='${value}' WHERE ID = ${id} `;
-        con.query(sql, (error, results, fields) => {
+        const sql = `UPDATE ${tbName} SET ? WHERE ${name} = ?`;
+        con.query(sql, [entity, value], (error, results, fields) => {
             if(error) {
                 reject(error);
             }
-            resole(results);
+            resolve(results.changedRows);
         });
 
         con.end();
@@ -86,7 +86,7 @@ exports.updateV = (tbName, tbName1, value, id) => {
             if(error) {
                 reject(error);
             }
-            resole(results);
+            resole(results.changedRows);
         });
 
         con.end();
@@ -114,8 +114,8 @@ exports.updateNull = (tbName, nullField, idField, id) => {
 };
 
 
-exports.delete = (tbName, username) => {
-    return new Promise((resole, reject) => {
+exports.delete = (tbName, name, value) => {
+    return new Promise((resolve, reject) => {
         const con = createConnnection();
         con.connect(err => {
             if(err){
@@ -123,12 +123,12 @@ exports.delete = (tbName, username) => {
             }
         });
 
-        const sql = `DELETE FROM ${tbName} WHERE f_Username = '${username}'`;
-        con.query(sql, (error, results, fields) => {
+        const sql = `DELETE FROM ${tbName} WHERE ${name} = ?`;
+        con.query(sql, value, (error, results, fields) => {
             if(error) {
                 reject(error);
             }
-            resole(results);
+            resolve(results.changedRows);
         });
 
         con.end();
@@ -136,7 +136,7 @@ exports.delete = (tbName, username) => {
 };
 
 exports.deleteFL = (tbName, userid, proid) => {
-    return new Promise((resole, reject) => {
+    return new Promise((resolve, reject) => {
         const con = createConnnection();
         con.connect(err => {
             if(err){
@@ -149,7 +149,7 @@ exports.deleteFL = (tbName, userid, proid) => {
             if(error) {
                 reject(error);
             }
-            resole(results);
+            resolve(results.changedRows);
         });
 
         con.end();
