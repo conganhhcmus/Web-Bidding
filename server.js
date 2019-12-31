@@ -71,6 +71,8 @@ app.use('/product',require('./controllers/product.C'));
 app.use('/category',require('./controllers/category.C'));
 // admin page
 app.use('/admin',require('./controllers/admin.C'));
+// favorite list
+app.use('/favorite_list',require('./controllers/favorite_list.C'));
 
 // home
 app.use('/',require('./controllers/home.C'));

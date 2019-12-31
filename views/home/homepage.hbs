@@ -138,17 +138,15 @@
 							<div class="product-body">
 								<h3 class="product-price">{{CURRENT_PRICE_VND}} VND
 								</h3>
-								<div class="product-rating">
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star empty"></i>
-								</div>
 								<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
 								<div class="product-btns">
-									<button class="main-btn icon-btn"><i class="fas fa-heart"></i></button>
-									<button class="main-btn icon-btn"><i class="fas fa-exchange-alt"></i></button>
+									<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}"
+										method="GET">
+										<input type="hidden" name="proID" value="{{ID}}">
+										<input type="hidden" name="userID" value="{{../user.ID}}">
+										<button type="submit" class="main-btn icon-btn"><i
+												class="fa fa-heart"></i></button>
+									</form>
 									<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
 										to Cart</button>
 								</div>
@@ -199,17 +197,15 @@
 							<div class="product-body">
 								<h3 class="product-price">{{CURRENT_PRICE_VND}} VND
 								</h3>
-								<div class="product-rating">
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star empty"></i>
-								</div>
 								<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
 								<div class="product-btns">
-									<button class="main-btn icon-btn"><i class="fas fa-heart"></i></button>
-									<button class="main-btn icon-btn"><i class="fas fa-exchange-alt"></i></button>
+									<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}"
+										method="GET">
+										<input type="hidden" name="proID" value="{{ID}}">
+										<input type="hidden" name="userID" value="{{../user.ID}}">
+										<button type="submit" class="main-btn icon-btn"><i
+												class="fa fa-heart"></i></button>
+									</form>
 									<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
 										to Cart</button>
 								</div>
@@ -223,7 +219,7 @@
 			</div>
 			<!-- /Product Slick -->
 		</div>
-		<!-- /row -->	
+		<!-- /row -->
 	</div>
 	<!-- /container -->
 </div>
@@ -254,24 +250,20 @@
 							<li><span>{{MINUTES}} M</span></li>
 							<li><span>{{SECONDS}} S</span></li>
 						</ul>
-						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i
-									class="fas fa-search-plus"></i> Quick
+						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i>
+								Quick
 								view</button></a>
 						<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
 					</div>
 					<div class="product-body">
 						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
-						<div class="product-rating">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star empty"></i>
-						</div>
 						<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
 						<div class="product-btns">
-							<button class="main-btn icon-btn"><i class="fas fa-heart"></i></button>
-							<button class="main-btn icon-btn"><i class="fas fa-exchange-alt"></i></button>
+							<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}" method="GET">
+								<input type="hidden" name="proID" value="{{ID}}">
+								<input type="hidden" name="userID" value="{{../user.ID}}">
+								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+							</form>
 							<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
 								to Cart</button>
 						</div>
@@ -303,24 +295,20 @@
 							<li><span>{{MINUTES}} M</span></li>
 							<li><span>{{SECONDS}} S</span></li>
 						</ul>
-						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i
-									class="fas fa-search-plus"></i> Quick
+						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i>
+								Quick
 								view</button></a>
 						<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
 					</div>
 					<div class="product-body">
 						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
-						<div class="product-rating">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star empty"></i>
-						</div>
 						<h2 class="product-name"><a href="#">{{PRODUCT_NAME:}}</a></h2>
 						<div class="product-btns">
-							<button class="main-btn icon-btn"><i class="fas fa-heart"></i></button>
-							<button class="main-btn icon-btn"><i class="fas fa-exchange-alt"></i></button>
+							<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}" method="GET">
+								<input type="hidden" name="proID" value="{{ID}}">
+								<input type="hidden" name="userID" value="{{../user.ID}}">
+								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+							</form>
 							<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
 								to Cart</button>
 						</div>

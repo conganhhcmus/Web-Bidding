@@ -106,12 +106,12 @@ router.post('/createAccount', async (req, res) => {
 });
 
 router.get('/profile', async (req, res) => {
-    if (typeof req.session.User === "undefined") {
+    if (typeof req.user === "undefined") {
         res.redirect('/account/login');
         return;
     }
 
-    const user = await accountM.getByID(req.session.User.id);
+    const user = await accountM.getByID(req.user.ID);
 
     res.render('profile', {
         layout: 'login',
@@ -122,7 +122,7 @@ router.get('/profile', async (req, res) => {
 
 
 router.post('/profile', async (req, res) => {
-    if (typeof req.session.User === "undefined") {
+    if (typeof req.user === "undefined") {
         res.render('profile', {
             layout: 'login',
             disabled: 'disabled',
@@ -131,7 +131,7 @@ router.post('/profile', async (req, res) => {
         return;
     }
 
-    const id = req.session.User.id;
+    const id = req.user.ID;
     let user = await accountM.getByID(id);
 
     const n_name = req.body.fullname;

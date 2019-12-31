@@ -5,7 +5,7 @@ function createConnnection() {
         host: 'localhost',
         port: '3306',
         user: 'root',
-        password: '123456',
+        password: 'vansenha11',
         database: 'AUCTION',
     });
 };
@@ -50,26 +50,26 @@ exports.add = (tbName, entity) => {
     });
 }
 
-exports.update = (tbName, records, idField, id) => {
-    return new Promise((resolve, reject) => {
+exports.update = (tbName, tbName1, value, id) => {
+    return new Promise((resole, reject) => {
         const con = createConnnection();
         con.connect(err => {
-            if (err) {
+            if(err){
                 reject(err);
             }
         });
 
-        const sql = `UPDATE ${tbName} SET ? WHERE ${idField} = ${id}`;
-        con.query(sql, records, (error, results, fields) => {
-            if (error) {
+        const sql = `UPDATE ${tbName} SET ${tbName1}='${value}' WHERE ID = ${id} `;
+        con.query(sql, (error, results, fields) => {
+            if(error) {
                 reject(error);
             }
-            resolve(results.changedRows);
+            resole(results);
         });
+
         con.end();
     });
 };
-
 
 exports.updateNull = (tbName, nullField, idField, id) => {
     return new Promise((resolve, reject) => {
@@ -112,6 +112,28 @@ exports.delete = (tbName, username) => {
         con.end();
     });
 };
+
+exports.deleteFL = (tbName, userid, proid) => {
+    return new Promise((resole, reject) => {
+        const con = createConnnection();
+        con.connect(err => {
+            if(err){
+                reject(err);
+            }
+        });
+
+        const sql = `DELETE FROM ${tbName} WHERE USER_ID = ${userid} AND PRODUCT_ID = ${proid}`;
+        con.query(sql, (error, results, fields) => {
+            if(error) {
+                reject(error);
+            }
+            resole(results);
+        });
+
+        con.end();
+    });
+};
+
 
 exports.errorHandle = promise => {
     return promise.then(data => [data,undefined])

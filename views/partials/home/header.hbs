@@ -67,8 +67,8 @@
                                     </b>!
                                 </li>
                             {{#if user}}
-                            <li><a href="#"><i class="fas fa-user"></i> Hồ sơ</a></li>
-                            <li><a href="#"><i class="fas fa-heart"></i> Danh sách yêu thích</a></li>
+                            <li><a href="/account/profile"><i class="fas fa-user"></i> Hồ sơ</a></li>
+                            <li><a href="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}"><i class="fas fa-heart"></i> Danh sách yêu thích</a></li>
                             {{else}}
                             <li><a href="/account/login"><i class="fas fa-unlock-alt"></i> Đăng nhập</a></li>
                             <li><a href="/account/register"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
@@ -78,7 +78,17 @@
                     </li>
                     <!-- /Account -->
 
-                    <!-- Cart -->
+                     <!-- Cart -->
+                    <li class="header-cart dropdown default-dropdown">
+                        <a href="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}">
+                            <div class="header-btns-icon">
+                                <i class="fa fa-heart"></i>
+                                <span class="qty">3</span>
+                            </div>
+                            <strong class="text-uppercase">My FAVORITE</strong>
+                            <br>
+                        </a>                     
+                    </li>
                     <!-- /Cart -->
 
                     <!-- Mobile nav toggle-->

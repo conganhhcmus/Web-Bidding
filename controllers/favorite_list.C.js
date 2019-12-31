@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const categoryM = require('../models/category.M');
-const productM = require('../models/products.M');
+const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
 const imageM = require('../models/image.M');
 const favoriteM = require('../models/watchList.M');
@@ -10,7 +10,7 @@ const utils = require('../utils/utilsFunction');
 
 router.get('/:id', async (req, res) => {
     // check user
-    if (typeof req.session.User === "undefined") {
+    if (typeof req.user === "undefined") {
         res.redirect('/account/login');
         return;
     }
@@ -19,7 +19,6 @@ router.get('/:id', async (req, res) => {
     if(typeof req.query.proID !== "undefined" && typeof req.query.userID !== "undefined"){
         const proID = parseInt(req.query.proID);
         const userID = parseInt(req.query.userID);
-    
         const element = {
             TIME: '2000-01-01 00:00:00',
             USER_ID: userID,
@@ -41,11 +40,10 @@ router.get('/:id', async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     let user = null;
 
-    if (typeof req.session.User !== "undefined") {
-        let idd = req.session.User.id;
+    if (typeof req.user !== "undefined") {
+        let idd = req.user.ID;
         user = await accountM.getByID(idd);
     }
-
 
     // get - convert watch list to product
     const rs = await favoriteM.allByUserIDPaging(id, page);
