@@ -71,6 +71,28 @@ exports.update = (tbName, tbName1, value, id) => {
     });
 };
 
+
+exports.updateV = (tbName, tbName1, value, id) => {
+    return new Promise((resole, reject) => {
+        const con = createConnnection();
+        con.connect(err => {
+            if(err){
+                reject(err);
+            }
+        });
+
+        const sql = `UPDATE ${tbName} SET ${tbName1}='${value}' WHERE ID = ${id} `;
+        con.query(sql, (error, results, fields) => {
+            if(error) {
+                reject(error);
+            }
+            resole(results);
+        });
+
+        con.end();
+    });
+};
+
 exports.updateNull = (tbName, nullField, idField, id) => {
     return new Promise((resolve, reject) => {
         const con = createConnnection();

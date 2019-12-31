@@ -22,7 +22,7 @@ module.exports = {
     },
 
     update: async (tbName1, value, id) => {
-        const changedRows = await db.update(tbName,tbName1,value,id);
+        const changedRows = await db.updateV(tbName,tbName1,value,id);
         return changedRows;
     },
 
