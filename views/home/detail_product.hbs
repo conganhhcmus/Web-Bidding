@@ -81,6 +81,37 @@
 </div>
 </div>
 
+{{!-- HISTORY --}}
+
+<div class="row row-underline">
+	<div class="col-md-1"></div>
+	<div class="col-md-6"> <span class=" deal-text">History</span> </div>
+</div>
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-6">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Thời điểm</th>
+					<th>Người mua</th>
+					<th>Giá (VND)</th>
+				</tr>
+			</thead>
+			{{#each ph}}
+			<tbody>
+				<tr>
+					<td>{{time}}</td>
+					<td>{{bidderName}}</td>
+					<td>{{price}}</td>
+				</tr>
+			</tbody>
+			{{/each}}
+
+		</table>
+	</div>
+</div>
 
 <div class="row row-underline">
 	<div class="col-md-1"></div>
