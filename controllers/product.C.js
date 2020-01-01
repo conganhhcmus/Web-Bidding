@@ -240,8 +240,6 @@ router.get('/:id', async (req, res, next) => {
         let ph = []; // chi tiet dau gia 
         for (var i = 0; i < parseInt(pss.length); i++) {
             let timeTmp = new Date(pss[i].TIME);
-            console.log(pss[i].TIME)
-            console.log((await accountM.getByID(pss[i].USER_ID)).FULL_NAME.split(" "))
             ph.push({
                     time: `${timeTmp.getDate()}/${timeTmp.getMonth()+1}/${timeTmp.getFullYear()} ${timeTmp.getHours()}:${timeTmp.getMinutes()}`,
                     bidderName: "****" + ((await accountM.getByID(pss[i].USER_ID)).FULL_NAME.split(" ")).pop(), 
