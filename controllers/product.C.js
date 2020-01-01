@@ -5,6 +5,7 @@ const router = express.Router();
 const categoryM = require('../models/category.M');
 const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
+const auctionHistoryM = require('../models/auctionHistorym.M');
 const imageM = require('../models/image.M');
 const path = require("path");
 const multiUpload = require('../middleware/upload');
@@ -134,7 +135,7 @@ router.get('/search', async (req, res, next) => {
     }
     else {
         rs = await productM.allBySearchNamePagingCat(name, page, option);
-        cat = (await categoryM.getByID(option)).CAT_NAME + " > " + name;
+        cat = (await categoryM.getByID(option))[0].CAT_NAME + " > " + name;
     }
 
     let pro = rs.products;
@@ -231,8 +232,20 @@ router.get('/:id', async (req, res, next) => {
         const SELLER_ID = pro[0].SELLER_ID;
         const seller = await accountM.getByID(SELLER_ID);
 
-        // tim gia he thong
-        const GiaHeThong = pro[0].CURRENT_PRICE + pro[0].BIDDING_INCREMENT;
+        const us = await auctionHistoryM.allByProductIDPaging(id);
+        pss = us.historys; // list history chi co iduser va id product va time
+        let ph = []; // chi tiet dau gia 
+        for (var i = 0; i < parseInt(pss.length); i++) {
+            let timeTmp = new Date(pss[i].TIME);
+            console.log(pss[i].TIME)
+            console.log((await accountM.getByID(pss[i].USER_ID)).FULL_NAME.split(" "))
+            ph.push({
+                    time: `${timeTmp.getDate()}/${timeTmp.getMonth()+1}/${timeTmp.getFullYear()} ${timeTmp.getHours()}:${timeTmp.getMinutes()}`,
+                    bidderName: "****" + ((await accountM.getByID(pss[i].USER_ID)).FULL_NAME.split(" ")).pop(), 
+                    price: await utils.getMoneyVNDString(pss[i].PRICE)
+            });
+        }
+
 
         res.render('home/detail_product', {
             layout: 'home',
@@ -241,8 +254,7 @@ router.get('/:id', async (req, res, next) => {
             pro: pro,
             img: img,
             ps: ps,
-            GiaHeThong: GiaHeThong,
-            disabled: "disabled",
+            ph: ph,
         });
     } catch (err) {
         console.log(err);

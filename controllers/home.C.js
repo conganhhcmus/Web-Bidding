@@ -25,13 +25,10 @@ router.get('/', async (req, res) => {
         user = await accountM.getByID(id);      
     }
 
-    const cats = await categoryM.all();
-
     res.render('home/homepage', {
         layout: 'home',
         user: req.user,
         parentCat: parentCat,
-        cats: cats,
         top5End: top5End,
         top5Price: top5Price,
     });
