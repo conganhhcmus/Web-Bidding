@@ -13,12 +13,11 @@ function changeData() {
 function submitUserForm() {
     let response = grecaptcha.getResponse();
     if (response.length == 0) {
-        document.getElementById('error').innerHTML = '(*) Captcha is required.';
+        alert("Vui lòng xác nhận bằng captcha.")
         return false;
     }
     return true;
 }
 
 function verifyCaptcha() {
-    document.getElementById('error').innerHTML = '';
 }

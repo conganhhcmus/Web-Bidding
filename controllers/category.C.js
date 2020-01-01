@@ -18,7 +18,8 @@ router.get('/:id', async (req, res, next) => {
         const id = parseInt(req.params.id);
         const page = parseInt(req.query.page) || 1;
         const cat = await categoryM.getByID(id); // Lấy danh mục hiện tại
-        if (cat.length == 0) return next(createError(404));
+        if (typeof cat === "undefined")
+            return next(createError(404));
 
         // Lấy sản phẩm về
         const rs = await productM.allByCatIDPaging(id, page);

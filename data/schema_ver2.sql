@@ -175,7 +175,7 @@ INSERT INTO category VALUES(6, 5, 'Tủ lạnh');
 INSERT INTO category VALUES(7, 1, 'Phụ kiện');
 INSERT INTO category VALUES(8, 1, 'Tablet');
 
-insert into user values(1, 'admin', '$2y$10$bxz.oLs2C7FGb9U7hylgeOzOgq3Sh4DDjAKYl6XEpxmYdmAj2tsyW', 'Admin', 'admin@domain.com', '1999-01-01', 2, '2019-12-24 00:00:00');
+insert into user values(1, 'admin', '$2b$10$znBCq/j4NYU6wKCr5YR8Re5zFtq9Lv9VWWT1p1ZW4lzF9BlYGVDIi', 'Admin', 'admin@domain.com', '1999-01-01', 2, '2019-12-24 00:00:00');
 
 COMMIT;
 

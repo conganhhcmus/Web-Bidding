@@ -8,13 +8,16 @@
     <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
     <link href="/assets/css/all.min.css" rel="stylesheet">
     <link href="/assets/css/custom.css" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <style>
         html,
         body {
             background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             height: 100%;
             font-family: 'Numans', sans-serif;
         }
@@ -30,5 +33,30 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/all.js"></script>
 <script src="/assets/js/custom.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script>
+    $(document).ready(() => {
+        $('#inputDob').datepicker();
+
+        $('#registerButton').click((e) => {
+            // Validation
+            if ($('#form-register').find('input[name=password]').val() !== $('#form-register').find('input[name=confirm_password]').val()) {
+                alert('Mật khẩu đã nhập không khớp.');
+                return false;
+            }
+            if (isNaN(Date.parse($('#form-register').find('input[name=dob]').val()))) {
+                alert('Ngày sai định dạng. Ngày giờ phải ở dạng: 12/31/2019.');
+                return false;
+            }
+            else if (Date.parse($('#form-register').find('input[name=dob]').val()) > Date.parse(Date())) {
+                alert('Ngày sinh đã nhập không hợp lệ.');
+                return false;
+            }
+
+
+      })
+    })
+
+</script>
 </html>

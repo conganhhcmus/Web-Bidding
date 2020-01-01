@@ -63,7 +63,7 @@ module.exports = {
         return rows;
     },
 
-    createProduct: async (name, cat_id, seller_id, starting_price, bidding_increment, start_time, end_time, description, extension, buynow_price) => {
+    createProduct: async (name, cat_id, seller_id, starting_price, bidding_increment, start_time, end_time, description, extension, buynow_price, time) => {
         let obj = {
             CAT_ID: cat_id,
             SELLER_ID: seller_id,
@@ -76,6 +76,7 @@ module.exports = {
             STARTING_PRICE: starting_price,
             BIDDING_INCREMENT: bidding_increment,
             EXTENSION_FLAG: extension ? 1 : 0,
+            TIME: time
         };
         if (buynow_price)
         obj.BUYNOW_PRICE = buynow_price;

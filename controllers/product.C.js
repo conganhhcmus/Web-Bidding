@@ -77,11 +77,12 @@ router.post('/create', multiUpload, async function (req, res, next) {
             req.user.ID,
             req.body.starting_price,
             req.body.bidding_increment,
-            new Date(Date.parse(req.body.start_time)).toISOString().slice(0, 19).replace('T', ' '),
-            new Date(Date.parse(req.body.end_time)).toISOString().slice(0, 19).replace('T', ' '),
+            utils.parseTime(req.body.start_time),
+            utils.parseTime(req.body.end_time),
             req.body.editor,
             req.body.extension == "true" ? true : false,
-            req.body.buynow_price.length > 0 ? req.body.buynow_price : null
+            req.body.buynow_price.length > 0 ? req.body.buynow_price : null,
+            utils.getTimeNow()
         );
         // Thêm hình ảnh
         let imgId = null;
