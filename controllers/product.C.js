@@ -134,7 +134,7 @@ router.get('/search', async (req, res, next) => {
     }
     else {
         rs = await productM.allBySearchNamePagingCat(name, page, option);
-        cat = (await categoryM.getByID(option))[0].CAT_NAME + " > " + name;
+        cat = (await categoryM.getByID(option)).CAT_NAME + " > " + name;
     }
 
     let pro = rs.products;
@@ -231,6 +231,9 @@ router.get('/:id', async (req, res, next) => {
         const SELLER_ID = pro[0].SELLER_ID;
         const seller = await accountM.getByID(SELLER_ID);
 
+        // tim gia he thong
+        const GiaHeThong = pro[0].CURRENT_PRICE + pro[0].BIDDING_INCREMENT;
+
         res.render('home/detail_product', {
             layout: 'home',
             user: req.user,
@@ -238,6 +241,8 @@ router.get('/:id', async (req, res, next) => {
             pro: pro,
             img: img,
             ps: ps,
+            GiaHeThong: GiaHeThong,
+            disabled: "disabled",
         });
     } catch (err) {
         console.log(err);
