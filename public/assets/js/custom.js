@@ -21,3 +21,13 @@ function submitUserForm() {
 
 function verifyCaptcha() {
 }
+
+
+// change wish icon when click on
+$('#likebutton').on('click', function() {
+    alert("click");
+    $("i", this).toggleClass("fa fa-heart fa fa-heart-o");
+ });
+  
+ // some custom functions
+ 

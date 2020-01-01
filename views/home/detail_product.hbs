@@ -6,7 +6,8 @@
 					<li class="active" data-image="/images/product/{{img.[0].HASH_NAME}}"><a data-target="#pic-1"
 							data-toggle="tab"><img src="/images/product/{{img.[0].HASH_NAME}}" alt=""></a></li>
 
-					<li data-image="/images/product/{{img.[1].HASH_NAME}}"><a data-target="#pic-2" data-toggle="tab"><img src="/images/product/{{img.[1].HASH_NAME}}" alt=""></a></li>
+					<li data-image="/images/product/{{img.[1].HASH_NAME}}"><a data-target="#pic-2"
+							data-toggle="tab"><img src="/images/product/{{img.[1].HASH_NAME}}" alt=""></a></li>
 
 					<li data-image="/images/product/{{img.[2].HASH_NAME}}"><a data-target="#pic-3"
 							data-toggle="tab"><img src="/images/product/{{img.[2].HASH_NAME}}" alt=""></a></li>
@@ -22,86 +23,105 @@
 			</div>
 			<div class="col-lg-6 order-3">
 				<div class="product_description">
-					<div class="product_name">{{pro.[0].PRODUCT_NAME}}</div>
+					<h2>{{pro.[0].PRODUCT_NAME}}</h2>
+					<div align="right"><span>Seller: </span><span><a href="" style="color: blue">{{seller.FULL_NAME}}</a></span></div>
 					<h5>Ngày đăng: {{pro.[0].start_date}}</h5>
 					<h5>Time left: {{pro.[0].time_left}}</h5>
-					<div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5
-							Star</span> <span class="rating-review">{{pro.[0].EXTENSION_FLAG}} Reviews</span></div>
-					<div style="font-size: 20px">CURRENT PRICE: {{pro.[0].CURRENT_PRICE_VND}} VND</div>
-					<div style="font-size: 20px">BUYNOW PRICE: {{pro.[0].BUYNOW_PRICE_VND}} VND</div>
-						<hr>
-						<div>
-							{{{ pro.[0].DESCRIPTION}}}
-						</div>
-
-					</div>
-					<hr class="singleline">
-					<div class="order_info d-flex flex-row">
-						<form action="#">
-					</div>
-					<div class="row">
-						<div class="col-xs-6"> <button type="button" class="btn btn-primary shop-button">Add to
-								Cart</button> <button type="button" class="btn btn-success shop-button">Buy Now</button>
-							<div class="product_fav"><i class="fas fa-heart"></i></div>
-						</div>
-					</div>
+					<span class="rating-review">{{pro.[0].EXTENSION_FLAG}} Reviews</span>
+				</div>
+				<div style="font-size: 15px"> - STARTING PRICE: {{pro.[0].START_PRICE_VND}} VND</div>
+				<div style="font-size: 15px"> - BIDDING PRICE: {{pro.[0].BIDDING_PRICE_VND}} VND</div>
+				<div style="font-size: 15px"> - CURRENT PRICE: {{pro.[0].CURRENT_PRICE_VND}} VND</div>
+				<div style="font-size: 15px"> - BUYNOW PRICE: {{pro.[0].BUYNOW_PRICE_VND}} VND</div>
+				<hr>
+				<div>
+					{{{ pro.[0].DESCRIPTION}}}
+				</div>
+				<hr>
+			</div>
+			<hr class="singleline">
+			<div class="order_info d-flex flex-row">
+			</div>
+			<div class="row">
+				<div class="col-md-6"></div>
+				<div class="col-md-6"> <button type="button" class="btn btn-primary shop-button">Add to
+						Cart</button> <button type="button" class="btn btn-success shop-button">Buy Now</button>
+					<form action="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}" method="GET">
+						<input type="hidden" name="proID" value="{{ pro.[0].ID}}">
+						<input type="hidden" name="userID" value="{{user.ID}}">
+						<button type="submit" id="likebutton" class="main-btn icon-btn"><i
+								class="fa fa-heart"></i></button>
+					</form>
 				</div>
 			</div>
 		</div>
-		<div class="row row-underline">
-			<div class="col-md-6"> <span class=" deal-text">Other product</span> </div>
-			<div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>
-		</div>
+	</div>
+</div>
+<div class="row row-underline">
+	<div class="col-md-1"></div>
+	<div class="col-md-6"> <span class=" deal-text">Other product</span> </div>
+</div>
 
-		<div class="row">
-
-			<div class="col-md-4">
-				<a href="/home/{{ps.[0].ID}}/products">
-					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
-						<div class="bbb_combo">
-							<div class="bbb_combo_image"><img class="bbb_combo_image"
-									src="/images/product/{{ps.[0].imgSrc.HASH_NAME}}" alt=""></div>
-							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
-									style="margin-top: -4px;"><h5>{{ps.[0].CURRENT_PRICE_VND}} VND</h5></span> <span
-									class="ml-auto fs-10">{{ps.[0].EXTENSION_FLAG}} Reviews</span>
-							</div> <span><h3>{{ps.[0].PRODUCT_NAME}}</h3></span>
-						</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="col-md-12" style="margin: 10px">
+			<a href="/product/{{ps.[0].ID}}">
+				<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
+					<div class="bbb_combo">
+						<div class="bbb_combo_image"><img class="bbb_combo_image"
+								src="/images/product/{{ps.[0].imgSrc.HASH_NAME}}" alt=""></div>
+						<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
+								style="margin-top: -4px;">
+								<h5>{{ps.[0].CURRENT_PRICE_VND}} VND</h5>
+							</span> <span class="ml-auto fs-10">{{ps.[0].EXTENSION_FLAG}} Reviews</span>
+						</div> <span>
+							<h3>{{ps.[0].PRODUCT_NAME}}</h3>
+						</span>
 					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4">
-				<a href="/home/{{ps.[1].ID}}/products">
-					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
-						<div class="bbb_combo">
-							<div class="bbb_combo_image"><img class="bbb_combo_image"
-									src="/images/product/{{ps.[1].imgSrc.HASH_NAME}}" alt=""></div>
-							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
-									style="margin-top: -4px;"><h5>{{ps.[1].CURRENT_PRICE_VND}} VND</h5></span> <span
-									class="ml-auto fs-10">{{ps.[1].EXTENSION_FLAG}} Reviews</span>
-							</div> <span><h3>{{ps.[1].PRODUCT_NAME}}</h3></span>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4">
-				<a href="/home/{{ps.[2].ID}}/products">
-					<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
-						<div class="bbb_combo">
-							<div class="bbb_combo_image"><img class="bbb_combo_image"
-									src="/images/product/{{ps.[2].imgSrc.HASH_NAME}}" alt=""></div>
-							<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
-									style="margin-top: -4px;"><h5>{{ps.[2].CURRENT_PRICE_VND}} VND</h5></span> <span
-									class="ml-auto fs-10">{{ps.[2].EXTENSION_FLAG}} Reviews</span>
-							</div> <span><h3>{{ps.[2].PRODUCT_NAME}}</h3></span>
-						</div>
-					</div>
-				</a>
-			</div>
-
-
+				</div>
+			</a>
 		</div>
 	</div>
+
+	<div class="col-md-4">
+		<div class="col-md-12" style="margin: 10px">
+			<a href="/product/{{ps.[1].ID}}">
+				<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
+					<div class="bbb_combo">
+						<div class="bbb_combo_image"><img class="bbb_combo_image"
+								src="/images/product/{{ps.[1].imgSrc.HASH_NAME}}" alt=""></div>
+						<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
+								style="margin-top: -4px;">
+								<h5>{{ps.[1].CURRENT_PRICE_VND}} VND</h5>
+							</span> <span class="ml-auto fs-10">{{ps.[1].EXTENSION_FLAG}} Reviews</span>
+						</div> <span>
+							<h3>{{ps.[1].PRODUCT_NAME}}</h3>
+						</span>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="col-md-12" style="margin: 10px">
+			<a href="/product/{{ps.[2].ID}}">
+				<div class="card" style="background: #f0f0f0; border: 1px solid black; height: 400px">
+					<div class="bbb_combo">
+						<div class="bbb_combo_image"><img class="bbb_combo_image"
+								src="/images/product/{{ps.[2].imgSrc.HASH_NAME}}" alt=""></div>
+						<div class="d-flex flex-row justify-content-start" style=" margin-bottom: 13px; "> <span
+								style="margin-top: -4px;">
+								<h5>{{ps.[2].CURRENT_PRICE_VND}} VND</h5>
+							</span> <span class="ml-auto fs-10">{{ps.[2].EXTENSION_FLAG}} Reviews</span>
+						</div> <span>
+							<h3>{{ps.[2].PRODUCT_NAME}}</h3>
+						</span>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
 
 </div>

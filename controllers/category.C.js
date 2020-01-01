@@ -57,6 +57,10 @@ router.get('/:id', async (req, res, next) => {
             ps[i].imgSrc = (await imageM.allByProID(ps[i].ID))[0];
         }
 
+        const parentCat = await categoryM.allParentCats();
+        for(var i = 0; i < parseInt(parentCat.length); i++){
+            parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+        }
 
         res.render('home/category', {
             layout: 'home',
@@ -67,6 +71,7 @@ router.get('/:id', async (req, res, next) => {
             pages: pages,
             navs: navs,
             title: cat.CAT_NAME,
+            parentCat: parentCat,
         });
     }
     catch (err) {

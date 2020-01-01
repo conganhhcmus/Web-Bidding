@@ -218,9 +218,9 @@ textarea.input {
 }
 
 .list-links li>a:before {
-  content: "\f105";
+  content: "➤";
   position: absolute;
-  left: 0px;
+  left: -8px;
   font-family: FontAwesome;
   -webkit-transform: translateX(-10px);
   -ms-transform: translateX(-10px);

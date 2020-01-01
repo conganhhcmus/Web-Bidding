@@ -90,6 +90,12 @@ router.get('/:id', async (req, res) => {
     }
 
 
+      // get all parent
+      const parentCat = await categoryM.allParentCats();
+      for(var i = 0; i < parseInt(parentCat.length); i++){
+          parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+      }
+
     res.render('home/favorite_list', {
         layout: 'home',
         user: user,
@@ -98,6 +104,7 @@ router.get('/:id', async (req, res) => {
         ps: ps,
         pages: pages,
         navs: navs,
+        parentCat: parentCat,
     });
 });
 

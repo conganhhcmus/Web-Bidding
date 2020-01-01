@@ -7,9 +7,23 @@
             <div class="category-nav">
                 <span class="category-header">Categories <i class="fa fa-list"></i></span>
                 <ul class="category-list">
-                    {{#each cats}}
-                    <li><a href="/home/{{ID}}/categories">{{CAT_NAME}}</a></li>
-                    {{/each}}
+                   {{#each parentCat}}
+					<li class="dropdown side-dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{CAT_NAME}}<i
+								class="fa fa-angle-right"></i></a>
+						<div class="custom-menu">
+							<div class="row">
+								<div class="col-md-4">
+									<ul class="list-links">
+										{{#each children}}
+										<li><a href="/category/{{ID}}">{{CAT_NAME}}</a></li>
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					{{/each}}
                 </ul>
             </div>
             <!-- /category nav -->
@@ -112,7 +126,7 @@
                             <li><span>{{MINUTES}} M</span></li>
                             <li><span>{{SECONDS}} S</span></li>
                         </ul>
-                        <a href="/home/{{ID}}/products"><button class="main-btn quick-view"><i
+                        <a href="/product/{{ID}}"><button class="main-btn quick-view"><i
                                     class="fa fa-search-plus"></i> Quick
                                 view</button></a>
                         <img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
@@ -126,8 +140,6 @@
                                 <input type="hidden" name="userID" value="{{../user.ID}}">
                                 <button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                             </form>
-                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add
-                                to Cart</button>
                         </div>
                     </div>
                 </div>

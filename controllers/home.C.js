@@ -10,8 +10,12 @@ const utils = require('../utils/utilsFunction');
 
 router.get('/', async (req, res) => {
     let user = null;
-    // Tat ca category
-    const cats = await categoryM.all();
+
+    // get all parent
+    const parentCat = await categoryM.allParentCats();
+    for(var i = 0; i < parseInt(parentCat.length); i++){
+        parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+    }
 
     var top5Price = await top5.top5Price();
     var top5End = await top5.top5End();
@@ -24,7 +28,7 @@ router.get('/', async (req, res) => {
     res.render('home/homepage', {
         layout: 'home',
         user: req.user,
-        cats: cats,
+        parentCat: parentCat,
         top5End: top5End,
         top5Price: top5Price,
     });

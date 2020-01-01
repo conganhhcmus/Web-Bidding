@@ -10,13 +10,13 @@ module.exports = app => {
         let errorCode = status.toString();
 
         let errMsg = err.message;
-        // res.render(`errors/${status}`,{
-        //     layout:false,
-        //     errorCode,
-        //     errMsg,
-        //     error: err,
-        // });
-        res.status(status);
-        res.end();
+        res.render(`errors/${status}`,{
+            layout:false,
+            errorCode,
+            errMsg,
+            error: err,
+        });
+        // res.status(status);
+        // res.end();
     });
 };

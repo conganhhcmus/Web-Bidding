@@ -219,6 +219,8 @@ router.get('/:id', async (req, res, next) => {
         // set vnd money
         pro[0].CURRENT_PRICE_VND = await utils.getMoneyVNDString(pro[0].CURRENT_PRICE);
         pro[0].BUYNOW_PRICE_VND = await utils.getMoneyVNDString(pro[0].BUYNOW_PRICE);
+        pro[0].START_PRICE_VND = await utils.getMoneyVNDString(pro[0].STARTING_PRICE);
+        pro[0].BIDDING_PRICE_VND = await utils.getMoneyVNDString(pro[0].BIDDING_INCREMENT);
 
         for (var i = 0; i < parseInt(ps.length); i++) {
             ps[i].imgSrc = (await imageM.allByProID(ps[i].ID))[0];
@@ -226,9 +228,13 @@ router.get('/:id', async (req, res, next) => {
             ps[i].BUYNOW_PRICE_VND = await utils.getMoneyVNDString(ps[i].BUYNOW_PRICE);
         }
 
+        const SELLER_ID = pro[0].SELLER_ID;
+        const seller = await accountM.getByID(SELLER_ID);
+
         res.render('home/detail_product', {
             layout: 'home',
             user: req.user,
+            seller: seller,
             pro: pro,
             img: img,
             ps: ps,

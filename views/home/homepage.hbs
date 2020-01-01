@@ -7,8 +7,22 @@
 			<div class="category-nav">
 				<span class="category-header">Danh mục <i class="fas fa-list"></i></span>
 				<ul class="category-list">
-					{{#each cats}}
-					<li><a href="/category/{{ID}}">{{CAT_NAME}}</a></li>
+					{{#each parentCat}}
+					<li class="dropdown side-dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{CAT_NAME}}<i
+								class="fa fa-angle-right"></i></a>
+						<div class="custom-menu">
+							<div class="row">
+								<div class="col-md-4">
+									<ul class="list-links">
+										{{#each children}}
+										<li><a href="/category/{{ID}}">{{CAT_NAME}}</a></li>
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
 					{{/each}}
 				</ul>
 			</div>
@@ -147,8 +161,6 @@
 										<button type="submit" class="main-btn icon-btn"><i
 												class="fa fa-heart"></i></button>
 									</form>
-									<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
-										to Cart</button>
 								</div>
 							</div>
 						</div>
@@ -206,8 +218,6 @@
 										<button type="submit" class="main-btn icon-btn"><i
 												class="fa fa-heart"></i></button>
 									</form>
-									<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
-										to Cart</button>
 								</div>
 							</div>
 						</div>
@@ -264,8 +274,6 @@
 								<input type="hidden" name="userID" value="{{../user.ID}}">
 								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 							</form>
-							<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
-								to Cart</button>
 						</div>
 					</div>
 				</div>
@@ -309,8 +317,6 @@
 								<input type="hidden" name="userID" value="{{../user.ID}}">
 								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 							</form>
-							<button class="primary-btn add-to-cart"><i class="fas fa-shopping-cart"></i> Add
-								to Cart</button>
 						</div>
 					</div>
 				</div>

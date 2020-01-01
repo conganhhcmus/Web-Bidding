@@ -46,7 +46,9 @@ router.post('/register', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
+    const fullname = req.body.name;
     const confirm_password = req.body.confirm_password;
+    const dob = req.body.dob;
 
     // password null
     if (password === "") {
@@ -98,11 +100,13 @@ router.post('/register', async (req, res) => {
             PASSWORD: pwHash,
             FULL_NAME: fullname,
             EMAIL: email,
-            DOB: dob,
+            DOB: new Date(dob).toISOString().slice(0, 10).replace('T', ' '),
             PERMISSION: 0,
             TIME: utils.getTimeNow()
         };
+    
         const uId = await accountM.add(user);
+        console.log("id : ", uId);
 
         req.logIn({ ID: uId }, function (err) {
             if (err) { return next(err); }

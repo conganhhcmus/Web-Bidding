@@ -1,6 +1,6 @@
 const db = require('../utils/db');
 const tbName = 'PRODUCT';
-const pageSize = 4;
+const pageSize = 8;
 
 module.exports = {
     all: async (offset, limit) => {
