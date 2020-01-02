@@ -70,3 +70,43 @@ function checkAccount(){
      }
      return true;
 }
+
+
+
+function checkGiaAuto() {
+    if ($("#inputMoneyAuto").val().length == 0 || isNaN($("#inputMoneyAuto").val())) {
+        alert("Giá nhập phải là số nguyên!");
+        return false;
+    }
+
+    if ($("#user_id").val() === "0") {
+        alert("Vui lòng đăng nhập trước khi đấu giá !");
+        return false;
+    }
+    const gia_nguoi_dung = parseInt($("#inputMoneyAuto").val());
+    const gia_he_thong = parseInt($("#giahethong").val());
+    const gia_hien_tai = parseInt($("#current_price").val());
+    const bidding = parseInt($("#bidding_increment").val());
+    if (gia_nguoi_dung < gia_hien_tai) {
+        alert("Giá nhập phải lớn hơn giá hiện tại!");
+        return false;
+    }
+
+    let temp = gia_nguoi_dung - gia_hien_tai;
+    let temp1 = temp % bidding;
+    if (temp1 !== 0) {
+        alert("Giá tiền nhập = Giá hiện tại + n * bước giá\n Vui lòng nhập lại!");
+        return false;
+    }
+
+    alert("Đấu giá thành công !");
+    return true;
+}
+function checkAccount(){
+     const flag = parseInt($("#checkAccount").text());
+     if(flag === 0){
+         alert("Hãy đăng nhập trước khi xem sản phẩm yêu thích cá nhân!");
+         return false;
+     }
+     return true;
+}
