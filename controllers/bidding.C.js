@@ -104,9 +104,6 @@ router.post('/auto/:id', async (req, res) => {
         }
     }
 
-    console.log(win_id);
-    console.log(bid_price);
-    console.log(check);
 
     const element = {
         PRODUCT_ID: proID,
@@ -128,7 +125,7 @@ router.post('/auto/:id', async (req, res) => {
             PRODUCT_ID: proID,
             USER_ID: win_id,
             TIME: utils.getTimeNow(),
-            PRICE: new_price, //update price
+            PRICE: new_price, //update pricec
             MAX_PRICE: parseInt(auto.MAX_PRICE),
             WIN_ID: win_id,
         }
