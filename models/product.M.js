@@ -10,6 +10,12 @@ module.exports = {
         return rows;
     },
 
+    allSellingBySellerID: async id => {
+        const sql = `SELECT * FROM ${tbName} WHERE SELLER_ID = ${id} AND END_TIME > '${utils.getTimeNow()}'`;
+        const rows = await db.load(sql);
+        return rows;
+    },
+
     top5Price: async () => {
         const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY CURRENT_PRICE DESC LIMIT 4 `;
         const rows = await db.load(sql);
@@ -145,6 +151,17 @@ module.exports = {
         const sql = `SELECT * FROM ${tbName} WHERE SELLER_ID = ${id}`;
         const rows = await db.load(sql);
         return rows;
+    },
+
+    getProductBySeller: async id =>{
+        const sql = `SELECT * FROM ${tbName} WHERE ${tbName}.SELLER_ID = ${id} AND END_TIME < '${utils.getTimeNow()}' AND ${tbName}.CURRENT_PRICE > ${tbName}.STARTING_PRICE`;
+        const rows = await db.load(sql);
+        return rows; //ds san pham cua seller da het
+    },
+    
+    update: async (entity, id) => {
+        const changedRows = await db.update(tbName, entity, "ID", id);
+        return changedRows;
     },
 
 }

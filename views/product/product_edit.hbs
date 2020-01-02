@@ -1,0 +1,45 @@
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+
+        <!-- Row start -->
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 1em;">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title">Chỉnh sửa sản phẩm</h3>
+                    </div>
+
+                    <ul class="panel-body">
+
+                        <form method="POST" action="" name="form-product-edit" id="form-product-edit"
+                            enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="name" class="active">Tên sản phẩm</label>
+                                <input type="text" class="form-control" id="name"
+                                    value="{{pro.PRODUCT_NAME}}" disabled>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="editor" class="active">Mô tả sản phẩm bổ sung</label>
+                                <textarea class="form-control" id="editor" name="editor"></textarea>
+                            </div>
+
+
+                            <button id="product_edit_submit" class="btn btn-primary" type="submit">Cập nhật</button>
+
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+
+
+    <!-- /home wrap -->
+</div>
+<!-- /container -->
+</div>

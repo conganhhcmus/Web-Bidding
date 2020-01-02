@@ -1,0 +1,49 @@
+<!-- HOME -->
+<div id="home">
+    <div class="container">
+        <div class="home-wrap" style="padding-left: 0.5em;">
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Sản phẩm đang đấu giá</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá khởi điểm</th>
+                                <th>Giá chót</th>
+                                <th>Người mua</th>
+                                <th>Thời gian kết thúc</th>
+                            </tr>
+                        </thead>
+                        {{#each sellList}}
+                        <tbody>
+                            <tr onclick="window.location='/product/{{proIDBL}}';"  {{#if isEqualYourPriceBL}} class="opct opacity-40" {{/if}} >
+                                <td>{{sttBL}}</td>
+                                <td class="productWL-img">
+                                    <img src="/images/product/{{mainImgBL.HASH_NAME}}" alt="">
+                                </td>
+                                <td> {{proNameBL}}</td>
+                                <td> {{startPriceBL}}</td>
+                                <td> {{nowPriceBL}}</td>
+                                <td> {{bidder}}</td>
+                                <td> {{endTimeBL}}</td>
+                            </tr>
+                        </tbody>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

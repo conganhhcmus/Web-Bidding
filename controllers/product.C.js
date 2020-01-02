@@ -47,10 +47,9 @@ router.get('/create', (req, res, next) => {
         }
     });
 
-// TODO: 
 // Tạo sản phẩm mới - POST
 router.post('/create', (req, res, next) => {
-    if (!req.isAuthenticated() || req.user.PERMISSION == -1) {
+    if (!req.isAuthenticated()) {
         return next(createError(403));
     }
     next();
@@ -105,6 +104,69 @@ router.post('/create', multiUpload, async function (req, res, next) {
         await productM.updateProductImg(productId, imgId);
         // Chuyển về sản phẩm
         return res.redirect('/product/' + productId)
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+
+
+router.get('/:id/edit', (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        return next(createError(403));
+    }
+    next();
+},
+    async (req, res, next) => {
+        try {
+            // Kiểm tra quyền
+            let temp = await productM.getByID(req.params.id);
+            if (temp.length === 0 || (temp[0].SELLER_ID !== req.user.ID && req.user.PERMISSION !== 2))
+            return next(createError(403));
+
+            // Lấy các danh mục
+            let categories = await categoryM.all();
+            // get all parent
+            const parentCat = await categoryM.allParentCats();
+            for (var i = 0; i < parseInt(parentCat.length); i++) {
+                parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+            }
+
+            // Render
+            return res.render('product/product_edit', {
+                layout: 'product',
+                categories,
+                user: req.user,
+                cats: categories,
+                title: 'Chỉnh sửa sản phẩm',
+                parentCat,
+                pro: temp[0],
+            });
+        }
+        catch (err) {
+            console.log(err);
+            next(createError(500));
+        }
+    });
+
+// Tạo sản phẩm mới - POST
+router.post('/:id/edit', (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        return next(createError(403));
+    }
+    next();
+});
+
+router.post('/:id/edit', multiUpload, async function (req, res, next) {
+    try {
+        // Thêm
+        let pro = (await productM.getByID(req.params.id))[0];
+        let newDes = pro.DESCRIPTION + `<br><br>=====Cập nhật lúc ${utils.getTimeNow()}======<br><br>` + req.body.editor;
+        // Cập nhật ảnh chính
+        await productM.update({DESCRIPTION: newDes}, pro.ID);
+        // Chuyển về sản phẩm
+        return res.redirect('/product/' + pro.ID)
     } catch (err) {
         console.log(err);
         next(createError(500));

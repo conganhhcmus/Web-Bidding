@@ -64,7 +64,7 @@
 						<p><strong>Bước giá: </strong> {{pro.BIDDING_PRICE_VND}} VNĐ</p>
 						<p><strong>Giá khởi điểm: </strong> {{pro.START_PRICE_VND}} VNĐ</p>
 						<p><strong>Người đăng: </strong> <a href="/account/{{seller.ID}}">{{seller.FULL_NAME}}</a></p>
-						<p><strong>Người đang giữa giá: </strong> <a href="{{#if bidder}}/account/{{bidder.ID}}{{else}}#{{/if}}">{{#if bidder}}{{bidder.FULL_NAME}}{{else}}Hiện chưa ai đấu giá.{{/if}}</a></p>
+						<p><strong>Người đang giữ giá: </strong> <a href="{{#if bidder}}/account/{{bidder.ID}}{{else}}#{{/if}}">{{#if bidder}}{{bidder.FULL_NAME}}{{else}}Hiện chưa ai đấu giá.{{/if}}</a></p>
 						{{!-- <p><strong>Loại đấu giá: </strong> {{#if pro.AUTO_FLAG}}<b>Tự động</b>{{else}}Thông thường{{/if}}</p> --}}
 						<p><strong>Ngày đăng: </strong> {{pro.post_format}}
 						<hr>
@@ -144,6 +144,11 @@
 						</div>
 						<div id="tab2" class="tab-pane fade in">
 							{{{pro.DESCRIPTION}}}
+							<hr>
+							{{#ifEqual pro.SELLER_ID user.ID}}
+							<a class="btn btn-primary"href="/product/{{pro.ID}}/edit">Thêm nội dung
+							</a>
+							{{/ifEqual}}
 						</div>
 					</div>
 				</div>
