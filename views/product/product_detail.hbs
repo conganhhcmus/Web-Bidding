@@ -66,11 +66,12 @@
 						<p><strong>Bước giá: </strong> {{pro.BIDDING_PRICE_VND}} VNĐ</p>
 						<p><strong>Giá khởi điểm: </strong> {{pro.START_PRICE_VND}} VNĐ</p>
 						<p><strong>Người đăng: </strong> <a href="/account/{{seller.ID}}">{{seller.FULL_NAME}}</a></p>
+						<p><strong>Người đang giữa giá: </strong> <a href="{{#if bidder}}/account/{{bidder.ID}}{{else}}#{{/if}}">{{#if bidder}}{{bidder.FULL_NAME}}{{else}}Hiện chưa ai đấu giá.{{/if}}</a></p>
 						<p><strong>Loại đấu giá: </strong> {{#if pro.AUTO_FLAG}}<b>Tự động</b>{{else}}Thông thường{{/if}}</p>
 						<p><strong>Ngày đăng: </strong> {{pro.post_format}}
 						<hr>
 						<!--BIDDING-->
-						<form action="" onsubmit="return checkGia();">
+						<form action="/bidding/{{pro.ID}}" method="POST" onsubmit="return checkGia();">
 							<div class="form-group">
 								<label for="inputMoney">
 									<h4>{{#if pro.AUTO_FLAG}}Giá tối đa{{else}}Giá đặt{{/if}}</h4>
@@ -81,6 +82,8 @@
 							<input type="hidden" value="{{GiaHeThong}}" name="giahethong" id="giahethong">
 							<input type="hidden" value="{{pro.CURRENT_PRICE}}" id="current_price">
 							<input type="hidden" value="{{pro.BIDDING_INCREMENT}}" id="bidding_increment">
+							<input type="hidden" value="{{pro.ID}}" name="proid">
+							<input type="hidden" value="{{#if user}}{{user.ID}}{{else}}0{{/if}}" id="user_id" name="userid">
 							<button class="btn btn-success" type="submit">Đấu giá</button>
 						</form>
 					</div>

@@ -38,6 +38,11 @@ function checkGia() {
         alert("Giá nhập phải là số nguyên!");
         return false;
     }
+
+    if ($("#user_id").val() === "0") {
+        alert("Vui lòng đăng nhập trước khi đấu giá !");
+        return false;
+    }
     const gia_nguoi_dung = parseInt($("#inputMoney").val());
     const gia_he_thong = parseInt($("#giahethong").val());
     const gia_hien_tai = parseInt($("#current_price").val());
@@ -53,6 +58,9 @@ function checkGia() {
         alert("Giá tiền nhập = Giá hiện tại + n * bước giá\n Vui lòng nhập lại!");
         return false;
     }
+
+    alert("Đấu giá thành công !");
+    return true;
 }
 function checkAccount(){
      const flag = parseInt($("#checkAccount").text());

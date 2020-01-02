@@ -5,6 +5,7 @@ const router = express.Router();
 const categoryM = require('../models/category.M');
 const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
+const watchlistM = require('../models/watchList.M');
 const auctionHistoryM = require('../models/auctionHistory.M');
 const imageM = require('../models/image.M');
 const path = require("path");
@@ -284,9 +285,17 @@ router.get('/:id', async (req, res, next) => {
             totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
         }
 
+        // tìm người giữ giá
+        const bidder_id = await auctionHistoryM.getNguoiGiuGiaCaoNhat(pro[0].ID);
+        let bidder = null;
+        if(bidder_id){
+            bidder = await accountM.getByID(parseInt(bidder_id.USER_ID));
+        }
+
         res.render('product/product_detail', {
             layout: 'product',
             user: req.user,
+            bidder: bidder,
             totalWatchList: totalWatchList,
             seller: seller,
             pro: pro[0],

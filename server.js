@@ -83,6 +83,8 @@ app.use('/category',require('./controllers/category.C'));
 // admin page
 app.use('/admin',require('./controllers/admin.C'));
 
+app.use('/bidding',require('./controllers/bidding.C'));
+
 // home
 app.use('/',require('./controllers/home.C'));
 

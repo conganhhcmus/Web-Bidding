@@ -108,4 +108,8 @@ module.exports = {
         return rows;
     }, 
 
+    updateCurrentPrice: async (id,price) => {
+        const changedRows = await db.updateV(tbName,'CURRENT_PRICE',price,id);
+        return changedRows;
+    }
 }
