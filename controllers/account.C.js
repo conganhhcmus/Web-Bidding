@@ -648,6 +648,45 @@ router.get('/:id/won_list', async (req, res, next) => {
     }
 });
 
+router.get('/:id/sold_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const overSell = await productM.getProductBySeller(id);  //list pro da het han
+
+        let soldList = [];
+        var stt = 0
+        for (var i = 0; i < parseInt(overSell.length); i++) { // co it nhat 1 lan trong dau gia
+            const his = await auctionHistoryM.getByUserAndProductID(overSell[i].PRODUCT_ID)
+            if (his.length > 0) {
+                stt++
+                const imgSrc = await imageM.getByID(overSell[0].MAIN_IMAGE);
+                const userSL = await accountM.getByID(overSell[0].SELLER_ID);
+                //add vao json
+                soldList.push({
+                    sttWL: stt,
+                    proIDSL: overSell[i].PRODUCT_ID,
+                    priceSL: overSell[i].CURRENT_PRICE, //doan nay thieu select max
+                    userSL: userSL.FULL_NAME,
+                    mainImgSL: imgSrc[0],
+                    proNameSL: overSell[0].PRODUCT_NAME,
+                    startTimeSL: await utils.parseTime(overSell[0].START_TIME),
+                    endTimeSL: await utils.parseTime(overSell[0].END_TIME),
+                    startPriceSL: overSell[0].STARTING_PRICE
+                })
+            }
+        }
+        res.render('account/sold_list', {
+            layout: 'account',
+            user: req.user,
+            soldList: soldList,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.get('/:id/bidding_list', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
@@ -690,7 +729,6 @@ router.get('/:id/bidding_list', async (req, res, next) => {
         next(createError(500));
     }
 });
-
 router.get('/:id', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);

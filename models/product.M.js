@@ -130,5 +130,15 @@ module.exports = {
     updateCurrentPrice: async (id,price) => {
         const changedRows = await db.updateV(tbName,'CURRENT_PRICE',price,id);
         return changedRows;
+    },
+    getProductBySeller: async id =>{
+        const sql = `SELECT * FROM ${tbName} WHERE ${tbName}.SELLER_ID = ${id} AND END_TIME > '${utils.getTimeNow()}'`;
+        const rows = await db.load(sql);
+        return rows; //ds san pham cua seller da het
+    },
+    getProductBNBySeller: async id =>{
+        const sql = `SELECT * FROM ${tbName} WHERE ${tbName}.SELLER_ID = ${id} AND ${tbName}.BUYNOW_PRICE IS NOT NULL AND ${tbName}.BUYNOW_FLAG = 0`;
+        const rows = await db.load(sql);
+        return rows; //da buy now chua lam
     }
 }
