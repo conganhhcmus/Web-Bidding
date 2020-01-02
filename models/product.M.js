@@ -21,6 +21,12 @@ module.exports = {
         const rows = await db.load(sql);
         return rows;
     },
+    
+    allByProIDBidding: async id => {
+        const sql = `SELECT * FROM ${tbName} WHERE ${id} = ID AND END_TIME > '${utils.getTimeNow()}'`
+        const rows = await db.load(sql);
+        return rows
+    },
 
     allByCatID: async id => {
         const sql = `SELECT * FROM ${tbName} WHERE CAT_ID=${id}`;

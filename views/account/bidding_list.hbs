@@ -23,21 +23,22 @@
                                 <th>Giá hiện tại</th>
                                 <th>Giá của bạn</th>
                                 <th>Người bán</th>
+                                <th>Thời gian kết thúc</th>
                             </tr>
                         </thead>
-                        {{#each biddingList}}
+                        {{#each bidList}}
                         <tbody>
-                            <tr onclick="window.location='/product/{{proIDBL}}';">
+                            <tr onclick="window.location='/product/{{proIDBL}}';"  {{#if isEqualYourPriceBL}} class="opct opacity-40" {{/if}} >
                                 <td>{{sttBL}}</td>
-                                <td class="productBL-img">
+                                <td class="productWL-img">
                                     <img src="/images/product/{{mainImgBL.HASH_NAME}}" alt="">
                                 </td>
                                 <td> {{proNameBL}}</td>
                                 <td> {{startPriceBL}}</td>
-                                <td> {{priceBL}}</td>
-                                <td> {{endTimeBL}}</td>
+                                <td> {{nowPriceBL}}</td>
+                                <td> {{yourPriceBL}}</td>
                                 <td> {{sellerIDBL}}</td>
-
+                                <td> {{endTimeBL}}</td>
                             </tr>
                         </tbody>
                         {{/each}}
