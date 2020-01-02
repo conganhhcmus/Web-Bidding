@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const categoryM = require('../models/category.M');
-const top5 = require('../utils/top5')
+const top5 = require('../utils/top5');
 const watchlistM = require("../models/watchList.M");
 
 router.get('/', async (req, res) => {
@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
     var top5Price = await top5.top5Price();
     var top5End = await top5.top5End();
+    var top5DG = await top5.top5DG();
 
     const cats = await categoryM.all();
 
@@ -31,6 +32,7 @@ router.get('/', async (req, res) => {
         cats: cats,
         top5End: top5End,
         top5Price: top5Price,
+        top5DG: top5DG,
     });
     return;
 });

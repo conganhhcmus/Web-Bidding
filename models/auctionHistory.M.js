@@ -7,6 +7,7 @@ module.exports = {
         const id = await db.add(tbName, element);
         return id;
     },
+
     getByID: async id => {
         const sql = `SELECT * FROM ${tbName} WHERE ID=${id}`;
         const rows = await db.load(sql);
@@ -69,5 +70,25 @@ module.exports = {
             return rows[0];
         }
         return null;
+    },
+
+
+    getNguoiWinner: async proid => {
+        const sql = `SELECT USER_ID, MAX_PRICE FROM ${tbName}
+                                     WHERE PRODUCT_ID = ${proid} AND
+                                        MAX_PRICE = (SELECT 
+                                            MAX(MAX_PRICE)
+                                        FROM
+                                         ${tbName} WHERE PRODUCT_ID = ${proid});`;
+        const rows = await db.load(sql);
+
+        if (parseInt(rows.length) > 0) {
+            return rows[0];
+        }
+        return null;
     }
+
+
+
+    
 };

@@ -71,6 +71,8 @@
 						<p><strong>Ngày đăng: </strong> {{pro.post_format}}
 						<hr>
 						<!--BIDDING-->
+
+						{{!-- BASIC --}}
 						<form action="/bidding/{{pro.ID}}" method="POST" onsubmit="return checkGia();">
 							<div class="form-group">
 								<label for="inputMoney">
@@ -81,11 +83,29 @@
 							</div>
 							<input type="hidden" value="{{GiaHeThong}}" name="giahethong" id="giahethong">
 							<input type="hidden" value="{{pro.CURRENT_PRICE}}" id="current_price">
-							<input type="hidden" value="{{pro.BIDDING_INCREMENT}}" id="bidding_increment">
+							<input type="hidden" value="{{pro.BIDDING_INCREMENT}}" name="buocgia" id="bidding_increment">
 							<input type="hidden" value="{{pro.ID}}" name="proid">
 							<input type="hidden" value="{{#if user}}{{user.ID}}{{else}}0{{/if}}" id="user_id" name="userid">
 							<button class="btn btn-success" type="submit">Đấu giá</button>
 						</form>
+
+						{{!-- AUTO --}}
+						<form action="/bidding/auto/{{pro.ID}}" method="POST" onsubmit="return checkGiaAuto();">
+							<div class="form-group">
+								<label for="inputMoney">
+									<h4>{{#if pro.AUTO_FLAG}}Giá tối đa{{else}}Đấu giá Auto{{/if}}</h4>
+								</label>
+								<input type="text" class="form-control" name="inputMoneyAuto" id="inputMoneyAuto"
+									value="{{GiaHeThong}}">
+							</div>
+							<input type="hidden" value="{{GiaHeThong}}" name="giahethong" id="giahethong">
+							<input type="hidden" value="{{pro.CURRENT_PRICE}}" id="current_price">
+							<input type="hidden" value="{{pro.BIDDING_INCREMENT}}" name="buocgia" id="bidding_increment">
+							<input type="hidden" value="{{pro.ID}}" name="proid">
+							<input type="hidden" value="{{#if user}}{{user.ID}}{{else}}0{{/if}}" id="user_id" name="userid">
+							<button class="btn btn-success" type="submit">Đấu giá</button>
+						</form>
+
 					</div>
 
 				</div>

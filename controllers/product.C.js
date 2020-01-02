@@ -286,7 +286,7 @@ router.get('/:id', async (req, res, next) => {
         }
 
         // tìm người giữ giá
-        const bidder_id = await auctionHistoryM.getNguoiGiuGiaCaoNhat(pro[0].ID);
+        const bidder_id = await auctionHistoryM.getNguoiWinner(pro[0].ID);
         let bidder = null;
         if(bidder_id){
             bidder = await accountM.getByID(parseInt(bidder_id.USER_ID));
