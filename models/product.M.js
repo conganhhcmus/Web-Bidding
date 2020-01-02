@@ -11,13 +11,13 @@ module.exports = {
     },
 
     top5Price: async () => {
-        const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY CURRENT_PRICE DESC LIMIT 5 `;
+        const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY CURRENT_PRICE DESC LIMIT 4 `;
         const rows = await db.load(sql);
         return rows;
     },
 
     top5End: async () => {
-        const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY END_TIME ASC LIMIT 5 `;
+        const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY END_TIME ASC LIMIT 4 `;
         const rows = await db.load(sql);
         return rows;
     },

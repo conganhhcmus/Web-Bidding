@@ -54,3 +54,11 @@ function checkGia() {
         return false;
     }
 }
+function checkAccount(){
+     const flag = parseInt($("#checkAccount").text());
+     if(flag === 0){
+         alert("Hãy đăng nhập trước khi xem sản phẩm yêu thích cá nhân!");
+         return false;
+     }
+     return true;
+}

@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 const categoryM = require('../models/category.M');
-const productM = require('../models/product.M');
-const accountM = require('../models/account.M');
-const imageM = require('../models/image.M');
 const top5 = require('../utils/top5')
-const utils = require('../utils/utilsFunction');
+const watchlistM = require("../models/watchList.M");
 
 router.get('/', async (req, res) => {
     let user = null;
@@ -22,9 +18,15 @@ router.get('/', async (req, res) => {
 
     const cats = await categoryM.all();
 
+    let totalWatchList = 0;
+    if(typeof req.user !== "undefined"){
+        totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
+    }
+
     res.render('home/homepage', {
         layout: 'home',
         user: req.user,
+        totalWatchList: totalWatchList,
         parentCat: parentCat,
         cats: cats,
         top5End: top5End,

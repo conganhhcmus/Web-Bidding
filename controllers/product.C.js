@@ -139,11 +139,11 @@ router.get('/search', async (req, res, next) => {
     // get category
     if (option === 0) {
         rs = await productM.allBySearchNamePaging(name, page);
-        cat = "All Category > " + name;
+        cat = name;
     }
     else {
         rs = await productM.allBySearchNamePagingCat(name, page, option);
-        cat = (await categoryM.getByID(option)).CAT_NAME + " > " + name;
+        cat = (await categoryM.getByID(option)).CAT_NAME + " / " + name;
     }
 
     let pro = rs.products;
@@ -187,9 +187,15 @@ router.get('/search', async (req, res, next) => {
     }
     // end
 
+    let totalWatchList = 0;
+    if(typeof req.user !== "undefined"){
+        totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
+    }
+
     res.render('home/category', {
-        layout: 'home',
+        layout: 'product',
         user: user,
+        totalWatchList: totalWatchList,
         cats: cats,
         ps: pro,
         cat: cat,
@@ -273,11 +279,15 @@ router.get('/:id', async (req, res, next) => {
         // tim gia he thong
         const GiaHeThong = pro[0].CURRENT_PRICE + pro[0].BIDDING_INCREMENT;
 
-        //
+        let totalWatchList = 0;
+        if(typeof req.user !== "undefined"){
+            totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
+        }
 
         res.render('product/product_detail', {
             layout: 'product',
             user: req.user,
+            totalWatchList: totalWatchList,
             seller: seller,
             pro: pro[0],
             img: img,

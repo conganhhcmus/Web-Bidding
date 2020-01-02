@@ -36,4 +36,10 @@ module.exports = {
         const affectedRows = await db.deleteFL(tbName,userid,proid);
         return affectedRows;
     },
+
+    countProductByUserID: async userid => {
+        const sql = `SELECT COUNT(*) as total FROM ${tbName} WHERE USER_ID = ${userid}`;
+        const rows = await db.load(sql);
+        return parseInt(rows[0].total);
+    }
 };

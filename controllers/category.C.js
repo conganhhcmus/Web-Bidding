@@ -62,9 +62,15 @@ router.get('/:id', async (req, res, next) => {
             parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
         }
 
+        let totalWatchList = 0;
+        if(typeof req.user !== "undefined"){
+            totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
+        }
+
         res.render('home/category', {
-            layout: 'home',
+            layout: 'product',
             user: req.user,
+            totalWatchList: totalWatchList,
             cats: cats,
             cat: cat.CAT_NAME,
             ps: ps,

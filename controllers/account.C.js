@@ -29,6 +29,7 @@ router.post('/login', function (req, res, next) {
     })(req, res, next);
 });
 
+
 router.get('/login', async (req, res) => {
     res.render('login', {
         layout: 'login',
@@ -251,7 +252,7 @@ router.post('/:id/watch_list', async (req, res, next) => {
             return next(createError(403));
         let page = 1;
         const acc = await accountM.getByID(id);
-        // get element
+        // get element  
         const proID = parseInt(req.body.proID);
         const element = {
             TIME: utils.getTimeNow(),
@@ -311,15 +312,15 @@ router.post('/:id/watch_list', async (req, res, next) => {
             ps[i].imgSrc = (await imageM.allByProID(ps[i].ID))[0];
         }
 
-
-        // // get all parent
-        // const parentCat = await categoryM.allParentCats();
-        // for (var i = 0; i < parseInt(parentCat.length); i++) {
-        //     parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
-        // }
+        let totalWatchList = 0;
+        if(typeof req.user !== "undefined"){
+            totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
+        }
+      
         res.render('account/watch_list', {
             layout: 'account',
             user: req.user,
+            totalWatchList: totalWatchList,
             user_id: id,
             title: 'Sản phẩm yêu thích của ' + acc.FULL_NAME,
             cats: cats,
@@ -335,6 +336,10 @@ router.post('/:id/watch_list', async (req, res, next) => {
 
 router.get('/:id/watch_list', async (req, res, next) => {
     try {
+        if(typeof req.user === "undefined" || req.params.id === "0"){
+            res.redirect("account/login");
+            return;
+        }
         const id = parseInt(req.params.id);
         const acc = await accountM.getByID(id);
         const page = parseInt(req.query.page) || 1;
@@ -383,10 +388,15 @@ router.get('/:id/watch_list', async (req, res, next) => {
             ps[i].imgSrc = (await imageM.allByProID(ps[i].ID))[0];
         }
 
+        let totalWatchList = 0;
+        if(typeof req.user !== "undefined"){
+            totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
+        }
 
         res.render('account/watch_list', {
             layout: 'account',
             user: req.user,
+            totalWatchList: totalWatchList,
             user_id: id,
             title: 'Sản phẩm yêu thích của ' + acc.FULL_NAME,
             cats: cats,
