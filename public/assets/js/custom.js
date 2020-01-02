@@ -23,46 +23,34 @@ function verifyCaptcha() {
 }
 
 
-// change wish icon when click on
-$('#likebutton').on('click', function() {
-    alert("click");
-    $("i", this).toggleClass("fa fa-heart fa fa-heart-o");
- });
+// // change wish icon when click on
+// $('#likebutton').on('click', function () {
+//     alert("click");
+//     $("i", this).toggleClass("fa fa-heart fa fa-heart-o");
+// });
 
 
- $(document).ready(function () {
-    $('input[type=radio][name=typeDG]').change(function () {
-        if ($("input[name='typeDG']:checked").val() === '1') {
-            $("#inputMoney").val($("#giahethong").val());
-            $("#inputMoney").prop('disabled', true);
-        }
-        if ($("input[name='typeDG']:checked").val() === '2') {
-            $("#inputMoney").prop('disabled', false);
-            $("#inputMoney").val("");
-        }
-    });
+$(document).ready(function () {
 });
 
-function checkGia(){
-    const gia_nguoi_dung =  parseInt($("#inputMoney").val());
+function checkGia() {
+    if ($("#inputMoney").val().length == 0 || isNaN($("#inputMoney").val())) {
+        alert("Giá nhập phải là số nguyên!");
+        return false;
+    }
+    const gia_nguoi_dung = parseInt($("#inputMoney").val());
     const gia_he_thong = parseInt($("#giahethong").val());
     const gia_hien_tai = parseInt($("#current_price").val());
     const bidding = parseInt($("#bidding_increment").val());
-
-    if(gia_nguoi_dung < gia_hien_tai){
+    if (gia_nguoi_dung < gia_hien_tai) {
         alert("Giá nhập phải lớn hơn giá hiện tại!");
         return false;
     }
 
     let temp = gia_nguoi_dung - gia_hien_tai;
-    let temp1 = temp%bidding;
-    if(temp1 !== 0){
+    let temp1 = temp % bidding;
+    if (temp1 !== 0) {
         alert("Giá tiền nhập = Giá hiện tại + n * bước giá\n Vui lòng nhập lại!");
         return false;
     }
-    else{
-        alert("dung roi");
-    }
 }
-
- 

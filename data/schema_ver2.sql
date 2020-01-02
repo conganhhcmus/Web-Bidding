@@ -66,6 +66,8 @@ create table PRODUCT
    BIDDING_INCREMENT    bigint(20) not null  comment '',
    EXTENSION_FLAG       tinyint(1) not null default 0  comment '',
    TIME					datetime not null,
+   AUTO_FLAG            tinyint(1) not null default 0 comment '',
+   RATING_COUNT         int(11) unsigned not null default 0 comment '',
    primary key (ID)
 )
 ENGINE = InnoDB
@@ -175,7 +177,7 @@ INSERT INTO category VALUES(6, 5, 'Tủ lạnh');
 INSERT INTO category VALUES(7, 1, 'Phụ kiện');
 INSERT INTO category VALUES(8, 1, 'Tablet');
 
-insert into user values(1, 'admin', '$2b$10$znBCq/j4NYU6wKCr5YR8Re5zFtq9Lv9VWWT1p1ZW4lzF9BlYGVDIi', 'Admin', 'admin@domain.com', '1999-01-01', 2, '2019-12-24 00:00:00');
+insert into user values(1, 'admin', '$2y$10$bxz.oLs2C7FGb9U7hylgeOzOgq3Sh4DDjAKYl6XEpxmYdmAj2tsyW', 'Admin', 'admin@domain.com', '1999-01-01', 2, '2019-12-24 00:00:00');
 
 COMMIT;
 
@@ -217,7 +219,7 @@ CONCAT('Bộ xử lý\r\n',
 '\r\n',
 'Kích thước & trọng lượng\r\n',
 '\r\n',
-'Trọng lượng	1.25 kg\r\n'), null, 0, 27990000, 50000, 0, '2019-12-24 00:01:00');
+'Trọng lượng	1.25 kg\r\n'), null, 0, 27990000, 50000, 0, '2019-12-24 00:01:00' ,0 ,0);
 
 
 
@@ -266,7 +268,7 @@ CONCAT('Bộ xử lý\r\n',
 'Kích thước & trọng lượng\r\n',
 'Kích thước	Dài 362 mm - Rộng 251.4 mm - Dày 19.9mm\r\n',
 'Trọng lượng	1.73 kg\r\n',
-'Chất liệu	Vỏ nhựa\r\n'), null, 0, 10490000, 50000, 0, '2019-12-24 00:02:00');
+'Chất liệu	Vỏ nhựa\r\n'), null, 0, 10490000, 50000, 0, '2019-12-24 00:02:00' ,0 ,0);
 
 
 
@@ -315,7 +317,7 @@ CONCAT('Bộ xử lý\r\n',
 'Kích thước & trọng lượng\r\n',
 'Kích thước	Dài 359 mm - Rộng 243 mm - Dày 16.9 mm\r\n',
 'Trọng lượng	1.7 kg\r\n',
-'Chất liệu	Vỏ kim loại\r\n'), null, 0, 11490000, 50000, 0, '2019-12-24 00:03:00');
+'Chất liệu	Vỏ kim loại\r\n'), null, 0, 11490000, 50000, 0, '2019-12-24 00:03:00' ,0 ,0);
 
 
 
@@ -362,7 +364,7 @@ CONCAT('Bộ xử lý\r\n',
 'Kích thước & trọng lượng\r\n',
 'Kích thước	Dài 328 mm - Rộng 227.7 mm - Dày 18.3 mm\r\n',
 'Trọng lượng	1.49 kg\r\n',
-'Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại\r\n'), null, 0, 19490000, 50000, 0, '2019-12-24 00:04:00');
+'Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại\r\n'), null, 0, 19490000, 50000, 0, '2019-12-24 00:04:00' ,0 ,0);
 
 
 
@@ -412,7 +414,7 @@ CONCAT('Bộ xử lý\r\n',
 'Kích thước & trọng lượng\r\n',
 'Kích thước	Dài 359 mm - Rộng 254 mm - Dày 21.7 mm\r\n',
 'Trọng lượng	1.86 kg\r\n',
-'Chất liệu	Vỏ kim loại\r\n'), null, 0, 25490000, 50000, 0, '2019-12-24 00:05:00');
+'Chất liệu	Vỏ kim loại\r\n'), null, 0, 25490000, 50000, 0, '2019-12-24 00:05:00' ,0 ,0);
 
 
 
@@ -483,7 +485,7 @@ INSERT INTO product VALUES (6, 2, 1, null, 'Oppo A5 2020 64GB', 4290000, '2019-1
 'Xem phim	MP4, AVI, WMV, H.264(MPEG4-AVC)\r\n',
 'Nghe nhạc	AMR, MP3, WAV, eAAC+\r\n',
 'Thông tin khác\r\n',
-'\r\n'), null, 0, 4290000, 50000, 0, '2019-12-24 00:06:00');
+'\r\n'), null, 0, 4290000, 50000, 0, '2019-12-24 00:06:00' ,0 ,0);
 
 
 
@@ -543,7 +545,7 @@ CONCAT('Màn hình\r\n',
 'Xem phim	H.264(MPEG4-AVC)\r\n',
 'Nghe nhạc	Lossless, MP3, AAC, FLAC\r\n',
 'Thông tin khác\r\n',
-'\r\n'), 22000000, 1, 21990000, 100000, 0, '2019-12-24 00:07:00');
+'\r\n'), 22000000, 1, 21990000, 100000, 0, '2019-12-24 00:07:00' ,0 ,0);
 
 
 
@@ -612,7 +614,7 @@ CONCAT('Màn hình\r\n',
 'Xem phim	H.265, 3GP, MP4, AVI, WMV, H.264(MPEG4-AVC), DivX, WMV9, Xvid\r\n',
 'Nghe nhạc	Lossless, Midi, MP3, WAV, WMA, AAC++, eAAC+, OGG, AC3, FLAC\r\n',
 'Thông tin khác\r\n',
-'\r\n'), null, 0, 22990000, 100000, 0, '2019-12-24 00:08:00');
+'\r\n'), null, 0, 22990000, 100000, 0, '2019-12-24 00:08:00' ,0 ,0);
 
 
 
@@ -667,7 +669,7 @@ CONCAT('Màn hình\r\n',
 'Radio	Có\r\n',
 'Xem phim	3GP, AVI, H.264(MPEG4-AVC), DivX\r\n',
 'Nghe nhạc	MP3, WAV, AAC, OGG, FLAC\r\n',
-'Thông tin khác\r\n'), 17000000, 1, 15990000, 50000, 0, '2019-12-24 00:09:00');
+'Thông tin khác\r\n'), 17000000, 1, 15990000, 50000, 0, '2019-12-24 00:09:00' ,0 ,0);
 
 
 
@@ -730,7 +732,7 @@ CONCAT('Màn hình\r\n',
 'Xem phim	3GP, MP4, AVI, WMV, DivX, Xvid\r\n',
 'Nghe nhạc	Midi, MP3, WAV, WMA, AAC, OGG, FLAC\r\n',
 'Thông tin khác\r\n',
-'\r\n'), null, 0, 14490000, 50000, 0, '2019-12-24 00:10:00');
+'\r\n'), null, 0, 14490000, 50000, 0, '2019-12-24 00:10:00' ,0 ,0);
 
 
 
@@ -769,7 +771,7 @@ CONCAT('Màn hình\r\n',
 'Chất liệu khung viền	Thép không gỉ\r\n',
 'Ngôn ngữ	Tiếng Anh, Tiếng Việt\r\n',
 'Kích thước	Đang cập nhật\r\n',
-'Trọng lượng	41 gram\r\n'), null, 0, 4490000, 50000, 0, '2019-12-24 00:11:00');
+'Trọng lượng	41 gram\r\n'), null, 0, 4490000, 50000, 0, '2019-12-24 00:11:00' ,0 ,0);
 
 
 
@@ -807,7 +809,7 @@ CONCAT('Màn hình\r\n',
 'Chất liệu khung viền	Nhựa\r\n',
 'Ngôn ngữ	Tiếng Anh, Ứng dụng tiếng Anh, Ứng dụng tiếng Việt\r\n',
 'Kích thước	Dài 3.2 cm - Rộng 3.1 cm - Dày 1.1 cm\r\n',
-'Trọng lượng	32g\r\n'), null, 0, 1400000, 50000, 0, '2019-12-24 00:12:00');
+'Trọng lượng	32g\r\n'), null, 0, 1400000, 50000, 0, '2019-12-24 00:12:00' ,0 ,0);
 
 
 
@@ -845,7 +847,7 @@ CONCAT('Màn hình\r\n',
 'Chất liệu khung viền	Nhôm\r\n',
 'Ngôn ngữ	Tiếng Anh, Tiếng Việt\r\n',
 'Kích thước	Dài 39.5 mm - Rộng 39.5 mm -Dày 10.5 mm\r\n',
-'Trọng lượng	25 g\r\n'), null, 0, 4490000, 50000, 0, '2019-12-24 00:13:00');
+'Trọng lượng	25 g\r\n'), null, 0, 4490000, 50000, 0, '2019-12-24 00:13:00' ,0 ,0);
 
 
 
@@ -883,7 +885,7 @@ CONCAT('Màn hình\r\n',
 'Chất liệu khung viền	Nhôm\r\n',
 'Ngôn ngữ	Tiếng Anh, Tiếng Việt\r\n',
 'Kích thước	Đường kính 44 mm - Dày 10.7 mm\r\n',
-'Trọng lượng	36.7 gram\r\n'), null, 0, 11990000, 50000, 0, '2019-12-24 00:14:00');
+'Trọng lượng	36.7 gram\r\n'), null, 0, 11990000, 50000, 0, '2019-12-24 00:14:00' ,0 ,0);
 
 
 
@@ -924,7 +926,7 @@ CONCAT('Màn hình\r\n',
 'Thông tin khác\r\n',
 'Ngôn ngữ	Tiếng Anh, Ứng dụng tiếng Anh\r\n',
 'Kích thước	45.6 mm - 18.8 mm - 12.5 mm\r\n',
-'Trọng lượng	70 g\r\n'), 1000000, 1, 290000, 20000, 1, '2019-12-24 00:15:00');
+'Trọng lượng	70 g\r\n'), 1000000, 1, 290000, 20000, 1, '2019-12-24 00:15:00' ,0 ,0);
 
 
 COMMIT;
@@ -1015,46 +1017,46 @@ INSERT INTO product VALUES (16, 6, 1, null, 'Samsung Inverter 236 lít', 6290000
 Thiết kế sang trọng với sắc nâu thời thượng.
 Cấp đông mềm Optimal Fresh Zone -1 độ C bảo quản thực phẩm trong ngày không cần rã đông.
 Ngăn rau quả cân bằng độ ẩm Big Box giúp rau củ luôn tươi ngon, mọng nước.
-Công nghệ Digital Inverter hiện đại không gây tiếng ồn, tiết kiệm điện năng.', null, 0, 6290000, 100000, 1, '2019-12-24 12:0:00');
+Công nghệ Digital Inverter hiện đại không gây tiếng ồn, tiết kiệm điện năng.', null, 0, 6290000, 100000, 1, '2019-12-24 12:0:00' , 0, 0);
 INSERT INTO product VALUES (17, 6, 1, null, 'Panasonic Inverter 188 lít', 6190000, '2019-12-24 12:00:00', '2020-01-7 2:30:00', 'Đặc điểm nổi bật
 Công nghệ làm lạnh Panorama độc quyền Panasonic giúp thực phẩm luôn tươi ngon.
 Công nghệ kháng khuẩn khử mùi bằng tinh thể bạc tiêu diệt vi khuẩn và mùi hôi khó chịu.
 Tủ lạnh tiết kiệm điện năng hiệu quả với công nghệ Inverter kết hợp cảm biến Econavi.
-Hộc rau quả cung cấp độ ẩm cho rau quả tươi lâu trong thời gian dài.', null, 0, 6190000, 100000, 1, '2019-12-24 12:1:00');
+Hộc rau quả cung cấp độ ẩm cho rau quả tươi lâu trong thời gian dài.', null, 0, 6190000, 100000, 1, '2019-12-24 12:1:00' , 0, 0);
 INSERT INTO product VALUES (18, 6, 1, null, 'Samsung Inverter 319 lít', 12090000, '2019-12-24 12:00:00', '2020-01-2 22:50:00', 'Đặc điểm nổi bật
 Thiết kế sang trọng, hiện đại với màu nâu thời thượng.
 Hệ thống hai dàn lạnh riêng biệt chống lẫn mùi giữa 2 ngăn, duy trì độ ẩm cho thực phẩm.
 Tính năng lấy nước ngoài tiện lợi.
 Công nghệ Digital Inverter tiết kiệm điện năng, vận hành êm ái.
 Hoạt động hiệu quả với 5 chế độ chuyển đổi theo nhu cầu.
-Ngăn rau củ Big Box giữ ẩm tối ưu.', null, 0, 12090000, 100000, 1, '2019-12-24 12:2:00');
+Ngăn rau củ Big Box giữ ẩm tối ưu.', null, 0, 12090000, 100000, 1, '2019-12-24 12:2:00' , 0, 0);
 INSERT INTO product VALUES (19, 6, 1, null, 'Samsung Inverter 307 lít', 12490000, '2019-12-24 12:00:00', '2020-01-10 11:17:00', 'Đặc điểm nổi bật
 Thiết kế ngăn đá dưới hiện đại, tiện lợi. Màu sắc đen nhám sang trọng, đẳng cấp.
 Ngăn đông mềm Optimal Fresh Zone - 1 độ C giữ trọn vị tươi ngon sử dụng trong ngày.
 Lấy nước bên ngoài tiện lợi, nhanh chóng, tiết kiệm điện.
 Công nghệ biến tần kỹ thuật số Digital Inverter tiết kiệm điện hiệu quả.
 Công nghệ làm lạnh dạng vòm làm lạnh đồng đều đến từng ngóc ngách.
-Bộ lọc than hoạt tính lọc sạch không khí, loại bỏ mọi mùi hôi khó chịu bên trong tủ lạnh.', null, 0, 12490000, 100000, 1, '2019-12-24 12:3:00');
+Bộ lọc than hoạt tính lọc sạch không khí, loại bỏ mọi mùi hôi khó chịu bên trong tủ lạnh.', null, 0, 12490000, 100000, 1, '2019-12-24 12:3:00' , 0, 0);
 INSERT INTO product VALUES (20, 6, 1, null, 'Panasonic Inverter 366 lít', 16090000, '2019-12-24 12:00:00', '2020-01-14 4:37:00', 'Bảo vệ sức khoẻ gia đình và tiện lợi với khay lấy nước ngoài kháng khuẩn.
 Hạn chế lẫn mùi thịt, cá với ngăn đựng thịt kháng khuẩn Ag Meat Case.
 Giữ được rau củ có kích thuớc lớn tươi ngon với ngăn Wide Fresh Case.
 Kháng khuẩn, khử mùi với tinh thể bạc Ag+.
 Tiết kiêm điện, vận hành êm ái, bền bỉ nhờ công nghệ Inverter và cảm biến Econavi.
 Mang hơi lạnh lan tỏa đều đến từng ngóc ngách trong tủ qua công nghệ làm lạnh Panorama.
-Làm lạnh nhanh trái cây, nước uống nhờ ngăn Extra Cool Zone.', null, 0, 16090000, 100000, 1, '2019-12-24 12:4:00');
+Làm lạnh nhanh trái cây, nước uống nhờ ngăn Extra Cool Zone.', null, 0, 16090000, 100000, 1, '2019-12-24 12:4:00' , 0, 0);
 INSERT INTO product VALUES (21, 6, 1, null, 'Samsung Inverter 380 lít', 16790000, '2019-12-24 12:00:00', '2020-01-4 22:45:00', 'Đặc điểm nổi bật
 Thiết kế sang trọng, hiện đại với màu đen inox huyền bí.
 Công nghệ Digital Inverter tiết kiệm điện năng, vận hành êm ái.
 Hệ thống hai dàn lạnh riêng biệt chống lẫn mùi giữa 2 ngăn, duy trì độ ẩm cho thực phẩm.
 Hoạt động hiệu quả với 5 chế độ chuyển đổi theo nhu cầu.
 Tính năng lấy nước ngoài và làm đá tự động tiện lợi.
-Ngăn rau củ Big Box giữ ẩm tối ưu.', null, 0, 16790000, 100000, 1, '2019-12-24 12:5:00');
+Ngăn rau củ Big Box giữ ẩm tối ưu.', null, 0, 16790000, 100000, 1, '2019-12-24 12:5:00' , 0, 0);
 INSERT INTO product VALUES (22, 6, 1, null, 'Toshiba Inverter 194 lít', 6390000, '2019-12-24 12:00:00', '2020-01-13 20:55:00', 'Công nghệ Inverter tiết kiệm điện, máy chạy êm ái.
 Ngăn Ultra Cooling Zone -1 độ trữ thịt cá ăn trong ngày không rã đông.
 Không khí trong tủ luôn sạch, thông thoáng với hệ thống khử mùi và diệt khuẩn Ag+ Bio.
 Duy trì độ lạnh ổn định giúp thực phẩm tươi ngon với hệ thống làm lạnh tuần hoàn.
 Ngăn rau củ lớn giúp chứa nhiều loại rau củ, giữ ẩm tốt.
-Khay đá xoắn tiện dụng, dễ dàng sử dụng.', null, 0, 6390000, 100000, 1, '2019-12-24 12:6:00');
+Khay đá xoắn tiện dụng, dễ dàng sử dụng.', null, 0, 6390000, 100000, 1, '2019-12-24 12:6:00' , 0, 0);
 
 INSERT INTO product VALUES (24, 3, 1, null, 'Macbook Air 2019 i5 1.6GHz/8GB/128GB', 27990000, '2019-12-24 12:00:00', '2020-01-11 16:0:00', 'Bộ xử lý
 
@@ -1108,7 +1110,7 @@ Kích thước & trọng lượng
 
 Kích thước	Dài 304.1 mm - Rộng 212.1 mm - Dày 4.1 đến 15.6 mm
 Trọng lượng	1.25 kg
-Chất liệu	Vỏ kim loại nguyên khối', null, 0, 27990000, 100000, 1, '2019-12-24 12:8:00');
+Chất liệu	Vỏ kim loại nguyên khối', null, 0, 27990000, 100000, 1, '2019-12-24 12:8:00' , 0, 0);
 INSERT INTO product VALUES (25, 3, 1, null, 'Lenovo Ideapad S145 15IWL i3 8145U/4GB/256GB/2GB', 10490000, '2019-12-24 12:00:00', '2020-01-10 8:54:00', 'Bộ xử lý
 
 Công nghệ CPU	Intel Core i3 Coffee Lake
@@ -1161,7 +1163,7 @@ Kích thước & trọng lượng
 
 Kích thước	Dài 362 mm - Rộng 251.4 mm - Dày 19.9mm
 Trọng lượng	1.73 kg
-Chất liệu	Vỏ nhựa', null, 0, 10490000, 100000, 1, '2019-12-24 12:9:00');
+Chất liệu	Vỏ nhựa', null, 0, 10490000, 100000, 1, '2019-12-24 12:9:00' , 0, 0);
 INSERT INTO product VALUES (26, 3, 1, null, 'Acer Swift 3 SF315 52 38YQ i3 8130U/4GB/1TB/Win10', 11490000, '2019-12-24 12:00:00', '2020-01-1 10:34:00', 'Bộ xử lý
 
 Công nghệ CPU	Intel Core i3 Coffee Lake
@@ -1214,7 +1216,7 @@ Kích thước & trọng lượng
 
 Kích thước	Dài 359 mm - Rộng 243 mm - Dày 16.9 mm
 Trọng lượng	1.7 kg
-Chất liệu	Vỏ kim loại', null, 0, 11490000, 100000, 1, '2019-12-24 12:10:00');
+Chất liệu	Vỏ kim loại', null, 0, 11490000, 100000, 1, '2019-12-24 12:10:00' , 0, 0);
 INSERT INTO product VALUES (27, 3, 1, null, 'Dell Vostro 5490 i5 10210U/8GB/256GB/Win10', 19490000, '2019-12-24 12:00:00', '2020-01-13 13:41:00', 'Bộ xử lý
 
 Công nghệ CPU	Intel Core i5 Comet Lake
@@ -1267,7 +1269,7 @@ Kích thước & trọng lượng
 
 Kích thước	Dài 328 mm - Rộng 227.7 mm - Dày 18.3 mm
 Trọng lượng	1.49 kg
-Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại', null, 0, 19490000, 100000, 1, '2019-12-24 12:11:00');
+Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại', null, 0, 19490000, 100000, 1, '2019-12-24 12:11:00' , 0, 0);
 INSERT INTO product VALUES (28, 3, 1, null, 'MSI Gaming 15 GF63 9SC i7 9750H/8GB/256GB/4GB GTX1650/Win10', 25490000, '2019-12-24 12:00:00', '2020-01-1 6:55:00', 'Bộ xử lý
 
 Công nghệ CPU	Intel Core i7 Coffee Lake
@@ -1320,7 +1322,7 @@ Kích thước & trọng lượng
 
 Kích thước	Dài 359 mm - Rộng 254 mm - Dày 21.7 mm
 Trọng lượng	1.86 kg
-Chất liệu	Vỏ kim loại', null, 0, 25490000, 100000, 1, '2019-12-24 12:12:00');
+Chất liệu	Vỏ kim loại', null, 0, 25490000, 100000, 1, '2019-12-24 12:12:00' , 0, 0);
 INSERT INTO product VALUES (29, 3, 1, null, 'Laptop Acer Aspire A515 54G 51J3 i5 10210U/8GB/1TB SSD/2GB MX250/Win10 (NX.HN5SV.003)', 17990000, '2019-12-24 12:00:00', '2020-01-14 22:55:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i5 Comet Lake
 Loại CPU	10210U
@@ -1358,7 +1360,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 363.4 mm - Rộng 250.5 mm - Dày 17.95 mm
 Trọng lượng	1.7 kg
-Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại', null, 0, 17990000, 100000, 1, '2019-12-24 12:13:00');
+Chất liệu	Vỏ nhựa - nắp lưng bằng kim loại', null, 0, 17990000, 100000, 1, '2019-12-24 12:13:00' , 0, 0);
 INSERT INTO product VALUES (30, 3, 1, null, 'Laptop Lenovo ideapad C340 14IWL i3 8145U/8GB/256GB/Touch/Win10 (81N4003SVN)', 15190000, '2019-12-24 12:00:00', '2020-01-8 8:18:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i3 Coffee Lake
 Loại CPU	8145U
@@ -1396,7 +1398,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 328 mm - Rộng 229 mm - Dày 17.9 mm
 Trọng lượng	1.6 kg
-Chất liệu	Vỏ nhựa', null, 0, 15190000, 100000, 1, '2019-12-24 12:14:00');
+Chất liệu	Vỏ nhựa', null, 0, 15190000, 100000, 1, '2019-12-24 12:14:00' , 0, 0);
 INSERT INTO product VALUES (31, 3, 1, null, 'Laptop Acer Swift 3 SF314 56 38UE i3 8145U/4GB/256GB/Win10 (NX.H4CSV.005)', 14490000, '2019-12-24 12:00:00', '2020-01-12 0:41:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i3 Coffee Lake
 Loại CPU	8145U
@@ -1434,7 +1436,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 323 mm - Rộng 228 mm - Dày 17.95 mm
 Trọng lượng	1.45 kg
-Chất liệu	Vỏ kim loại', null, 0, 14490000, 100000, 1, '2019-12-24 12:15:00');
+Chất liệu	Vỏ kim loại', null, 0, 14490000, 100000, 1, '2019-12-24 12:15:00' , 0, 0);
 INSERT INTO product VALUES (32, 3, 1, null, 'Laptop Acer Aspire A515 53 5112 i5 8265U/4GB+16GB/1TB/Win10 (NX.H6DSV.002)', 14990000, '2019-12-24 12:00:00', '2020-01-7 2:36:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i5 Coffee Lake
 Loại CPU	8265U
@@ -1472,7 +1474,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 363.4 mm - Rộng 257.5 mm - Dày 22.45 mm
 Trọng lượng	2.0 kg
-Chất liệu	Vỏ nhựa', null, 0, 14990000, 100000, 1, '2019-12-24 12:16:00');
+Chất liệu	Vỏ nhựa', null, 0, 14990000, 100000, 1, '2019-12-24 12:16:00' , 0, 0);
 INSERT INTO product VALUES (33, 3, 1, null, 'Laptop Dell Inspiron 5584 i5 8265U/8GB/1TB/Win10 (CXGR01)', 18990000, '2019-12-24 12:00:00', '2020-01-15 19:49:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i5 Coffee Lake
 Loại CPU	8265U
@@ -1510,7 +1512,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 365 mm - Rộng 250 mm - Dày 22 mm
 Trọng lượng	2.025 kg
-Chất liệu	Vỏ nhựa', null, 0, 18990000, 100000, 1, '2019-12-24 12:17:00');
+Chất liệu	Vỏ nhựa', null, 0, 18990000, 100000, 1, '2019-12-24 12:17:00' , 0, 0);
 INSERT INTO product VALUES (34, 3, 1, null, 'Laptop Dell Inspiron 3579 i5 8300H/8GB/1TB+128GB/4GB GTX1050Ti/Win10 (G5I5423W)', 24890000, '2019-12-24 12:00:00', '2020-01-9 11:20:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i5 Coffee Lake
 Loại CPU	8300H
@@ -1548,7 +1550,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 380 mm - Rộng 258 mm - Dày 23 mm
 Trọng lượng	2.35 kg
-Chất liệu	Vỏ nhựa', null, 0, 24890000, 100000, 1, '2019-12-24 12:18:00');
+Chất liệu	Vỏ nhựa', null, 0, 24890000, 100000, 1, '2019-12-24 12:18:00' , 0, 0);
 
 INSERT INTO product VALUES (36, 3, 1, null, 'Laptop Acer Aspire A315 42 R8PX R3 3200U/8GB/256GB/Win10 (NX.HF9SV.00A)', 10990000, '2019-12-24 12:00:00', '2020-01-13 23:6:00', 'Bộ xử lý
 Công nghệ CPU	AMD Ryzen 3
@@ -1587,7 +1589,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 363.4 mm - Rộng 247.5 mm - Dày 19.9 mm
 Trọng lượng	1.7kg
-Chất liệu	Vỏ nhựa', null, 0, 10990000, 100000, 1, '2019-12-24 12:20:00');
+Chất liệu	Vỏ nhựa', null, 0, 10990000, 100000, 1, '2019-12-24 12:20:00' , 0, 0);
 INSERT INTO product VALUES (37, 3, 1, null, 'Laptop Dell Inspiron 3593 i7 1065G7/8GB/512GB/2GB MX230/Win10 (70197459)', 22390000, '2019-12-24 12:00:00', '2020-01-5 14:15:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i7 Ice Lake
 Loại CPU	1065G7
@@ -1625,7 +1627,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 380 mm - Rộng 258 mm - Dày 22.7 mm
 Trọng lượng	2.28 kg
-Chất liệu	Vỏ nhựa', null, 0, 22390000, 100000, 1, '2019-12-24 12:21:00');
+Chất liệu	Vỏ nhựa', null, 0, 22390000, 100000, 1, '2019-12-24 12:21:00' , 0, 0);
 INSERT INTO product VALUES (38, 3, 1, null, 'Laptop Acer Spin 3 SP314 51 39WK i3 7130U/4GB/500GB/Win10 (NX.GUWSV.001)', 11990000, '2019-12-24 12:00:00', '2020-01-8 11:11:00', 'Bộ xử lý
 Công nghệ CPU	Intel Core i3 Kabylake
 Loại CPU	7130U
@@ -1663,7 +1665,7 @@ Hệ điều hành	Windows 10 Home SL
 Kích thước & trọng lượng
 Kích thước	Dài 335 mm - Rộng 230 mm - Dày 20.8 mm
 Trọng lượng	1.7 kg
-Chất liệu	Vỏ nhựa', null, 0, 11990000, 100000, 1, '2019-12-24 12:22:00');
+Chất liệu	Vỏ nhựa', null, 0, 11990000, 100000, 1, '2019-12-24 12:22:00' , 0, 0);
 
 INSERT INTO product VALUES (40, 2, 1, null, 'oppo-a5-2010', 4290000, '2019-12-24 12:00:00', '2020-01-1 9:9:00', 'Màn hình
 
@@ -1745,7 +1747,7 @@ Nghe nhạc	AMR, MP3, WAV, eAAC+
 
 Thông tin khác
 
-Thời điểm ra mắt	10/2019', null, 0, 4290000, 100000, 1, '2019-12-24 12:24:00');
+Thời điểm ra mắt	10/2019', null, 0, 4290000, 100000, 1, '2019-12-24 12:24:00' , 0, 0);
 INSERT INTO product VALUES (41, 2, 1, null, 'iPhone 11', 23990000, '2019-12-24 12:00:00', '2020-01-14 10:32:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD
@@ -1818,7 +1820,7 @@ Nghe nhạc	Lossless, MP3, AAC, FLAC
 
 Thông tin khác
 
-Thời điểm ra mắt	11/2019', null, 0, 23990000, 100000, 1, '2019-12-24 12:25:00');
+Thời điểm ra mắt	11/2019', null, 0, 23990000, 100000, 1, '2019-12-24 12:25:00' , 0, 0);
 INSERT INTO product VALUES (42, 2, 1, null, 'Samsung Galaxy S10+', 28990000, '2019-12-24 12:00:00', '2020-01-13 23:55:00', 'Màn hình
 
 Công nghệ màn hình	Dynamic AMOLED
@@ -1899,7 +1901,7 @@ Nghe nhạc	Lossless, Midi, MP3, WAV, WMA, AAC++, eAAC+, OGG, AC3, FLAC
 
 Thông tin khác
 
-Thời điểm ra mắt	02/2019', null, 0, 28990000, 100000, 1, '2019-12-24 12:26:00');
+Thời điểm ra mắt	02/2019', null, 0, 28990000, 100000, 1, '2019-12-24 12:26:00' , 0, 0);
 INSERT INTO product VALUES (43, 2, 1, null, 'BlackBerry Key 2', 15990000, '2019-12-24 12:00:00', '2020-01-1 6:8:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD
@@ -1965,7 +1967,7 @@ Nghe nhạc	MP3, WAV, AAC, OGG, FLAC
 
 Thông tin khác
 
-Thời điểm ra mắt	11/2018', null, 0, 15990000, 100000, 1, '2019-12-24 12:27:00');
+Thời điểm ra mắt	11/2018', null, 0, 15990000, 100000, 1, '2019-12-24 12:27:00' , 0, 0);
 INSERT INTO product VALUES (44, 2, 1, null, 'Xiaomi Mi Note 10 Pro', 14490000, '2019-12-24 12:00:00', '2020-01-13 21:43:00', 'Màn hình
 
 Công nghệ màn hình	AMOLED
@@ -2037,7 +2039,7 @@ Nghe nhạc	Midi, MP3, WAV, WMA, AAC, OGG, FLAC
 
 Thông tin khác
 
-Thời điểm ra mắt	Đang cập nhật', null, 0, 14490000, 100000, 1, '2019-12-24 12:28:00');
+Thời điểm ra mắt	Đang cập nhật', null, 0, 14490000, 100000, 1, '2019-12-24 12:28:00' , 0, 0);
 INSERT INTO product VALUES (45, 2, 1, null, 'Điện thoại Xiaomi Redmi 7 (3GB/32GB)', 3290000, '2019-12-24 12:00:00', '2020-01-9 12:24:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	HD+ (720 x 1520 Pixels)
@@ -2090,7 +2092,7 @@ Radio	Có
 Xem phim	H.265, MP4, H.264(MPEG4-AVC)
 Nghe nhạc	MP3, WAV, AAC, FLAC
 Thông tin khác
-Thời điểm ra mắt	03/2019', null, 0, 3290000, 100000, 1, '2019-12-24 12:29:00');
+Thời điểm ra mắt	03/2019', null, 0, 3290000, 100000, 1, '2019-12-24 12:29:00' , 0, 0);
 INSERT INTO product VALUES (46, 2, 1, null, 'Điện thoại Samsung Galaxy A10s', 3390000, '2019-12-24 12:00:00', '2020-01-13 7:38:00', 'Màn hình
 Công nghệ màn hình	IPS TFT
 Độ phân giải	HD+ (720 x 1520 Pixels)
@@ -2147,7 +2149,7 @@ Radio	Có
 Xem phim	3GP, MP4, AVI, WMV
 Nghe nhạc	AMR, Midi, MP3, WAV, WMA, AAC, OGG, FLAC
 Thông tin khác
-Thời điểm ra mắt	08/2019', null, 0, 3390000, 100000, 1, '2019-12-24 12:30:00');
+Thời điểm ra mắt	08/2019', null, 0, 3390000, 100000, 1, '2019-12-24 12:30:00' , 0, 0);
 INSERT INTO product VALUES (47, 2, 1, null, 'Điện thoại Vsmart Live (6GB/64GB)', 3790000, '2019-12-24 12:00:00', '2020-01-1 0:12:00', 'Màn hình
 Công nghệ màn hình	AMOLED
 Độ phân giải	Full HD+ (1080 x 2232 Pixels)
@@ -2203,7 +2205,7 @@ Radio	Có
 Xem phim	WMV, H.263, H.264(MPEG4-AVC)
 Nghe nhạc	MP3, WAV, WMA
 Thông tin khác
-Thời điểm ra mắt	08/2019', null, 0, 3790000, 100000, 1, '2019-12-24 12:31:00');
+Thời điểm ra mắt	08/2019', null, 0, 3790000, 100000, 1, '2019-12-24 12:31:00' , 0, 0);
 INSERT INTO product VALUES (48, 2, 1, null, 'Điện thoại Nokia 6.1 Plus', 3590000, '2019-12-24 12:00:00', '2020-01-14 10:47:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	Full HD+ (1080 x 2280 Pixels)
@@ -2256,7 +2258,7 @@ Radio	Có
 Xem phim	3GP, MP4, WMV
 Nghe nhạc	AMR, MP3, WAV, AAC, OGG, FLAC
 Thông tin khác
-Thời điểm ra mắt	08/2018', null, 0, 3590000, 100000, 1, '2019-12-24 12:32:00');
+Thời điểm ra mắt	08/2018', null, 0, 3590000, 100000, 1, '2019-12-24 12:32:00' , 0, 0);
 INSERT INTO product VALUES (49, 2, 1, null, 'Điện thoại Realme 3 32GB', 2990000, '2019-12-24 12:00:00', '2020-01-8 5:4:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	HD+ (720 x 1520 Pixels)
@@ -2309,7 +2311,7 @@ Radio	Có
 Xem phim	3GP, MP4, AVI, WMV
 Nghe nhạc	AMR, MP3, WAV, WMA, AAC, OGG, FLAC
 Thông tin khác
-Thời điểm ra mắt	04/2019', null, 0, 2990000, 100000, 1, '2019-12-24 12:33:00');
+Thời điểm ra mắt	04/2019', null, 0, 2990000, 100000, 1, '2019-12-24 12:33:00' , 0, 0);
 INSERT INTO product VALUES (50, 2, 1, null, 'Điện thoại Xiaomi Redmi Note 8 (3GB/32GB)', 3990000, '2019-12-24 12:00:00', '2020-01-7 18:18:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	Full HD+ (1080 x 2340 Pixels)
@@ -2371,7 +2373,7 @@ Radio	Có
 Xem phim	MP4, AVI
 Nghe nhạc	MP3, WAV
 Thông tin khác
-Thời điểm ra mắt	10/2019', null, 0, 3990000, 100000, 1, '2019-12-24 12:34:00');
+Thời điểm ra mắt	10/2019', null, 0, 3990000, 100000, 1, '2019-12-24 12:34:00' , 0, 0);
 INSERT INTO product VALUES (51, 2, 1, null, 'Điện thoại Realme 5 (3GB/64GB)', 3690000, '2019-12-24 12:00:00', '2020-01-1 7:50:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	HD+ (720 x 1600 Pixels)
@@ -2430,7 +2432,7 @@ Radio	Có
 Xem phim	3GP, MP4, AVI, WMV
 Nghe nhạc	AMR, MP3, WAV, WMA, AAC, OGG, FLAC
 Thông tin khác
-Thời điểm ra mắt	10/2019', null, 0, 3690000, 100000, 1, '2019-12-24 12:35:00');
+Thời điểm ra mắt	10/2019', null, 0, 3690000, 100000, 1, '2019-12-24 12:35:00' , 0, 0);
 INSERT INTO product VALUES (52, 2, 1, null, 'Điện thoại Samsung Galaxy A20', 4190000, '2019-12-24 12:00:00', '2020-01-4 6:41:00', 'Màn hình
 Công nghệ màn hình	Super AMOLED
 Độ phân giải	HD+ (720 x 1560 Pixels)
@@ -2487,7 +2489,7 @@ Radio	Có
 Xem phim	3GP, MP4, AVI, WMV
 Nghe nhạc	AMR, Midi, MP3, WAV, WMA, AAC, OGG, FLAC
 Thông tin khác
-Thời điểm ra mắt	04/2019', null, 0, 4190000, 100000, 1, '2019-12-24 12:36:00');
+Thời điểm ra mắt	04/2019', null, 0, 4190000, 100000, 1, '2019-12-24 12:36:00' , 0, 0);
 INSERT INTO product VALUES (53, 2, 1, null, 'Điện thoại Vivo Y17', 4390000, '2019-12-24 12:00:00', '2020-01-7 3:8:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	HD+ (720 x 1544 Pixels)
@@ -2552,7 +2554,7 @@ Radio	Có
 Xem phim	3GP, MP4, AVI
 Nghe nhạc	Midi, AMR, MP3, WAV, FLAC
 Thông tin khác
-Thời điểm ra mắt	08/2019', null, 0, 4390000, 100000, 1, '2019-12-24 12:37:00');
+Thời điểm ra mắt	08/2019', null, 0, 4390000, 100000, 1, '2019-12-24 12:37:00' , 0, 0);
 INSERT INTO product VALUES (54, 2, 1, null, 'Điện thoại Samsung Galaxy A20s 32GB', 4390000, '2019-12-24 12:00:00', '2020-01-9 3:24:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	HD+ (720 x 1520 Pixels)
@@ -2607,7 +2609,7 @@ Radio	Không
 Xem phim	3GP, MP4, AVI, WMV
 Nghe nhạc	Midi, AMR, MP3, WAV, WMA, AAC, OGG, FLAC
 Thông tin khác
-Thời điểm ra mắt	10/2019', null, 0, 4390000, 100000, 1, '2019-12-24 12:38:00');
+Thời điểm ra mắt	10/2019', null, 0, 4390000, 100000, 1, '2019-12-24 12:38:00' , 0, 0);
 INSERT INTO product VALUES (55, 2, 1, null, 'Điện thoại Mobell Nova P3', 1650000, '2019-12-24 12:00:00', '2020-01-12 3:52:00', 'Màn hình
 Công nghệ màn hình	IPS LCD
 Độ phân giải	HD (720 x 1280 Pixels)
@@ -2658,12 +2660,12 @@ Radio	Có
 Xem phim	3GP, MP4, AVI, WMV
 Nghe nhạc	MP3, WAV, WMA
 Thông tin khác
-Thời điểm ra mắt	11/2016', null, 0, 1650000, 100000, 1, '2019-12-24 12:39:00');
+Thời điểm ra mắt	11/2016', null, 0, 1650000, 100000, 1, '2019-12-24 12:39:00' , 0, 0);
 INSERT INTO product VALUES (56, 7, 1, null, 'Polymer 10.000mAh Xiaomi Mi 18W ', 499000, '2019-12-24 12:00:00', '2020-01-4 10:15:00', 'Thiết kế mỏng nhẹ, màu sắc trang nhã.
 Tích hợp 2 cổng sạc vào (input) Micro USB và Type C giúp việc chọn cáp sạc dễ dàng hơn.
 Trang bị 2 cổng sạc ra (output) USB giúp bạn sạc được đồng thời 2 thiết bị.
 Sử dụng lõi pin Polymer an toàn bảo vệ khỏi quá dòng, quá tải cho các thiết bị.
-Tương thích với nhiều loại điện thoại và máy tính bảng.', null, 0, 499000, 100000, 1, '2019-12-24 12:40:00');
+Tương thích với nhiều loại điện thoại và máy tính bảng.', null, 0, 499000, 100000, 1, '2019-12-24 12:40:00' , 0, 0);
 INSERT INTO product VALUES (57, 7, 1, null, 'Energizer 10.000 mAh QE10000GY', 675000, '2019-12-24 12:00:00', '2020-01-4 3:2:00', 'Thiết kế vỏ ngoài bằng kim loại giúp bảo vệ pin tránh va chạm mạnh trong quá trình sử dụng.
 Chuẩn Qi tương thích với tất cả các thiết bị hỗ trợ sạc không dây.
 Hỗ trợ cổng Type-C output với khả năng sạc nhanh lên đến 5V - 3A.
@@ -2671,7 +2673,7 @@ Hỗ trợ cổng Type-C output với khả năng sạc nhanh lên đến 5V - 3
 Đèn Led thông báo tình trạng pin, mỗi vạch tương ứng với 25% mức pin.
 Tích hợp công nghệ Auto Voltage Sensing - tự động cảm biến điện áp giúp tương thích với mọi thiết bị di động.
 Chứng nhận về an toàn & chống cháy nổ: CE, FCC, ETL, CB, EAC, RoHS, Reach, ERP6, DOE6.
-Energizer - Thương hiệu nổi tiếng thế giới đến từ Mỹ.', null, 0, 675000, 100000, 1, '2019-12-24 12:41:00');
+Energizer - Thương hiệu nổi tiếng thế giới đến từ Mỹ.', null, 0, 675000, 100000, 1, '2019-12-24 12:41:00' , 0, 0);
 INSERT INTO product VALUES (58, 7, 1, null, 'Bluetooth True Wireless Huawei FreeBuds 3', 4290000, '2019-12-24 12:00:00', '2020-01-8 12:36:00', 'Thiết kế nhỏ gọn, êm ái, đảm bảo thoải mái khi sử dụng.
 Chất lượng âm thanh sống động, bass mạnh mẽ, chân thực.
 Sử dụng chip Kirin A1 với tốc độ truyền tín hiệu lớn.
@@ -2680,7 +2682,7 @@ Tích hợp tính năng khử tiếng ồn chủ động ANC cho âm thanh thu�
 Cảm biến giọng nói qua khung xương tai.
 Thời lượng pin cao với 4 tiếng sử dụng cùng 20 tiếng qua hộp sạc.
 Dễ dàng điều kiển nhạc, nhận cuộc gọi, bật tắt ANC bằng cách gõ vào tai nghe.
-Sau lần kết nối đầu tiên, các lần sau tai nghe sẽ tự động kết nối với điện thoại nhanh chóng.', null, 0, 4290000, 100000, 1, '2019-12-24 12:42:00');
+Sau lần kết nối đầu tiên, các lần sau tai nghe sẽ tự động kết nối với điện thoại nhanh chóng.', null, 0, 4290000, 100000, 1, '2019-12-24 12:42:00' , 0, 0);
 INSERT INTO product VALUES (59, 7, 1, null, 'Bluetooth Sony WH-XB700', 2990000, '2019-12-24 12:00:00', '2020-01-7 12:1:00', 'Thiết kế năng động, tin xảo đầy cuốn hút.
 Đệm tai êm mang lại cảm giác thoải mái khi đeo trong thời gian dài.
 Kết nối không dây với công nghệ kết nối 1 chạm NFC và Bluetooth.
@@ -2689,7 +2691,7 @@ Tương thích hầu hết điện thoại, máy tính bảng, laptop hiện nay
 Một lần sạc khoảng 4 giờ sẽ cho bạn sử dụng suốt ngày dài với thời gian phát nhạc xấp xỉ 30 giờ.
 Nếu tai nghe sắp hết pin, chỉ cần sạc nhanh trong 10 phút là bạn có thể nghe nhạc thêm tới 90 phút.
 Trang bị micro hỗ trợ đàm thoại và nhiều nút tính năng tiện lợi, dễ thao tác.
-Thương hiệu Sony đến từ Nhật Bản, nổi tiếng toàn cầu trong lĩnh vực công nghệ, điện tử.', null, 0, 2990000, 100000, 1, '2019-12-24 12:43:00');
+Thương hiệu Sony đến từ Nhật Bản, nổi tiếng toàn cầu trong lĩnh vực công nghệ, điện tử.', null, 0, 2990000, 100000, 1, '2019-12-24 12:43:00' , 0, 0);
 INSERT INTO product VALUES (60, 7, 1, null, 'Thẻ nhớ MicroSD 8 GB Class 4', 120000, '2019-12-24 12:00:00', '2020-01-8 15:37:00', 'Thương hiệu uy tín trong lĩnh vực sản xuất thẻ nhớ: SanDisk, Transcend, Apacer.
 Giao ngẫu nhiên 1 trong 3 thương hiệu.
 Tốc độ đọc: 30 MB/s.
@@ -2697,7 +2699,7 @@ Tốc độ ghi: 4 MB/s.
 Tương thích tốt với điện thoại, máy tính bảng.
 Tương thích với thiết bị có thể nhận thẻ nhớ tối đa 8 GB.
 Chép một video 1 GB vào thẻ nhớ trong gần 4 phút rưỡi.
-Lưu trữ hơn 2.600 bài hát (1 bài ~3 MB).', null, 0, 120000, 100000, 1, '2019-12-24 12:44:00');
+Lưu trữ hơn 2.600 bài hát (1 bài ~3 MB).', null, 0, 120000, 100000, 1, '2019-12-24 12:44:00' , 0, 0);
 INSERT INTO product VALUES (61, 7, 1, null, 'Thẻ nhớ MicroSD 128 GB Class 10', 872000, '2019-12-24 12:00:00', '2020-01-4 5:42:00', 'Thương hiệu uy tín trong lĩnh vực sản xuất thẻ nhớ: SanDisk, Transcend.
 Giao ngẫu nhiên 1 trong 2 thương hiệu.
 Kèm theo Adapter chuyển đổi từ Micro SD (TF) sang SD.
@@ -2706,14 +2708,14 @@ Tốc độ ghi: 10 MB/s.
 Tương thích tốt với điện thoại, máy tính bảng.
 Tương thích với thiết bị có thể nhận thẻ nhớ tối đa 128 GB.
 Chép một video dung lượng 1 GB vào thẻ chưa tới 2 phút.
-Lưu trữ hơn 40.000 bài hát (1 bài ~3 MB).', null, 0, 872000, 100000, 1, '2019-12-24 12:45:00');
+Lưu trữ hơn 40.000 bài hát (1 bài ~3 MB).', null, 0, 872000, 100000, 1, '2019-12-24 12:45:00' , 0, 0);
 INSERT INTO product VALUES (62, 7, 1, null, 'Ổ cứng HDD 1TB WD My Passport Xanh Dương', 1590000, '2019-12-24 12:00:00', '2020-01-15 23:48:00', 'Thiết kế cứng cáp, chắc tay với những đường vân lượn sóng.
  Ổ được định dạng sẵn để sử dụng ngay với hệ điều hành Windows 10, Windows 8, Windows 7.
-Tương thích laptop, máy tính cổng USB 3.0 hoặc USB 2.0.', null, 0, 1590000, 100000, 1, '2019-12-24 12:46:00');
+Tương thích laptop, máy tính cổng USB 3.0 hoặc USB 2.0.', null, 0, 1590000, 100000, 1, '2019-12-24 12:46:00' , 0, 0);
 INSERT INTO product VALUES (63, 7, 1, null, 'Ổ cứng HDD 1TB Seagate Backup Plus Slim Đen', 1690000, '2019-12-24 12:00:00', '2020-01-10 14:20:00', 'Thiết kế nhỏ gọn, mỏng nhẹ với chất liệu nhựa và nhôm.
 Tiện ích đi kèm: Seagate Dashboard, trình điều khiển NTFS cho Mac.
 Tương thích với hệ điều hành Window 7 trở lên, MacOS X 10.7 trở lên.
-Tương thích laptop, máy tính cổng USB 3.0 hoặc USB 2.0.', null, 0, 1690000, 100000, 1, '2019-12-24 12:47:00');
+Tương thích laptop, máy tính cổng USB 3.0 hoặc USB 2.0.', null, 0, 1690000, 100000, 1, '2019-12-24 12:47:00' , 0, 0);
 INSERT INTO product VALUES (64, 8, 1, null, 'iPad 10.2 inch Wifi 128GB', 11990000, '2019-12-24 12:00:00', '2020-01-7 4:57:00', 'Màn hình
 
 Công nghệ màn hình	LED backlit LCD
@@ -2770,7 +2772,7 @@ Trọng lượng	483 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Ion
-Mức năng lượng tiêu thụ	32.4 Wh (Khoảng 8600 mAh)', null, 0, 11990000, 100000, 1, '2019-12-24 12:48:00');
+Mức năng lượng tiêu thụ	32.4 Wh (Khoảng 8600 mAh)', null, 0, 11990000, 100000, 1, '2019-12-24 12:48:00' , 0, 0);
 INSERT INTO product VALUES (65, 8, 1, null, 'Samsung Galaxy Tab A8 8" T295', 3690000, '2019-12-24 12:00:00', '2020-01-2 4:42:00', 'Màn hình
 
 Công nghệ màn hình	TFT LCD
@@ -2827,7 +2829,7 @@ Trọng lượng	347 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Ion
-Dung lượng pin	5100 mAh', null, 0, 3690000, 100000, 1, '2019-12-24 12:49:00');
+Dung lượng pin	5100 mAh', null, 0, 3690000, 100000, 1, '2019-12-24 12:49:00' , 0, 0);
 INSERT INTO product VALUES (66, 8, 1, null, 'Lenovo Tab E10 TB-X104L', 3590000, '2019-12-24 12:00:00', '2020-01-12 13:5:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD
@@ -2884,7 +2886,7 @@ Trọng lượng	522 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Ion
-Dung lượng pin	4850 mAh', null, 0, 3590000, 100000, 1, '2019-12-24 12:50:00');
+Dung lượng pin	4850 mAh', null, 0, 3590000, 100000, 1, '2019-12-24 12:50:00' , 0, 0);
 INSERT INTO product VALUES (67, 8, 1, null, 'Mobell Tab 8 Pro', 2250000, '2019-12-24 12:00:00', '2020-01-12 10:49:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD
@@ -2941,7 +2943,7 @@ Trọng lượng	236 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Ion
-Dung lượng pin	5200 mAh', null, 0, 2250000, 100000, 1, '2019-12-24 12:51:00');
+Dung lượng pin	5200 mAh', null, 0, 2250000, 100000, 1, '2019-12-24 12:51:00' , 0, 0);
 INSERT INTO product VALUES (68, 8, 1, null, 'Lenovo Tab E7 TB-7104I', 1890000, '2019-12-24 12:00:00', '2020-01-5 19:28:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD
@@ -2996,7 +2998,7 @@ Trọng lượng	271.7 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Ion
-Dung lượng pin	2750mAh', null, 0, 1890000, 100000, 1, '2019-12-24 12:52:00');
+Dung lượng pin	2750mAh', null, 0, 1890000, 100000, 1, '2019-12-24 12:52:00' , 0, 0);
 INSERT INTO product VALUES (69, 8, 1, null, 'iPad Mini 7.9 inch Wifi 64GB', 10990000, '2019-12-24 12:00:00', '2020-01-11 0:32:00', 'Màn hình
 
 Công nghệ màn hình	LED backlit LCD
@@ -3053,7 +3055,7 @@ Trọng lượng	300 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Polymer
-Mức năng lượng tiêu thụ	19.1 Wh (Khoảng 5124 mAh)', null, 0, 10990000, 100000, 1, '2019-12-24 12:53:00');
+Mức năng lượng tiêu thụ	19.1 Wh (Khoảng 5124 mAh)', null, 0, 10990000, 100000, 1, '2019-12-24 12:53:00' , 0, 0);
 INSERT INTO product VALUES (70, 8, 1, null, 'Huawei Mediapad T5', 5390000, '2019-12-24 12:00:00', '2020-01-2 2:6:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD Full HD
@@ -3110,7 +3112,7 @@ Trọng lượng	470 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Polymer
-Dung lượng pin	5100 mAh', null, 0, 5390000, 100000, 1, '2019-12-24 12:54:00');
+Dung lượng pin	5100 mAh', null, 0, 5390000, 100000, 1, '2019-12-24 12:54:00' , 0, 0);
 INSERT INTO product VALUES (71, 8, 1, null, 'Samsung Galaxy Tab with S Pen', 6990000, '2019-12-24 12:00:00', '2020-01-11 14:17:00', 'Màn hình
 
 Công nghệ màn hình	WUXGA TFT
@@ -3167,7 +3169,7 @@ Trọng lượng	380 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Ion
-Dung lượng pin	4200 mAh', null, 0, 6990000, 100000, 1, '2019-12-24 12:55:00');
+Dung lượng pin	4200 mAh', null, 0, 6990000, 100000, 1, '2019-12-24 12:55:00' , 0, 0);
 INSERT INTO product VALUES (72, 8, 1, null, 'Huawei MediaPad M5 Lite', 7990000, '2019-12-24 12:00:00', '2020-01-6 18:28:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD Full HD
@@ -3224,7 +3226,7 @@ Trọng lượng	475 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Polymer
-Dung lượng pin	7500 mAh', null, 0, 7990000, 100000, 1, '2019-12-24 12:56:00');
+Dung lượng pin	7500 mAh', null, 0, 7990000, 100000, 1, '2019-12-24 12:56:00' , 0, 0);
 INSERT INTO product VALUES (73, 8, 1, null, 'iPad Air 10.5 inch Wifi 64GB 2019', 13990000, '2019-12-24 12:00:00', '2020-01-10 4:37:00', 'Màn hình
 
 Công nghệ màn hình	LED backlit LCD
@@ -3281,7 +3283,7 @@ Trọng lượng	456 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Polymer
-Mức năng lượng tiêu thụ', null, 0, 13990000, 100000, 1, '2019-12-24 12:57:00');
+Mức năng lượng tiêu thụ', null, 0, 13990000, 100000, 1, '2019-12-24 12:57:00' , 0, 0);
 INSERT INTO product VALUES (74, 8, 1, null, 'Masstel Tab 10 Pro', 2590000, '2019-12-24 12:00:00', '2020-01-5 1:33:00', 'Màn hình
 
 Công nghệ màn hình	IPS LCD
@@ -3338,7 +3340,7 @@ Trọng lượng	550.5 g
 Pin & Dung lượng
 
 Loại pin	Lithium - Polymer
-Dung lượng pin	5000 mAh', null, 0, 2590000, 100000, 1, '2019-12-24 12:58:00');
+Dung lượng pin	5000 mAh', null, 0, 2590000, 100000, 1, '2019-12-24 12:58:00' , 0, 0);
 INSERT INTO product VALUES (75, 8, 1, null, 'Samsung Galaxy Tab S6', 18490000, '2019-12-24 12:00:00', '2020-01-2 1:52:00', 'Màn hình
 
 Công nghệ màn hình	Super AMOLED
@@ -3395,7 +3397,7 @@ Trọng lượng	420 g
 Pin & Dung lượng
 
 Loại pin	Li-Po
-Dung lượng pin	7040 mAh', null, 0, 18490000, 100000, 1, '2019-12-24 12:59:00');
+Dung lượng pin	7040 mAh', null, 0, 18490000, 100000, 1, '2019-12-24 12:59:00' , 0, 0);
 INSERT INTO product VALUES (76, 4, 1, null, 'Huawei Watch GT2 46mm', 6990000, '2019-12-24 12:00:00', '2020-01-13 2:22:00', 'Màn hình
 
 Công nghệ màn hình	AMOLED
@@ -3438,7 +3440,7 @@ Thông tin khác
 Chất liệu khung viền	Thép không gỉ
 Ngôn ngữ	Tiếng Anh, Tiếng Việt
 Kích thước	Đang cập nhật
-Trọng lượng	41 gram', null, 0, 6990000, 100000, 1, '2019-12-24 13:00:00');
+Trọng lượng	41 gram', null, 0, 6990000, 100000, 1, '2019-12-24 13:00:00' , 0, 0);
 INSERT INTO product VALUES (77, 4, 1, null, 'Xiaomi Amazfit Bip', 1400000, '2019-12-24 12:00:00', '2020-01-1 13:41:00', 'Màn hình
 
 Công nghệ màn hình	Transflective LCD
@@ -3481,7 +3483,7 @@ Thông tin khác
 Chất liệu khung viền	Nhựa
 Ngôn ngữ	Tiếng Anh, Ứng dụng tiếng Anh, Ứng dụng tiếng Việt
 Kích thước	Dài 3.2 cm - Rộng 3.1 cm - Dày 1.1 cm
-Trọng lượng	32g', null, 0, 1400000, 100000, 1, '2019-12-24 13:01:00');
+Trọng lượng	32g', null, 0, 1400000, 100000, 1, '2019-12-24 13:01:00' , 0, 0);
 INSERT INTO product VALUES (78, 4, 1, null, 'Samsung Galaxy Watch Active R500', 4490000, '2019-12-24 12:00:00', '2020-01-11 0:5:00', 'Màn hình
 
 Công nghệ màn hình	AMOLED
@@ -3524,7 +3526,7 @@ Thông tin khác
 Chất liệu khung viền	Nhôm
 Ngôn ngữ	Tiếng Anh, Tiếng Việt
 Kích thước	Dài 39.5 mm - Rộng 39.5 mm -Dày 10.5 mm
-Trọng lượng	25 g', null, 0, 4490000, 100000, 1, '2019-12-24 13:02:00');
+Trọng lượng	25 g', null, 0, 4490000, 100000, 1, '2019-12-24 13:02:00' , 0, 0);
 INSERT INTO product VALUES (79, 4, 1, null, 'Apple Watch S5 44mm', 11990000, '2019-12-24 12:00:00', '2020-01-9 6:42:00', 'Màn hình
 
 Công nghệ màn hình	OLED
@@ -3567,7 +3569,7 @@ Thông tin khác
 Chất liệu khung viền	Nhôm
 Ngôn ngữ	Tiếng Anh, Tiếng Việt
 Kích thước	Đường kính 44 mm - Dày 10.7 mm
-Trọng lượng	36.7 gram', null, 0, 11990000, 100000, 1, '2019-12-24 13:03:00');
+Trọng lượng	36.7 gram', null, 0, 11990000, 100000, 1, '2019-12-24 13:03:00' , 0, 0);
 INSERT INTO product VALUES (80, 4, 1, null, 'Zeblaze Plug C', 290000, '2019-12-24 12:00:00', '2020-01-8 9:24:00', 'Màn hình
 
 Công nghệ màn hình	Transflective LCD
@@ -3609,7 +3611,7 @@ Thông tin khác
 
 Ngôn ngữ	Tiếng Anh, Ứng dụng tiếng Anh
 Kích thước	45.6 mm - 18.8 mm - 12.5 mm
-Trọng lượng	70 g', null, 0, 290000, 100000, 1, '2019-12-24 13:04:00');
+Trọng lượng	70 g', null, 0, 290000, 100000, 1, '2019-12-24 13:04:00' , 0, 0);
 
 
 COMMIT;

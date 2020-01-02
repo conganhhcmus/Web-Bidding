@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 <!-- BREADCRUMB -->
 <div id="breadcrumb">
 	<div class="container">
@@ -46,44 +37,103 @@
 				</div>
 				<div class="col-md-6">
 					<div class="product-body">
-						{{!-- <div class="product-label">
-							<span>New</span>
-							<span class="sale">-20%</span>
-						</div> --}}
-						{{!-- <h2 class="product-name">{{pro.NAME}}</h2>
-						<h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
+						<div class="product-label">
+							<span>{{pro.remain}}</span>
+							{{#if pro.isNew}}<span>Mới</span>{{/if}}
+							{{#if pro.AUTO_FLAG}}
+							<span class="sale">Tự động</span>
+							{{/if}}							
+						
+						</div>
+						<h2 class="product-name">{{pro.PRODUCT_NAME}}</h2>
+						{{!-- <h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
 						<div>
 							<a href="#">3 Review(s) / Add Review</a>
 						</div> --}}
-						<p><strong>Giá khởi điểm: </strong> {{pro.START_PRICE_VND}} VNĐ</p>
+						<!--LIKE-->
+						<p><strong>Bắt đầu: </strong> {{pro.start_format}}
+						<p><strong>Kết thúc: </strong> {{pro.end_format}}
+						{{#if user}}
+						<form action="/account/{{user.ID}}/watch_list" method="POST">
+							<input type="hidden" name="proID" value="{{pro.ID}}">
+							<button type="submit" id="likebutton" class="main-btn icon-btn"><i class="fa fa-heart"
+									title="Thêm vào danh sách yêu thích"></i></button>
+						</form>
+						{{/if}}
+						<hr>
+						<h4>Giá hiện tại: {{pro.CURRENT_PRICE_VND}} VNĐ</h4>
+						{{#if pro.BUYNOW_FLAG}}<h3>Giá mua ngay: {{pro.BUYNOW_PRICE_VND}} VNĐ</h3>{{/if}}
 						<p><strong>Bước giá: </strong> {{pro.BIDDING_PRICE_VND}} VNĐ</p>
-						<p><strong>Giá hiện tại:</strong> {{pro.CURRENT_PRICE_VND}} VNĐ</p>
-						<p><strong>Giá mua ngay: </strong> {{pro.BUYNOW_PRICE_VND}} VNĐ</p>
+						<p><strong>Giá khởi điểm: </strong> {{pro.START_PRICE_VND}} VNĐ</p>
+						<p><strong>Người đăng: </strong> <a href="/account/{{seller.ID}}">{{seller.FULL_NAME}}</a></p>
+						<p><strong>Loại đấu giá: </strong> {{#if pro.AUTO_FLAG}}<b>Tự động</b>{{else}}Thông thường{{/if}}</p>
+						<p><strong>Ngày đăng: </strong> {{pro.post_format}}
+						<hr>
+						<!--BIDDING-->
+						<form action="" onsubmit="return checkGia();">
+							<div class="form-group">
+								<label for="inputMoney">
+									<h4>{{#if pro.AUTO_FLAG}}Giá tối đa{{else}}Giá đặt{{/if}}</h4>
+								</label>
+								<input type="text" class="form-control" name="inputMoney" id="inputMoney"
+									value="{{GiaHeThong}}">
+							</div>
+							<input type="hidden" value="{{GiaHeThong}}" name="giahethong" id="giahethong">
+							<input type="hidden" value="{{pro.CURRENT_PRICE}}" id="current_price">
+							<input type="hidden" value="{{pro.BIDDING_INCREMENT}}" id="bidding_increment">
+							<button class="btn btn-success" type="submit">Đấu giá</button>
+						</form>
 					</div>
+
 				</div>
-				<div class="col-md-12">
-					<div class="product-tab">
-						<ul class="tab-nav">
-							<li class="active"><a data-toggle="tab" href="#tab1">Đấu giá sản phẩm</a></li>
-							<li><a data-toggle="tab" href="#tab2">Mô tả sản phẩm</a></li>
-						</ul>
-						<div class="tab-content">
-							<div id="tab1" class="tab-pane fade in active">
-								nothing
+			</div>
+			<div class="col-md-12">
+				<div class="product-tab">
+					<ul class="tab-nav">
+						<li class="active"><a data-toggle="tab" href="#tab1">Đấu giá sản phẩm</a></li>
+						<li><a data-toggle="tab" href="#tab2">Mô tả sản phẩm</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab1" class="tab-pane fade in active">
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-6">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Thời điểm</th>
+												<th>Người mua</th>
+												<th>Giá (VND)</th>
+											</tr>
+										</thead>
+										{{#each ph}}
+										<tbody>
+											<tr>
+												<td>{{time}}</td>
+												<td>{{bidderName}}</td>
+												<td>{{price}}</td>
+											</tr>
+										</tbody>
+										{{/each}}
+
+									</table>
+								</div>
 							</div>
-							<div id="tab2" class="tab-pane fade in">
-								{{{pro.DESCRIPTION}}}
-							</div>
+
+						</div>
+						<div id="tab2" class="tab-pane fade in">
+							{{{pro.DESCRIPTION}}}
 						</div>
 					</div>
 				</div>
-
 			</div>
-			<!-- /Product Details -->
+
 		</div>
-		<!-- /row -->
+		<!-- /Product Details -->
 	</div>
-	<!-- /container -->
+	<!-- /row -->
+</div>
+<!-- /container -->
 </div>
 <!-- /section -->
 
@@ -99,8 +149,8 @@
 					<h2 class="title">Đề xuất cho bạn</h2>
 				</div>
 			</div>
-			</div>
-			<div class="row">
+		</div>
+		<div class="row">
 			<!-- section title -->
 			{{#each ps}}
 			<!-- Product Single -->
@@ -108,9 +158,7 @@
 				<div class="product product-single">
 					<div class="product-thumb">
 						<ul class="product-countdown">
-							<li><span>{{HOURS}} H</span></li>
-							<li><span>{{MINUTES}} M</span></li>
-							<li><span>{{SECONDS}} S</span></li>
+							<li><span>{{remain}}</span></li>
 						</ul>
 						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i>
 								Xem chi tiết</button></a>
@@ -119,13 +167,14 @@
 					<div class="product-body">
 						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
 						<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
+						{{#if ../user}}
 						<div class="product-btns">
-							<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}" method="GET">
+							<form action="/account/{{../user.ID}}/watch_list" method="POST">
 								<input type="hidden" name="proID" value="{{ID}}">
-								<input type="hidden" name="userID" value="{{../user.ID}}">
 								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 							</form>
 						</div>
+						{{/if}}
 					</div>
 				</div>
 			</div>

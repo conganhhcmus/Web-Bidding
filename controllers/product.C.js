@@ -5,11 +5,13 @@ const router = express.Router();
 const categoryM = require('../models/category.M');
 const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
+const auctionHistoryM = require('../models/auctionHistory.M');
 const imageM = require('../models/image.M');
 const path = require("path");
 const multiUpload = require('../middleware/upload');
 const utils = require('../utils/utilsFunction');
 const sort = require('../utils/sort');
+
 
 // Tạo sản phẩm mới - GET
 router.get('/create', (req, res, next) => {
@@ -215,30 +217,29 @@ router.get('/:id', async (req, res, next) => {
         const img = await imageM.allByProID(pro[0].ID);
         const ps = await productM.allByCatID(pro[0].CAT_ID);
         if(ps.length > 4) ps.splice(4);
-        ps.forEach(async p => {
+
+        await ps.forEach(async p => {
             p.imgSrc = (await imageM.allByProID(p.ID))[0];
             p.CURRENT_PRICE_VND = await utils.getMoneyVNDString(p.CURRENT_PRICE);
             var temp1 = new Date(p.END_TIME);
-            var today = new Date();
-            var a = parseInt(temp1.getTime() / 1000 - today.getTime() / 1000);
-            p.HOURS = parseInt(a / 3600);
-            p.MINUTES = parseInt((a - p.HOURS * 3600) / 60);
-            p.SECONDS = a - p.HOURS * 3600 - p.MINUTES * 60;
+            var temp2 = utils.getRemainTime(temp1);
+            p.remain = temp2[0];
+            var temp1 = new Date(p.START_TIME);
+            var temp2 = utils.getRemainTime(temp1);
+            p.isNew = temp2[1] == 0 && temp2[2] == 0 && temp2[3] <= 30 && temp2[5] == 1;
         });
 
         // set date time
-        var today = new Date();
-        let temp = new Date(pro[0].START_TIME);
-        var start_date = temp.getFullYear() + "/" + (temp.getMonth() + 1) + "/" + temp.getDate();
-        pro[0].start_date = start_date.toString();
-
         var temp1 = new Date(pro[0].END_TIME);
-        var a = parseInt(temp1.getTime() / 1000 - today.getTime() / 1000);
-        pro[0].HOURS = parseInt(a / 3600);
-        pro[0].MINUTES = parseInt((a - pro[0].HOURS * 3600) / 60);
-        pro[0].SECONDS = a - pro[0].HOURS * 3600 - pro[0].MINUTES * 60;
-        pro[0].time_left = pro[0].HOURS + ':' + pro[0].MINUTES + ':' + pro[0].SECONDS;
-
+        var temp2 = utils.getRemainTime(temp1);
+        pro[0].remain = temp2[0];
+        var temp1 = new Date(pro[0].START_TIME);
+        var temp2 = utils.getRemainTime(temp1);
+        pro[0].isNew = temp2[1] == 0 && temp2[2] == 0 && temp2[3] <= 30 && temp2[5] == 1;
+        pro[0].start_format = utils.formatDateTime(new Date(pro[0].START_TIME));
+        pro[0].end_format = utils.formatDateTime(new Date(pro[0].END_TIME));
+        pro[0].post_format = utils.formatDateTime(new Date(pro[0].TIME));
+        
         // set vnd money
         pro[0].CURRENT_PRICE_VND = await utils.getMoneyVNDString(pro[0].CURRENT_PRICE);
         pro[0].BUYNOW_PRICE_VND = await utils.getMoneyVNDString(pro[0].BUYNOW_PRICE);
@@ -254,8 +255,25 @@ router.get('/:id', async (req, res, next) => {
         const SELLER_ID = pro[0].SELLER_ID;
         const seller = await accountM.getByID(SELLER_ID);
 
+        //history
+
+        const us = await auctionHistoryM.allByProductIDPaging(id);
+        pss = us.historys; // list history chi co iduser va id product va time
+        let ph = []; // chi tiet dau gia 
+        for (var i = 0; i < parseInt(pss.length); i++) {
+            let timeTmp = new Date(pss[i].TIME);
+            ph.push({
+                    time: `${timeTmp.getDate()}/${timeTmp.getMonth()+1}/${timeTmp.getFullYear()} ${timeTmp.getHours()}:${timeTmp.getMinutes()}`,
+                    bidderName: "****" + ((await accountM.getByID(pss[i].USER_ID)).FULL_NAME.split(" ")).pop(), 
+                    price: await utils.getMoneyVNDString(pss[i].PRICE)
+            });
+        }
+
+
         // tim gia he thong
         const GiaHeThong = pro[0].CURRENT_PRICE + pro[0].BIDDING_INCREMENT;
+
+        //
 
         res.render('product/product_detail', {
             layout: 'product',
@@ -267,6 +285,7 @@ router.get('/:id', async (req, res, next) => {
             GiaHeThong: GiaHeThong,
             disabled: "disabled",
             parentCat,
+            ph: ph,
         });
     } catch (err) {
         console.log(err);

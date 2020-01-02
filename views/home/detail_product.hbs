@@ -39,38 +39,69 @@
 
 				<div class="row">
 					{{!-- LIKE --}}
-					<form class="col-lg-1" action="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}" method="GET">
-						<input type="hidden" name="proID" value="{{ pro.[0].ID}}">
-						<input type="hidden" name="userID" value="{{user.ID}}">
-						<button type="submit" id="likebutton" class="main-btn icon-btn"><i
-								class="fa fa-heart"></i></button>
-					</form>
-					<div class="col-lg-1"></div>
-					{{!-- BID --}}
-					<form action=""  onsubmit="return checkGia();">
-						<div class="col-lg-4">
-							<div>
-								<input class="form-check-input" type="radio" name="typeDG" value="1" checked="true">
-								<label class="form-check-label">
-									Giá hệ thống
-								</label>
-							</div>
-							<div>
-								<input class="form-check-input" type="radio" name="typeDG" value="2">
-								<label class="form-check-label">
-									Giá người dùng
-								</label>
-							</div>
+					<div class="col-lg-1">
+						<form action="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}" method="GET">
+							<input type="hidden" name="proID" value="{{ pro.[0].ID}}">
+							<input type="hidden" name="userID" value="{{user.ID}}">
+							<button type="submit" id="likebutton" class="main-btn icon-btn"><i
+									class="fa fa-heart"></i></button>
+						</form>
+					</div>
 
+					<div class="col-lg-2">
+						<button type="button" class="btn btn-success" id="btnAuto" onclick="changeAuto()" name="1">Tự động</button>
+					</div>
+					{{!-- BID --}}
+					<div class="col-lg-8">
+						<div id="show1">
+							<form action="" onsubmit="return checkGia();">
+								<div class="col-lg-4">
+									<div>
+										<input class="form-check-input" type="radio" name="typeDG" value="1"
+											checked="true">
+										<label class="form-check-label">
+											Giá hệ thống
+										</label>
+									</div>
+									<div>
+										<input class="form-check-input" type="radio" name="typeDG" value="2">
+										<label class="form-check-label">
+											Giá người dùng
+										</label>
+									</div>
+
+								</div>
+								<div class="col-lg-4">
+									<input type="text" name="inputMoney" id="inputMoney" value="{{GiaHeThong}}"
+										{{disabled}}>
+									<input type="hidden" value="{{GiaHeThong}}" name="giahethong" id="giahethong">
+									<input type="hidden" value="{{pro.[0].CURRENT_PRICE}}" id="current_price">
+									<input type="hidden" value="{{pro.[0].BIDDING_INCREMENT}}" id="bidding_increment">
+									<button type="submit">OK</button>
+								</div>
+							</form>
 						</div>
-						<div class="col-lg-4">
-							<input type="text" name="inputMoney" id="inputMoney" value="{{GiaHeThong}}" {{disabled}}>
-							<input type="hidden" value="{{GiaHeThong}}" name="giahethong" id="giahethong">
-							<input type="hidden" value="{{pro.[0].CURRENT_PRICE}}" id="current_price">
-							<input type="hidden" value="{{pro.[0].BIDDING_INCREMENT}}" id="bidding_increment">
-							<button type="submit">OK</button>
+						<div id="show2" hidden=true>
+							<form>
+								<div class="form-group row">
+
+									<div class="col-sm-8">
+										<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Giá tối
+											đa</label>
+										<input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+											placeholder="0">
+									</div>
+									<div class="col-sm-4">
+										<button type="submit" class="btn btn-primary mb-2">Bắt đầu</button>
+									</div>
+
+								</div>
+							</form>
 						</div>
-					</form>
+					</div>
+
+
+
 				</div>
 			</div>
 
@@ -81,6 +112,37 @@
 </div>
 </div>
 
+{{!-- HISTORY --}}
+
+<div class="row row-underline">
+	<div class="col-md-1"></div>
+	<div class="col-md-6"> <span class=" deal-text">History</span> </div>
+</div>
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-6">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Thời điểm</th>
+					<th>Người mua</th>
+					<th>Giá (VND)</th>
+				</tr>
+			</thead>
+			{{#each ph}}
+			<tbody>
+				<tr>
+					<td>{{time}}</td>
+					<td>{{bidderName}}</td>
+					<td>{{price}}</td>
+				</tr>
+			</tbody>
+			{{/each}}
+
+		</table>
+	</div>
+</div>
 
 <div class="row row-underline">
 	<div class="col-md-1"></div>

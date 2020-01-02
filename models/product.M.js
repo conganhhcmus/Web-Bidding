@@ -1,10 +1,23 @@
 const db = require('../utils/db');
+const utils = require('../utils/utilsFunction');
 const tbName = 'PRODUCT';
 const pageSize = 8;
 
 module.exports = {
     all: async (offset, limit) => {
         const sql = `SELECT * FROM ${tbName} ${limit ? 'LIMIT ' + limit : ''} ${offset ? 'OFFSET ' + offset : ''}`;
+        const rows = await db.load(sql);
+        return rows;
+    },
+
+    top5Price: async () => {
+        const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY CURRENT_PRICE DESC LIMIT 5 `;
+        const rows = await db.load(sql);
+        return rows;
+    },
+
+    top5End: async () => {
+        const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY END_TIME ASC LIMIT 5 `;
         const rows = await db.load(sql);
         return rows;
     },

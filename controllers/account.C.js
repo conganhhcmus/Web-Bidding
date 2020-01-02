@@ -9,6 +9,7 @@ const passport = require('passport');
 const watchListM = require('../models/watchList.M');
 const utils = require('../utils/utilsFunction');
 const createError = require('http-errors');
+const favoriteM = require('../models/watchList.M');
 
 // Đăng nhập dùng passport
 router.post('/login', function (req, res, next) {
@@ -243,6 +244,94 @@ router.get('/:id/rating', async (req, res, next) => {
     }
 });
 
+router.post('/:id/watch_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        if (!req.user || req.user.ID !== id)
+            return next(createError(403));
+        let page = 1;
+        const acc = await accountM.getByID(id);
+        // get element
+        const proID = parseInt(req.body.proID);
+        const element = {
+            TIME: utils.getTimeNow(),
+            USER_ID: req.user.ID,
+            PRODUCT_ID: proID,
+        };
+
+        // check product is already exist ??
+        const check_wl = await favoriteM.getByUserAndProductID(req.user.ID, proID);
+        if (check_wl === null) {
+            const uId = await favoriteM.add(element);
+        }
+        else {
+            const affectRows = await favoriteM.delete(req.user.ID, proID);
+        }
+        // get - convert watch list to product
+        const rs = await favoriteM.allByUserIDPaging(id, page);
+        pss = rs.products; // cái này mới là danh sách favorite list
+        let ps = []; // lấy chi tiết sản phẩm
+        for (var i = 0; i < parseInt(pss.length); i++) {
+            ps[i] = (await productM.getByID(pss[i].PRODUCT_ID))[0];
+        }
+
+        // cái này dùng cho header thôi
+        const cats = await categoryM.all();
+
+        // set product
+        var today = new Date();
+        for (var i = 0; i < parseInt(ps.length); i++) {
+            ps[i].imgSrc = (await imageM.allByProID(ps[i].ID))[0];
+            var temp = new Date(ps[i].END_TIME);
+            var a = parseInt(temp.getTime() / 1000 - today.getTime() / 1000);
+            ps[i].HOURS = parseInt(a / 3600);
+            ps[i].MINUTES = parseInt((a - ps[i].HOURS * 3600) / 60);
+            ps[i].SECONDS = a - ps[i].HOURS * 3600 - ps[i].MINUTES * 60;
+
+            // set vnd money
+            ps[i].CURRENT_PRICE_VND = await utils.getMoneyVNDString(ps[i].CURRENT_PRICE);
+            ps[i].BUYNOW_PRICE_VND = await utils.getMoneyVNDString(ps[i].BUYNOW_PRICE);
+        }
+
+        // set page
+        const pages = [];
+        for (var i = 0; i < rs.pageTotal; i++) {
+            pages[i] = { value: i + 1, active: (i + 1) === page };
+        }
+        const navs = {};
+        if (page > 1) {
+            navs.prev = page - 1;
+        }
+        if (page < rs.pageTotal) {
+            navs.next = page + 1;
+        }
+
+        // set main image
+        for (var i = 0; i < parseInt(ps.length); i++) {
+            ps[i].imgSrc = (await imageM.allByProID(ps[i].ID))[0];
+        }
+
+
+        // // get all parent
+        // const parentCat = await categoryM.allParentCats();
+        // for (var i = 0; i < parseInt(parentCat.length); i++) {
+        //     parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+        // }
+        res.render('account/watch_list', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            title: 'Sản phẩm yêu thích của ' + acc.FULL_NAME,
+            cats: cats,
+            ps: ps,
+            pages: pages,
+            navs: navs,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
 
 router.get('/:id/watch_list', async (req, res, next) => {
     try {

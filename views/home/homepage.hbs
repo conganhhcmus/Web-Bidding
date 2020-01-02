@@ -73,28 +73,30 @@
 						<div class="product product-single">
 							<div class="product-thumb">
 								<ul class="product-countdown">
-									<li><span>{{HOURS}} H</span></li>
-									<li><span>{{MINUTES}} M</span></li>
-									<li><span>{{SECONDS}} S</span></li>
+									<li><span>{{remain}}</span></li>
 								</ul>
 								<a href="/product/{{ID}}"><button class="main-btn quick-view"><i
-											class="fa fa-search-plus"></i> Quick
-										view</button></a>
-								<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
+											class="fa fa-search-plus"></i> Xem chi tiết</button></a>
+								<img src="/images/product/{{imgSrc.HASH_NAME}}" alt="">
 							</div>
 							<div class="product-body">
-								<h3 class="product-price">{{CURRENT_PRICE_VND}} VND
+								<div class="product-label">
+									{{#if isNew}}<span>Mới</span>{{/if}}
+									{{#if AUTO_FLAG}}
+									<span class="sale">Tự động</span>
+									{{/if}}
+								</div>
+								<h3 class="product-price">{{CURRENT_PRICE_VND}} VNĐ
 								</h3>
 								<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
+								{{#if ../user}}
 								<div class="product-btns">
-									<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}"
-										method="GET">
+									<form action="/account/{{../user.ID}}/watch_list" method="POST">
 										<input type="hidden" name="proID" value="{{ID}}">
-										<input type="hidden" name="userID" value="{{../user.ID}}">
-										<button type="submit" class="main-btn icon-btn"><i
-												class="fa fa-heart"></i></button>
+										<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 									</form>
 								</div>
+								{{/if}}
 							</div>
 						</div>
 						<!-- /Product Single -->
@@ -130,28 +132,30 @@
 						<div class="product product-single">
 							<div class="product-thumb">
 								<ul class="product-countdown">
-									<li><span>{{HOURS}} H</span></li>
-									<li><span>{{MINUTES}} M</span></li>
-									<li><span>{{SECONDS}} S</span></li>
+									<li><span>{{remain}}</span></li>
 								</ul>
 								<a href="/product/{{ID}}"><button class="main-btn quick-view"><i
-											class="fa fa-search-plus"></i> Quick
-										view</button></a>
-								<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
+											class="fa fa-search-plus"></i> Xem chi tiết</button></a>
+								<img src="/images/product/{{imgSrc.HASH_NAME}}" alt="">
 							</div>
 							<div class="product-body">
-								<h3 class="product-price">{{CURRENT_PRICE_VND}} VND
+								<div class="product-label">
+									{{#if isNew}}<span>Mới</span>{{/if}}
+									{{#if AUTO_FLAG}}
+									<span class="sale">Tự động</span>
+									{{/if}}
+								</div>
+								<h3 class="product-price">{{CURRENT_PRICE_VND}} VNĐ
 								</h3>
 								<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
+								{{#if ../user}}
 								<div class="product-btns">
-									<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}"
-										method="GET">
+									<form action="/account/{{../user.ID}}/watch_list" method="POST">
 										<input type="hidden" name="proID" value="{{ID}}">
-										<input type="hidden" name="userID" value="{{../user.ID}}">
-										<button type="submit" class="main-btn icon-btn"><i
-												class="fa fa-heart"></i></button>
+										<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 									</form>
 								</div>
+								{{/if}}
 							</div>
 						</div>
 						<!-- /Product Single -->
@@ -189,25 +193,28 @@
 				<div class="product product-single">
 					<div class="product-thumb">
 						<ul class="product-countdown">
-							<li><span>{{HOURS}} H</span></li>
-							<li><span>{{MINUTES}} M</span></li>
-							<li><span>{{SECONDS}} S</span></li>
+								<li><span>{{remain}}</span></li>
 						</ul>
-						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i>
-								Quick
-								view</button></a>
-						<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
+						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i> Xem chi tiết</button></a>
+						<img src="/images/product/{{imgSrc.HASH_NAME}}" alt="">
 					</div>
 					<div class="product-body">
-						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
+						<div class="product-label">
+							{{#if isNew}}<span>Mới</span>{{/if}}
+							{{#if AUTO_FLAG}}
+							<span class="sale">Tự động</span>
+							{{/if}}						
+						</div>
+						<h3 class="product-price">{{CURRENT_PRICE_VND}} VNĐ</h3>
 						<h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
+						{{#if ../user}}
 						<div class="product-btns">
-							<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}" method="GET">
+							<form action="/account/{{../user.ID}}/watch_list" method="POST">
 								<input type="hidden" name="proID" value="{{ID}}">
-								<input type="hidden" name="userID" value="{{../user.ID}}">
 								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 							</form>
 						</div>
+						{{/if}}
 					</div>
 				</div>
 			</div>
@@ -232,25 +239,28 @@
 				<div class="product product-single">
 					<div class="product-thumb">
 						<ul class="product-countdown">
-							<li><span>{{HOURS}} H</span></li>
-							<li><span>{{MINUTES}} M</span></li>
-							<li><span>{{SECONDS}} S</span></li>
+							<li><span>{{remain}}</span></li>
 						</ul>
-						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i>
-								Quick
-								view</button></a>
-						<img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
+						<a href="/product/{{ID}}"><button class="main-btn quick-view"><i class="fas fa-search-plus"></i> Xem chi tiết</button></a>
+						<img src="/images/product/{{imgSrc.HASH_NAME}}" alt="">
 					</div>
 					<div class="product-body">
-						<h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
+						<div class="product-label">
+							{{#if isNew}}<span>Mới</span>{{/if}}
+							{{#if AUTO_FLAG}}
+							<span class="sale">Tự động</span>
+							{{/if}}						
+						</div>
+						<h3 class="product-price">{{CURRENT_PRICE_VND}} VNĐ</h3>
 						<h2 class="product-name"><a href="#">{{PRODUCT_NAME:}}</a></h2>
+						{{#if ../user}}
 						<div class="product-btns">
-							<form action="/favorite_list/{{#if ../user}}{{../user.ID}}{{else}}0{{/if}}" method="GET">
+							<form action="/account/{{../user.ID}}/watch_list" method="POST">
 								<input type="hidden" name="proID" value="{{ID}}">
-								<input type="hidden" name="userID" value="{{../user.ID}}">
 								<button type="submit" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 							</form>
 						</div>
+						{{/if}}
 					</div>
 				</div>
 			</div>
