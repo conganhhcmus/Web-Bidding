@@ -17,12 +17,12 @@ module.exports = {
     },
 
     delete: async username => {
-        const affectedRows = awaitdb.delete(tbName,username);
+        const affectedRows = await db.delete(tbName,username);
         return affectedRows;
     },
 
-    update: async (tbName1, value, id) => {
-        const changedRows = await db.updateV(tbName,tbName1,value,id);
+    update: async (entity, id) => {
+        const changedRows = await db.update(tbName, entity, "ID", id);
         return changedRows;
     },
 

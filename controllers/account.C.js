@@ -100,7 +100,7 @@ router.post('/register', async (req, res) => {
             PASSWORD: pwHash,
             FULL_NAME: fullname,
             EMAIL: email,
-            DOB: new Date(dob).toISOString().slice(0, 10).replace('T', ' '),
+            DOB: utils.parseTime(dob),
             PERMISSION: 0,
             TIME: utils.getTimeNow()
         };
@@ -116,67 +116,6 @@ router.post('/register', async (req, res) => {
         return;
     }
 
-});
-
-router.get('/profile', async (req, res) => {
-    if (typeof req.user === "undefined") {
-        res.redirect('/account/login');
-        return;
-    }
-
-    const user = await accountM.getByID(req.user.ID);
-
-    res.render('profile', {
-        layout: 'login',
-        user: user,
-    });
-});
-
-// Update thông tin cá nhân
-router.post('/profile', async (req, res) => {
-    if (typeof req.user === "undefined") {
-        res.render('profile', {
-            layout: 'login',
-            disabled: 'disabled',
-            user: null,
-        });
-        return;
-    }
-
-    const id = req.user.ID;
-    let user = await accountM.getByID(id);
-
-    const n_name = req.body.fullname;
-    const n_password = req.body.password;
-    const n_email = req.body.email;
-    const n_dob = req.body.dob || '2000-01-01';
-
-
-    if (user.FULL_NAME !== n_name) {
-        var changedRows = await accountM.update('FULL_NAME', n_name, id);
-    }
-
-    if (user.EMAIL !== n_email) {
-        var changedRows = await accountM.update('EMAIL', n_email, id);
-    }
-
-    if (user.DOB !== n_dob) {
-        var changedRows = await accountM.update('DOB', n_dob, id);
-    }
-
-    if (user.PASSWORD !== n_password) {
-        const pwH = await hash.getHashPassword(n_password);
-        var changedRows = await accountM.update('PASSWORD', pwH, id);
-    }
-
-    user = await accountM.getByID(id);
-
-    res.render('profile', {
-        layout: 'login',
-        disabled: 'disabled',
-        user: user,
-    });
-    return;
 });
 
 // Đăng xuất
@@ -202,17 +141,83 @@ router.use('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/:id/profile/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+        return next(createError(403));
+
+        res.render('account/profile_edit', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate2(acc.DOB),
+            },
+            title: 'Chỉnh sửa hồ sơ',
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+router.post('/:id/profile/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        let acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+        return next(createError(403));
+
+        let rows = await accountM.update({
+            FULL_NAME: req.body.name,
+            EMAIL: req.body.email,
+            DOB: utils.parseTime(req.body.dob),
+        }, id);
+
+        acc = await accountM.getByID(id);
+
+        res.render('account/profile_edit', {
+            layout: 'account',
+            user: acc,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate2(acc.DOB),
+            },
+            title: 'Chỉnh sửa hồ sơ',
+            msg: rows ? 'Cập nhật thành công!' : null
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.get('/:id/profile', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
         const acc = await accountM.getByID(id);
 
+        let editProfile = false;
+        if (req.user && req.user.ID === id)
+        editProfile = true;
+
         res.render('account/profile', {
             layout: 'account',
             user: req.user,
             user_id: id,
-            account: acc,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate(acc.DOB),
+                TIME_format: utils.formatDate(acc.TIME),
+            },
             title: 'Hồ sơ của ' + acc.FULL_NAME,
+            editProfile
         });
     } catch (err) {
         console.log(err);

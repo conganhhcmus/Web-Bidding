@@ -15,6 +15,17 @@ const app = express();
 const hbs = exphbs.create({
     defaultLayout: 'home',
     extname: 'hbs',
+    helpers: {
+        ifEqual: function (v1, v2, options) {
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        },
+        ifGreater: function (v1, v2, options) {
+            v1 = parseInt(v1);
+            v2 = parseInt(v2);
+            
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        }
+    }
 });
 
 // set body-parser
@@ -26,7 +37,7 @@ app.use(session({
     resave: true, 
     saveUninitialized: true, 
     secret: '123456', 
-    cookie: { maxAge: 60000 }
+//    cookie: { maxAge: 60000 }
 }));
 
 // Passport

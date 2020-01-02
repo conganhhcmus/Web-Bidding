@@ -123,8 +123,8 @@
     background-color: rgb(5, 22, 73);
   }
 
+/* 
 
-  /* for detail product */
 
   .breadcrumb-item+.breadcrumb-item::before {
     content: ">"
@@ -653,7 +653,6 @@ ul {
     border-bottom-right-radius: 5px
 }
 
-/* dsadasdasdssssssssssss */
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
@@ -696,4 +695,4 @@ ul {
     -webkit-animation-name: opacity;
             animation-name: opacity;
     -webkit-animation-duration: .3s;
-            animation-duration: .3s; }
+            animation-duration: .3s; } */

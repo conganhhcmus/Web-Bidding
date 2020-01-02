@@ -22,13 +22,20 @@ router.get('/create', (req, res, next) => {
         try {
             // Lấy các danh mục
             let categories = await categoryM.all();
+            // get all parent
+            const parentCat = await categoryM.allParentCats();
+            for (var i = 0; i < parseInt(parentCat.length); i++) {
+                parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+            }
+
             // Render
             res.render('product/product_create', {
                 layout: 'product',
                 categories,
                 user: req.user,
                 cats: categories,
-                title: 'Thêm sản phẩm'
+                title: 'Thêm sản phẩm',
+                parentCat,
             });
         }
         catch (err) {
@@ -199,9 +206,25 @@ router.get('/:id', async (req, res, next) => {
         const pro = await productM.getByID(id);
         // ID không tồn tại
         if (pro.length == 0) return next(createError(404));
-
+        // get all parent
+        const parentCat = await categoryM.allParentCats();
+        for (var i = 0; i < parseInt(parentCat.length); i++) {
+            parentCat[i].children = await categoryM.getChildren(parentCat[i].ID);
+        }
+        
         const img = await imageM.allByProID(pro[0].ID);
         const ps = await productM.allByCatID(pro[0].CAT_ID);
+        if(ps.length > 4) ps.splice(4);
+        ps.forEach(async p => {
+            p.imgSrc = (await imageM.allByProID(p.ID))[0];
+            p.CURRENT_PRICE_VND = await utils.getMoneyVNDString(p.CURRENT_PRICE);
+            var temp1 = new Date(p.END_TIME);
+            var today = new Date();
+            var a = parseInt(temp1.getTime() / 1000 - today.getTime() / 1000);
+            p.HOURS = parseInt(a / 3600);
+            p.MINUTES = parseInt((a - p.HOURS * 3600) / 60);
+            p.SECONDS = a - p.HOURS * 3600 - p.MINUTES * 60;
+        });
 
         // set date time
         var today = new Date();
@@ -234,15 +257,16 @@ router.get('/:id', async (req, res, next) => {
         // tim gia he thong
         const GiaHeThong = pro[0].CURRENT_PRICE + pro[0].BIDDING_INCREMENT;
 
-        res.render('home/detail_product', {
-            layout: 'home',
+        res.render('product/product_detail', {
+            layout: 'product',
             user: req.user,
             seller: seller,
-            pro: pro,
+            pro: pro[0],
             img: img,
             ps: ps,
             GiaHeThong: GiaHeThong,
             disabled: "disabled",
+            parentCat,
         });
     } catch (err) {
         console.log(err);

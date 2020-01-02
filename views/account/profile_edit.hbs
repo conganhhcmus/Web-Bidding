@@ -1,0 +1,65 @@
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap" style="padding-left: 0.5em;">
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Chỉnh sửa hồ sơ</h2>
+                    </div>
+                </div>
+                <!-- section title -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="margin-left: 1em;">
+                    {{#if msg}}<div class="alert alert-success" align="center">{{msg}}</div>{{/if}}
+                    <form class="form" action="" method="post">
+                        <div class="form-group" style="margin-top: 1em;">
+                            <label for="username">
+                                <h4>Tên đăng nhập</h4>
+                            </label>
+                            <input type="text" class="form-control" id="username" value="{{account.USERNAME}}" disabled>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1em;">
+                            <label for="name">
+                                <h4>Họ tên</h4>
+                            </label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{account.FULL_NAME}}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">
+                                <h4>Ngày sinh</h4>
+                            </label>
+                            <input type="text" class="form-control" name="dob" id="dob" value="{{account.DOB_format}}" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">
+                                <h4>Email</h4>
+                            </label>
+                            <input type="email" class="form-control" name="email" id="email" value="{{account.EMAIL}}" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button class="btn btn-lg btn-success" type="submit"><i
+                                        class="glyphicon glyphicon-ok-sign"></i> Lưu thay đổi</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /home wrap -->
+</div>
+<!-- /container -->
+</div>

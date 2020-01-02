@@ -67,8 +67,14 @@
                                     </b>!
                                 </li>
                             {{#if user}}
-                            <li><a href="/account/profile"><i class="fas fa-user"></i> Hồ sơ</a></li>
-                            <li><a href="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}"><i class="fas fa-heart"></i> Danh sách yêu thích</a></li>
+                            <li><a href="/account/{{user.ID}}/profile"><i class="fas fa-user"></i> Hồ sơ</a></li>
+                            <li><a href="/account/{{user.ID}}/watch_list"><i class="fas fa-heart"></i> Danh sách yêu thích</a></li>
+                            {{#ifEqual user.PERMISSION 2}}
+                            <li><a href="/admin"><i class="fas fa-users-cog"></i> Bảng điều khiển</a></li>
+                            {{/ifEqual}}
+                            {{#ifGreater user.PERMISSION 1}}
+                            <li><a href="/product/create"><i class="fas fa-plus-square"></i> Thêm sản phẩm</a></li>
+                            {{/ifGreater}}
                             {{else}}
                             <li><a href="/account/login"><i class="fas fa-unlock-alt"></i> Đăng nhập</a></li>
                             <li><a href="/account/register"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
@@ -80,7 +86,7 @@
 
                      <!-- Cart -->
                     <li class="header-cart dropdown default-dropdown">
-                        <a href="/favorite_list/{{#if user}}{{user.ID}}{{else}}0{{/if}}">
+                        <a href="/account/{{user.ID}}/watch_list">
                             <div class="header-btns-icon">
                                 <i class="fa fa-heart"></i>
                                 <span class="qty">3</span>

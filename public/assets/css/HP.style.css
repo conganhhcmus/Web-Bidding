@@ -61,7 +61,9 @@ Table OF Contents
 \*----------------------------*/
 
 body {
-  font-family: 'Hind', sans-serif;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   color: #4A4E5A;
   overflow-x: hidden;
 }

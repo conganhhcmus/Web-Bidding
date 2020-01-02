@@ -1,0 +1,88 @@
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap" style="padding-left: 0.5em;">
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Hồ sơ</h2>
+                    </div>
+                </div>
+                <!-- section title -->
+            </div>
+
+            <div class="row" style="">
+
+                <div class="col-md-12" style="margin-left: 1em;">
+                    <div class="row" style="margin-top: 1em;">
+                        <div class="col-md-5">
+                            <h4>Tên đăng nhập</h4>
+                        </div>
+                        <div class="col-md-7">
+                            <b>{{account.USERNAME}}</b>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row" style="margin-top: 1em;">
+                        <div class="col-md-5">
+                            <h4>Họ tên</h4>
+                        </div>
+                        <div class="col-md-7">
+                            {{account.FULL_NAME}}
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row" style="margin-top: 1em;">
+                        <div class="col-md-5">
+                            <h4>Email</h4>
+                        </div>
+                        <div class="col-md-7">
+                            {{account.EMAIL}}
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row" style="margin-top: 1em;">
+                        <div class="col-md-5">
+                            <h4>Ngày sinh</h4>
+                        </div>
+                        <div class="col-md-7">
+                            {{account.DOB_format}}
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row" style="margin-top: 1em;">
+                        <div class="col-md-5">
+                            <h4>Ngày đăng ký</h4>
+                        </div>
+                        <div class="col-md-7">
+                            {{account.TIME_format}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{#if editProfile}}
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 2em">
+                    <a class="btn btn-success" href="/account/{{user_id}}/profile/edit"><i
+                            class="glyphicon glyphicon-pencil"></i> Chỉnh sửa hồ sơ</a>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+
+    </div>
+    <!-- /home wrap -->
+</div>
+<!-- /container -->
+</div>

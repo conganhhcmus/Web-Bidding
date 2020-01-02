@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="/assets/css/HP.bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css" />
 
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="/assets/css/HP.slick.css" />
@@ -25,12 +25,13 @@
     <!-- Custom stylesheet -->
     <link type="text/css" rel="stylesheet" href="/assets/css/HP.style.css" />
     <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
 <body>
     {{> home/header }}
-    {{> home/navigation }}
+    {{> account/navigation }}
     {{{ body }}}
     {{> home/footer }}
 
@@ -42,6 +43,13 @@
 <script src="/assets/js/nouislider.min.js"></script>
 <script src="/assets/js/jquery.zoom.min.js"></script>
 <script src="/assets/js/main.js"></script>
-<script src="/assets/js/custom.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script>
+    $(document).ready(() => {
+        $('#dob').datepicker();
+    });
+
+    
+</script>
 </html>

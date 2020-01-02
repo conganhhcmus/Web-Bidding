@@ -12,6 +12,16 @@ module.exports = {
     },
 
     parseTime: (time) => {
-        return new Date(Date.parse(time)).toISOString().slice(0, 19).replace('T', ' ');
+        var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+        return new Date(Date.parse(time) - tzoffset).toISOString().slice(0, 19).replace('T', ' ');
     },
+
+    formatDate: (time) => {
+        return time.getDate() + '/' + (time.getMonth() + 1) + '/' + time.getFullYear();
+    },
+
+    formatDate2: (time) => {
+        return (time.getMonth() + 1) + '/' + time.getDate() + '/' + time.getFullYear();
+    },
+
 };

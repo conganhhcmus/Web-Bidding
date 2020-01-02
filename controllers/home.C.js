@@ -20,11 +20,6 @@ router.get('/', async (req, res) => {
     var top5Price = await top5.top5Price();
     var top5End = await top5.top5End();
 
-    if (typeof req.user !== "undefined") {
-        let id = req.user.ID;
-        user = await accountM.getByID(id);      
-    }
-
     const cats = await categoryM.all();
 
     res.render('home/homepage', {

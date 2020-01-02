@@ -1,0 +1,99 @@
+<!-- HOME -->
+<div id="home">
+    <div class="container">
+        <div class="home-wrap" style="padding-left: 0.5em;">
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Sản phẩm yêu thích</h2>
+                    </div>
+                </div>
+                <!-- section title -->
+            </div>
+
+            <div class="row" style="">
+                {{#each ps}}
+                <!-- Product Single -->
+                <div class="col-md-4">
+                    <div class="product product-single">
+                        <div class="product-thumb">
+                            <ul class="product-countdown">
+                                <li><span>{{HOURS}} H</span></li>
+                                <li><span>{{MINUTES}} M</span></li>
+                                <li><span>{{SECONDS}} S</span></li>
+                            </ul>
+                            <a href="/product/{{ID}}"><button class="main-btn quick-view"><i
+                                        class="fa fa-search-plus"></i> Xem chi tiết</button></a>
+                            <img src="/images/product/{{imgSrc.HASH_NAME}}" height="230px" alt="">
+                        </div>
+                        <div class="product-body">
+                            <h3 class="product-price">{{CURRENT_PRICE_VND}} VND</h3>
+                            <h2 class="product-name"><a href="#">{{PRODUCT_NAME}}</a></h2>
+                            <div class="product-btns">
+                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> ???</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Product Single -->
+                {{/each}}
+            </div>
+
+
+            <!-- /row -->
+
+            {{!-- Paginationnnnnnnnnnnnnnnnnnn --}}
+            <nav aria-label="Page navigation example" align="center">
+                <ul class="pagination">
+                    {{#if navs.prev}}
+                    <li class="page-item">
+                        <a href="?page={{ navs.prev }}" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link" tabindex="-1" aria-disabled="true" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{/if}}
+
+                    {{#each pages}}
+                    {{#if active}}
+                    <li class="page-item active" aria-current="page">
+                        <a href="javascript:;" class="page-link">
+                            {{value}} <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="page-item">
+                        <a href="?page={{value}}" class="page-link">
+                            {{value}}
+                        </a>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+
+                    {{#if navs.next}}
+                    <li class="page-item">
+                        <a href="?page={{ navs.next }}" class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link" tabindex="-1" aria-disabled="true" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {{/if}}
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+    {{!-- End Paginationnnnnnnnnnnnnnnnnnn --}}
+</div>
