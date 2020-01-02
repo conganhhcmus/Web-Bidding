@@ -5,6 +5,7 @@ const passport = require('passport');
 const categoryM = require('../models/category.M');
 const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
+const watchlistM = require('../models/watchList.M');
 const imageM = require('../models/image.M');
 const utils = require('../utils/utilsFunction');
 

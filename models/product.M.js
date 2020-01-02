@@ -10,6 +10,12 @@ module.exports = {
         return rows;
     },
 
+    allSellingBySellerID: async id => {
+        const sql = `SELECT * FROM ${tbName} WHERE SELLER_ID = ${id} AND END_TIME > '${utils.getTimeNow()}'`;
+        const rows = await db.load(sql);
+        return rows;
+    },
+
     top5Price: async () => {
         const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY CURRENT_PRICE DESC LIMIT 4 `;
         const rows = await db.load(sql);
@@ -132,13 +138,8 @@ module.exports = {
         return changedRows;
     },
     getProductBySeller: async id =>{
-        const sql = `SELECT * FROM ${tbName} WHERE ${tbName}.SELLER_ID = ${id} AND END_TIME > '${utils.getTimeNow()}'`;
+        const sql = `SELECT * FROM ${tbName} WHERE ${tbName}.SELLER_ID = ${id} AND END_TIME < '${utils.getTimeNow()}' AND ${tbName}.CURRENT_PRICE > ${tbName}.STARTING_PRICE`;
         const rows = await db.load(sql);
         return rows; //ds san pham cua seller da het
-    },
-    getProductBNBySeller: async id =>{
-        const sql = `SELECT * FROM ${tbName} WHERE ${tbName}.SELLER_ID = ${id} AND ${tbName}.BUYNOW_PRICE IS NOT NULL AND ${tbName}.BUYNOW_FLAG = 0`;
-        const rows = await db.load(sql);
-        return rows; //da buy now chua lam
     }
 }

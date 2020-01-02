@@ -652,34 +652,42 @@ router.get('/:id/sold_list', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
 
-        const overSell = await productM.getProductBySeller(id);  //list pro da het han
+        const bls = await productM.getProductBySeller(id); // bls là list product của seller
 
-        let soldList = [];
+        let sellList = [];
         var stt = 0
-        for (var i = 0; i < parseInt(overSell.length); i++) { // co it nhat 1 lan trong dau gia
-            const his = await auctionHistoryM.getByUserAndProductID(overSell[i].PRODUCT_ID)
-            if (his.length > 0) {
-                stt++
-                const imgSrc = await imageM.getByID(overSell[0].MAIN_IMAGE);
-                const userSL = await accountM.getByID(overSell[0].SELLER_ID);
-                //add vao json
-                soldList.push({
-                    sttWL: stt,
-                    proIDSL: overSell[i].PRODUCT_ID,
-                    priceSL: overSell[i].CURRENT_PRICE, //doan nay thieu select max
-                    userSL: userSL.FULL_NAME,
-                    mainImgSL: imgSrc[0],
-                    proNameSL: overSell[0].PRODUCT_NAME,
-                    startTimeSL: await utils.parseTime(overSell[0].START_TIME),
-                    endTimeSL: await utils.parseTime(overSell[0].END_TIME),
-                    startPriceSL: overSell[0].STARTING_PRICE
-                })
+        for (var i = 0; i < parseInt(bls.length); i++) {
+            const proB = bls[i];
+            const imgSrc = (await imageM.getByID(proB.MAIN_IMAGE))[0];
+            const a = await auctionHistoryM.getNguoiGiuGiaCaoNhat(proB.ID);
+            console.log(a);
+            let seller = null;
+            let name = "Chưa có ai ra giá";
+            if (a !== null) {
+                seller = await accountM.getByID(a.USER_ID);
+                name = seller.FULL_NAME;
             }
+            
+            stt++;
+            sellList.push({
+                sttBL: stt,
+                proIDBL: proB.ID,
+                mainImgBL: imgSrc,
+                proNameBL: proB.PRODUCT_NAME,
+                startPriceBL: proB.STARTING_PRICE,
+                nowPriceBL: proB.CURRENT_PRICE,
+                bidder: name,
+                endTimeBL: await utils.parseTime(proB.END_TIME),
+            })
         }
+
+        // cái này dùng cho header thôi
+
         res.render('account/sold_list', {
             layout: 'account',
             user: req.user,
-            soldList: soldList,
+            user_id : id,
+            sellList: sellList,
         });
     } catch (err) {
         console.log(err);
@@ -729,6 +737,54 @@ router.get('/:id/bidding_list', async (req, res, next) => {
         next(createError(500));
     }
 });
+
+router.get('/:id/selling_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const bls = await productM.allSellingBySellerID(id); // bls là list product của seller
+
+        let sellList = [];
+        var stt = 0
+        for (var i = 0; i < parseInt(bls.length); i++) {
+            const proB = bls[i];
+            const imgSrc = (await imageM.getByID(proB.MAIN_IMAGE))[0];
+            const a = await auctionHistoryM.getNguoiGiuGiaCaoNhat(proB.ID);
+            console.log(a);
+            let seller = null;
+            let name = "Chưa có ai ra giá";
+            if (a !== null) {
+                seller = await accountM.getByID(a.USER_ID);
+                name = seller.FULL_NAME;
+            }
+            
+            stt++;
+            sellList.push({
+                sttBL: stt,
+                proIDBL: proB.ID,
+                mainImgBL: imgSrc,
+                proNameBL: proB.PRODUCT_NAME,
+                startPriceBL: proB.STARTING_PRICE,
+                nowPriceBL: proB.CURRENT_PRICE,
+                bidder: name,
+                endTimeBL: await utils.parseTime(proB.END_TIME),
+            })
+        }
+
+        // cái này dùng cho header thôi
+
+        res.render('account/selling_list', {
+            layout: 'account',
+            user: req.user,
+            user_id : id,
+            sellList: sellList,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.get('/:id', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
