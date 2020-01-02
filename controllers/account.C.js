@@ -10,6 +10,7 @@ const passport = require('passport');
 const utils = require('../utils/utilsFunction');
 const createError = require('http-errors');
 const watchlistM = require('../models/watchList.M');
+const sellerRequestM = require('../models/sellerRequest.M');
 
 // Đăng nhập dùng passport
 router.post('/login', function (req, res, next) {
@@ -320,6 +321,40 @@ router.get('/:id/profile', async (req, res, next) => {
     }
 });
 
+router.get('/:id/request_seller', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+        const rq = await sellerRequestM.allByUserID(req.user.ID);
+        let editProfile = false;
+        if (req.user && req.user.ID === id)
+            editProfile = true;
+
+        if (rq.length >= 1)
+        msg = "Bạn đã gửi lời yêu cầu trước đó. Vui lòng chờ quản trị viên duyệt.";
+        else
+        {
+            await sellerRequestM.add({USER_ID: req.user.ID, TIME: utils.getTimeNow()})
+            msg = "Gửi yêu cầu thành công!";
+        }
+        res.render('account/profile', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate(acc.DOB),
+                TIME_format: utils.formatDate(acc.TIME),
+            },
+            title: 'Hồ sơ của ' + acc.FULL_NAME,
+            editProfile,
+            msg,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
 
 router.get('/:id/rating', async (req, res, next) => {
     try {

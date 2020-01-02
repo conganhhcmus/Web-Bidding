@@ -67,6 +67,14 @@
         modal.find('#username').text(name);
         modal.find('#delLink').attr('href', 'user/' + id + '/delete');
     });
+    $('#verifyDeleteRequest').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var name = button.data('username');
+        var id = button.data('id');
+        var modal = $(this)
+        modal.find('#username').text(name);
+        modal.find('#delLink').attr('href', 'request_seller/' + id + '/delete');
+    });
     
 </script>
 </html>

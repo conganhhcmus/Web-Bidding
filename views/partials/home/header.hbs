@@ -72,7 +72,7 @@
                             {{#ifEqual user.PERMISSION 2}}
                             <li><a href="/admin"><i class="fas fa-users-cog"></i> Bảng điều khiển</a></li>
                             {{/ifEqual}}
-                            {{#ifGreater user.PERMISSION 1}}
+                            {{#ifGreater user.PERMISSION 0}}
                             <li><a href="/product/create"><i class="fas fa-plus-square"></i> Thêm sản phẩm</a></li>
                             {{/ifGreater}}
                             {{else}}

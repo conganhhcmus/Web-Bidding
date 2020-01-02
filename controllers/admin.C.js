@@ -8,6 +8,8 @@ const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
 const imageM = require('../models/image.M');
 const MAX_ITEMS = 20;
+const sellerRequestM = require('../models/sellerRequest.M');
+const utils = require('../utils/utilsFunction');
 
 router.use((req, res, next) => {
     if (!req.isAuthenticated() || req.user.PERMISSION < 2) {
@@ -27,12 +29,15 @@ router.get('/category', async (req, res, next) => {
         for (let category of categories) {
             category.parent_name = await categoryM.getNameByID(category.PARENT_ID);
         }
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
         // Render
         res.render('admin/category', {
             layout: 'admin',
             categories: categories,
             title: 'Quản lý danh mục',
-            user: req.user
+            user: req.user,
+            request_count
         });
     }
     catch(err) {
@@ -86,6 +91,9 @@ router.all('/category/:id/edit', async (req, res, next) => {
             }
             i++;
         }
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
+
         // Render
         res.render('admin/category_edit', {
             layout: 'admin',
@@ -93,7 +101,9 @@ router.all('/category/:id/edit', async (req, res, next) => {
             pCategories,
             isSuccessful: isSuccessful > 0,
             title: 'Chỉnh sửa danh mục',
-            user: req.user
+            user: req.user,
+            request_count
+
         });
     }
     catch(err) {
@@ -149,6 +159,9 @@ router.get('/category/:id/delete', async (req, res, next) => {
         // ID không tồn tại hoặc sai =>  404
         if (typeof category === "undefined")
             return next(createError(404));
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
+
         // Kiểm tra tồn tại thư mục con
 
         if (!category.PARENT_ID && childCats.length > 0) {
@@ -156,7 +169,8 @@ router.get('/category/:id/delete', async (req, res, next) => {
                 layout: 'admin',
                 title: 'Xóa danh mục thất bại',
                 user: req.user,
-                msg: 'Không thể xóa danh mục đang là cha của một số danh mục khác.'
+                msg: 'Không thể xóa danh mục đang là cha của một số danh mục khác.',
+                request_count
             })
         }
         let products = await productM.allByCatID(id);
@@ -166,7 +180,8 @@ router.get('/category/:id/delete', async (req, res, next) => {
                 layout: 'admin',
                 title: 'Xóa danh mục thất bại',
                 user: req.user,
-                msg: 'Không thể xóa danh mục đang chứa sản phẩm.'
+                msg: 'Không thể xóa danh mục đang chứa sản phẩm.',
+                request_count
             })
         }
         // Xóa
@@ -175,7 +190,8 @@ router.get('/category/:id/delete', async (req, res, next) => {
             layout: 'admin',
             title: 'Xóa danh mục thành công',
             user: req.user,
-            msg: 'Danh mục xóa thành công'
+            msg: 'Danh mục xóa thành công',
+            request_count
         })
     }
     catch(err) {
@@ -189,6 +205,8 @@ router.get('/user', async (req, res, next) => {
     try {
         let page = parseInt(req.query.page || 1);
         let users = await accountM.all();
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
 
         // Render
         res.render('admin/user', {
@@ -196,9 +214,35 @@ router.get('/user', async (req, res, next) => {
             users,
             title: 'Thành viên',
             user: req.user,
+            request_count
         });
     }
     catch(err) {
+        next(createError(500));
+    }
+});
+
+router.get('/request_seller', async (req, res, next) => {
+    try {
+        let requests = await sellerRequestM.all();
+        for (let r of requests) {
+            r.USERNAME = (await accountM.getByID(r.USER_ID)).USERNAME;
+            r.time_format = utils.formatDateTime(new Date(r.TIME));
+        }
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
+
+        // Render
+        res.render('admin/request', {
+            layout: 'admin',
+            requests,
+            title: 'Yêu cầu chờ duyệt lên Seller',
+            user: req.user,
+            request_count
+        });
+    }
+    catch(err) {
+        console.log(err);
         next(createError(500));
     }
 });
@@ -211,12 +255,41 @@ router.get('/product', async (req, res, next) => {
             let author = await productM.getAuthor(product.ID);
             product.author = author[0].USERNAME;
         }
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
         // Render
         res.render('admin/product', {
             layout: 'admin',
             products,
             title: 'Sản phẩm',
             user: req.user,
+            request_count
+        });
+    }
+    catch(err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+router.get('/request_seller/:id/delete', async (req, res, next) => {
+    try {
+        if (isNaN(req.params.id)) return next(createError(404));
+
+        let id = parseInt(req.params.id);
+        let request = await sellerRequestM.getByID(id);
+        if (request.length === 0) return next(createError(404));
+        // Xóa
+        await sellerRequestM.delete(id);
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
+
+        return res.render('admin/delete', {
+            layout: 'admin',
+            title: 'Xóa yêu cầu thành công',
+            user: req.user,
+            msg: 'Yêu cầu xóa thành công',
+            request_count
         });
     }
     catch(err) {
@@ -237,12 +310,16 @@ router.get('/user/:id/delete', async (req, res, next) => {
 
         // Xóa
         let products = await productM.allByAuthor(id);
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
+
         if (products.length > 0)
         return res.render('admin/delete', {
             layout: 'admin',
             title: 'Xóa người dùng thất bại',
             user: req.user,
-            msg: 'Không thể xóa người dùng có đăng sản phẩm.'
+            msg: 'Không thể xóa người dùng có đăng sản phẩm.',
+            request_count
         });
 
         await accountM.deleteUser(id);
@@ -251,7 +328,8 @@ router.get('/user/:id/delete', async (req, res, next) => {
             layout: 'admin',
             title: 'Xóa người dùng thành công',
             user: req.user,
-            msg: 'Người dùng xóa thành công'
+            msg: 'Người dùng xóa thành công',
+            request_count
         });
     }
     catch(err) {
@@ -277,12 +355,15 @@ router.get('/product/:id/delete', async (req, res, next) => {
             await imageM.deleteImg(img.ID);
         }
         await productM.deleteProduct(id);
+        // Lấy số yêu cầu chờ duyệt
+        let request_count = await sellerRequestM.count();
 
         return res.render('admin/delete', {
             layout: 'admin',
             title: 'Xóa sản phẩm thành công',
             user: req.user,
-            msg: 'Sản phẩm xóa thành công'
+            msg: 'Sản phẩm xóa thành công',
+            request_count
         })
     }
     catch(err) {

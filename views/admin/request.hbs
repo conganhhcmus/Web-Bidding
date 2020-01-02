@@ -1,0 +1,86 @@
+
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap">
+
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordred table-striped">
+                        <thead>
+
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Hồ sơ</th>
+                            <th>Sửa thông tin</th>
+                            <th>Gửi lúc</th>
+                            <th>Xóa yêu cầu</th>
+                        </thead>
+                        <tbody>
+                            {{#each requests}}
+                            <tr>
+                                <td>{{ID}}</td>
+                                <td>{{USERNAME}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="/account/{{USER_ID}}" class="btn btn-primary">
+                                            <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="/account/{{USER_ID}}/profile/edit" class="btn btn-primary">
+                                            <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{time_format}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" data-toggle="modal" data-target="#verifyDeleteRequest" data-username="{{USERNAME}}" data-id="{{ID}}" class="btn btn-danger">
+                                            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+
+                    </table>
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>
+
+
+
+
+<div class="modal fade" id="verifyDeleteRequest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Xác nhận xóa yêu cầu</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>Cảnh báo!</strong> Vui lòng xác nhận bạn đang thực hiện thao tác xóa yêu cầu duyệt lên Seller của người dùng <strong><span id="username"></span></strong>. Sau khi xóa, bạn không thể khôi phục được nữa.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <a id="delLink" href="" class="btn btn-primary">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>
