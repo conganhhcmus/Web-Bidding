@@ -5,7 +5,7 @@ function createConnnection() {
         host: 'localhost',
         port: '3306',
         user: 'root',
-        password: 'Anh240299',
+        password: '123456',
         database: 'AUCTION',
     });
 };

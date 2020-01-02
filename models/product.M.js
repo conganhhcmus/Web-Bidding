@@ -130,5 +130,21 @@ module.exports = {
     updateCurrentPrice: async (id,price) => {
         const changedRows = await db.updateV(tbName,'CURRENT_PRICE',price,id);
         return changedRows;
-    }
+    },
+    updateNullImg: async (id) => {
+        let rows = await db.updateNull(tbName, "MAIN_IMAGE", "ID", id);
+        return rows; 
+    },
+
+    deleteProduct: async (id) => {
+        let rows = await db.delete(tbName, "ID", id);
+        return rows; 
+    },
+
+    allByAuthor: async (id) => {
+        const sql = `SELECT * FROM ${tbName} WHERE SELLER_ID = ${id}`;
+        const rows = await db.load(sql);
+        return rows;
+    },
+
 }

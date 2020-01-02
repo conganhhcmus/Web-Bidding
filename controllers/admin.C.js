@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.get('/category', async (req, res, next) => {
     try {
         let page = parseInt(req.query.page || 1);
-        let categories = await categoryM.all((page - 1) * MAX_ITEMS, MAX_ITEMS);
+        let categories = await categoryM.all();
         // Lấy tên thư mục cha
         for (let category of categories) {
             category.parent_name = await categoryM.getNameByID(category.PARENT_ID);
@@ -152,7 +152,7 @@ router.get('/category/:id/delete', async (req, res, next) => {
         // Kiểm tra tồn tại thư mục con
 
         if (!category.PARENT_ID && childCats.length > 0) {
-            return res.render('admin/category_delete', {
+            return res.render('admin/delete', {
                 layout: 'admin',
                 title: 'Xóa danh mục thất bại',
                 user: req.user,
@@ -162,7 +162,7 @@ router.get('/category/:id/delete', async (req, res, next) => {
         let products = await productM.allByCatID(id);
         // Kiểm tra tồn tại sản phẩm trong thư mục
         if (products.length > 0) {
-            return res.render('admin/category_delete', {
+            return res.render('admin/delete', {
                 layout: 'admin',
                 title: 'Xóa danh mục thất bại',
                 user: req.user,
@@ -171,7 +171,7 @@ router.get('/category/:id/delete', async (req, res, next) => {
         }
         // Xóa
         await categoryM.deleteCategory(id);
-        return res.render('admin/category_delete', {
+        return res.render('admin/delete', {
             layout: 'admin',
             title: 'Xóa danh mục thành công',
             user: req.user,
@@ -188,7 +188,7 @@ router.get('/category/:id/delete', async (req, res, next) => {
 router.get('/user', async (req, res, next) => {
     try {
         let page = parseInt(req.query.page || 1);
-        let users = await accountM.all((page - 1) * MAX_ITEMS, MAX_ITEMS);
+        let users = await accountM.all();
 
         // Render
         res.render('admin/user', {
@@ -206,7 +206,7 @@ router.get('/user', async (req, res, next) => {
 router.get('/product', async (req, res, next) => {
     try {
         let page = parseInt(req.query.page || 1);
-        let products = await productM.all((page - 1) * MAX_ITEMS, MAX_ITEMS);
+        let products = await productM.all();
         for (let product of products) {
             let author = await productM.getAuthor(product.ID);
             product.author = author[0].USERNAME;
@@ -225,4 +225,69 @@ router.get('/product', async (req, res, next) => {
     }
 });
 
+router.get('/user/:id/delete', async (req, res, next) => {
+    try {
+        if (isNaN(req.params.id)) return next(createError(404));
+
+        let id = parseInt(req.params.id);
+        let user = await accountM.getByID(id);
+        // ID không tồn tại hoặc sai =>  404
+        if (typeof user === "undefined")
+            return next(createError(404));
+
+        // Xóa
+        let products = await productM.allByAuthor(id);
+        if (products.length > 0)
+        return res.render('admin/delete', {
+            layout: 'admin',
+            title: 'Xóa người dùng thất bại',
+            user: req.user,
+            msg: 'Không thể xóa người dùng có đăng sản phẩm.'
+        });
+
+        await accountM.deleteUser(id);
+
+        return res.render('admin/delete', {
+            layout: 'admin',
+            title: 'Xóa người dùng thành công',
+            user: req.user,
+            msg: 'Người dùng xóa thành công'
+        });
+    }
+    catch(err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+router.get('/product/:id/delete', async (req, res, next) => {
+    try {
+        if (isNaN(req.params.id)) return next(createError(404));
+
+        let id = parseInt(req.params.id);
+        let product = await productM.getByID(id);
+        // ID không tồn tại hoặc sai =>  404
+        if (typeof product === "undefined")
+            return next(createError(404));
+
+        // Xóa
+        let imgs = await imageM.allByProID(id);
+        await productM.updateNullImg(id);
+        for(let img of imgs) {
+            await imageM.deleteImg(img.ID);
+        }
+        await productM.deleteProduct(id);
+
+        return res.render('admin/delete', {
+            layout: 'admin',
+            title: 'Xóa sản phẩm thành công',
+            user: req.user,
+            msg: 'Sản phẩm xóa thành công'
+        })
+    }
+    catch(err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
 module.exports = router;

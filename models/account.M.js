@@ -54,5 +54,8 @@ module.exports = {
         return null;
     },
 
-    
+    deleteUser: async (id) => {
+        let rows = await db.delete(tbName, "ID", id);
+        return rows; 
+    },
 };

@@ -49,6 +49,20 @@ CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
 
 /*==============================================================*/
+/* Table: SELLER_REQUEST                                        */
+/*==============================================================*/
+create table SELLER_REQUEST
+(
+   ID                   int(11) unsigned not null auto_increment comment '',
+   TIME  					datetime not null,
+   USER_ID              int(11) unsigned  comment '',
+   primary key (ID)
+)
+ENGINE = InnoDB
+CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+/*==============================================================*/
 /* Table: PRODUCT                                               */
 /*==============================================================*/
 create table PRODUCT
@@ -67,7 +81,7 @@ create table PRODUCT
    STARTING_PRICE       bigint(20) not null  comment '',
    BIDDING_INCREMENT    bigint(20) not null  comment '',
    EXTENSION_FLAG       tinyint(1) not null default 0  comment '',
-   TIME					datetime not null,
+   TIME  					datetime not null,
    AUTO_FLAG            tinyint(1) not null default 0 comment '',
    RATING_COUNT         int(11) unsigned not null default 0 comment '',
    primary key (ID)
@@ -149,6 +163,9 @@ alter table PRODUCT add constraint FK_PRODUCT_REFERENCE_IMAGE foreign key (MAIN_
 alter table PRODUCT add constraint FK_PRODUCT_REFERENCE_USER foreign key (SELLER_ID)
       references USER (ID) on delete restrict on update restrict;
 
+alter table SELLER_REQUEST add constraint FK_SELLER_REQUEST_REFERENCE_USER foreign key (USER_ID)
+      references USER (ID) on delete restrict on update restrict;
+
 alter table RATING add constraint FK_RATING_REFERENCE_USER foreign key (RATING_FOR)
       references USER (ID) on delete restrict on update restrict;
 
@@ -179,7 +196,7 @@ INSERT INTO category VALUES(6, 5, 'Tủ lạnh');
 INSERT INTO category VALUES(7, 1, 'Phụ kiện');
 INSERT INTO category VALUES(8, 1, 'Tablet');
 
-insert into user values(1, 'admin', '$2y$10$bxz.oLs2C7FGb9U7hylgeOzOgq3Sh4DDjAKYl6XEpxmYdmAj2tsyW', 'Admin', 'admin@domain.com', '1999-01-01', 2, '2019-12-24 00:00:00');
+insert into user values(1, 'admin', '$10$97lxB03fyss9cuHkKTLDHeKX/DyDITBBmrfTFwVcqa0FFO7CfoyZm', 'Admin', 'admin@domain.com', '1999-01-01', 2, '2019-12-24 00:00:00');
 
 COMMIT;
 

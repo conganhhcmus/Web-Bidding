@@ -7,6 +7,7 @@ const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
 const imageM = require('../models/image.M');
 const utils = require('../utils/utilsFunction');
+const watchlistM = require('../models/watchList.M');
 
 // Xem sản phẩm trong danh mục
 router.get('/:id', async (req, res, next) => {

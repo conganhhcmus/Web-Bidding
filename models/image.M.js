@@ -24,4 +24,10 @@ module.exports = {
         let id = await db.add(tbName, {ORIGINAL_NAME: origin, HASH_NAME: name, PRODUCT_ID: product});
         return id;
     },
+
+    deleteImg: async (id) => {
+        let rows = await db.delete(tbName, "ID", id);
+        return rows; 
+    },
+
 }

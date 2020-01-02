@@ -108,7 +108,6 @@ router.post('/register', async (req, res) => {
         };
 
         const uId = await accountM.add(user);
-        console.log("id : ", uId);
 
         req.logIn({ ID: uId }, function (err) {
             if (err) { return next(err); }
@@ -148,8 +147,8 @@ router.get('/:id/profile/edit', async (req, res, next) => {
         const id = parseInt(req.params.id);
         const acc = await accountM.getByID(id);
 
-        if (!req.user || req.user.ID !== id)
-            return next(createError(403));
+        if (!req.user || (req.user.ID !== id && req.user.PERMISSION !== 2))
+        return next(createError(403));
 
         res.render('account/profile_edit', {
             layout: 'account',
@@ -196,20 +195,21 @@ router.post('/:id/profile/edit', async (req, res, next) => {
         const id = parseInt(req.params.id);
         let acc = await accountM.getByID(id);
 
-        if (!req.user || req.user.ID !== id)
-            return next(createError(403));
+        if (!req.user || (req.user.ID !== id && req.user.PERMISSION !== 2))
+        return next(createError(403));
 
         let rows = await accountM.update({
             FULL_NAME: req.body.name,
+            PERMISSION: req.body.permission || req.user.PERMISSION,
             EMAIL: req.body.email,
             DOB: utils.parseTime(req.body.dob),
         }, id);
 
         acc = await accountM.getByID(id);
-
+        let myuser = await accountM.getByID(req.user.ID);
         res.render('account/profile_edit', {
             layout: 'account',
-            user: acc,
+            user: myuser,
             user_id: id,
             account: {
                 ...acc,

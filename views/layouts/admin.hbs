@@ -51,6 +51,22 @@
         modal.find('#catName').text(name);
         modal.find('#delLink').attr('href', 'category/' + id + '/delete');
     });
+    $('#verifyDeleteProduct').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var name = button.data('name');
+        var id = button.data('product');
+        var modal = $(this)
+        modal.find('#pName').text(name);
+        modal.find('#delLink').attr('href', 'product/' + id + '/delete');
+    });
+    $('#verifyDeleteUser').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var name = button.data('username');
+        var id = button.data('id');
+        var modal = $(this)
+        modal.find('#username').text(name);
+        modal.find('#delLink').attr('href', 'user/' + id + '/delete');
+    });
     
 </script>
 </html>
