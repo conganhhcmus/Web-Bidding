@@ -1,0 +1,64 @@
+<!-- HOME -->
+<div id="home">
+
+    <div class="container">
+        <div class="home-wrap" style="padding-left: 0.5em;">
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Sản phẩm đã thắng</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá khởi điểm</th>
+                                <th>Giá thắng</th>
+                                <th>Thời gian thắng</th>
+                                <th>Người bán</th>
+                            </tr>
+                        </thead>
+                        {{#each wonList}}
+                        <tbody>
+                            <tr onclick="window.location='/product/{{proIDWL}}';">
+                                <td>{{sttWL}}</td>
+                                <td class="productWL-img">
+                                    <img src="/images/product/{{mainImgWL.HASH_NAME}}" alt="">
+                                </td>
+                                <td> {{proNameWL}}</td>
+                                <td> {{startPriceWL}}</td>
+                                <td> {{priceWL}}</td>
+                                <td> {{endTimeWL}}</td>
+                                <td> {{sellerIDWL}}</td>
+                                {{!-- <td>
+                                        <form action="" class=" rows">
+                                            <div>
+                                                <button type="submit" class="fa fa-thumbs-up btn-link"
+                                                    style="padding: 0; border: none; background: none;"> </button> +1
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="fa fa-thumbs-down btn-link"
+                                                    style="padding: 0; border: none; background: none;"> </button> - 1
+                                            </div>
+                                        </form>
+                                    </td> --}}
+                            </tr>
+                        </tbody>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

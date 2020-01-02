@@ -69,20 +69,27 @@
                             {{account.TIME_format}}
                         </div>
                     </div>
+                    {{#if msg}}<div class="alert alert-success" align="center">{{msg}}</div>{{/if}}
                 </div>
             </div>
             {{#if editProfile}}
             <div class="row">
                 <div class="col-md-12" style="margin-top: 2em">
-                    <a class="btn btn-success" href="/account/{{user_id}}/profile/edit"><i
-                            class="glyphicon glyphicon-pencil"></i> Chỉnh sửa hồ sơ</a>
+                    <div class="col-md-3" style="margin-top: 2em">
+                        <a class="btn btn-success" href="/account/{{user_id}}/profile/edit"><i
+                                class="glyphicon glyphicon-pencil"></i> Chỉnh sửa thông tin</a>
+                    </div>
+                    <div class="col-md-3" style="margin-top: 2em">
+                        <a class="btn btn-success" href="/account/{{user_id}}/password/edit"><i class="fa fa-key"></i>
+                            Đổi mật khẩu</a>
+                    </div>
                 </div>
-            </div>
-            {{/if}}
-        </div>
+                {{/if}}
 
+            </div>
+
+        </div>
+        <!-- /home wrap -->
     </div>
-    <!-- /home wrap -->
-</div>
-<!-- /container -->
+    <!-- /container -->
 </div>

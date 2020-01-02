@@ -3,13 +3,13 @@ const router = express.Router();
 const categoryM = require('../models/category.M');
 const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
+const auctionHistoryM = require('../models/auctionHistory.M');
 const imageM = require('../models/image.M');
 const hash = require("../utils/hash");
 const passport = require('passport');
-const watchListM = require('../models/watchList.M');
 const utils = require('../utils/utilsFunction');
 const createError = require('http-errors');
-const favoriteM = require('../models/watchList.M');
+const watchlistM = require('../models/watchList.M');
 
 // Đăng nhập dùng passport
 router.post('/login', function (req, res, next) {
@@ -106,7 +106,7 @@ router.post('/register', async (req, res) => {
             PERMISSION: 0,
             TIME: utils.getTimeNow()
         };
-    
+
         const uId = await accountM.add(user);
         console.log("id : ", uId);
 
@@ -149,7 +149,7 @@ router.get('/:id/profile/edit', async (req, res, next) => {
         const acc = await accountM.getByID(id);
 
         if (!req.user || req.user.ID !== id)
-        return next(createError(403));
+            return next(createError(403));
 
         res.render('account/profile_edit', {
             layout: 'account',
@@ -167,13 +167,37 @@ router.get('/:id/profile/edit', async (req, res, next) => {
     }
 });
 
+router.get('/:id/password/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+            return next(createError(403));
+
+        res.render('account/password_edit', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate2(acc.DOB),
+            },
+            title: 'Chỉnh sửa mật khẩu',
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.post('/:id/profile/edit', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
         let acc = await accountM.getByID(id);
 
         if (!req.user || req.user.ID !== id)
-        return next(createError(403));
+            return next(createError(403));
 
         let rows = await accountM.update({
             FULL_NAME: req.body.name,
@@ -200,14 +224,55 @@ router.post('/:id/profile/edit', async (req, res, next) => {
     }
 });
 
-router.get('/:id/profile', async (req, res, next) => {
+router.post('/:id/password/edit', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
-        const acc = await accountM.getByID(id);
+        let acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+            return next(createError(403));
+
+        const npw = req.body.new_password.toString();
+        const confirm_npw = req.body.confirm_new_password.toString();
+        const opw = req.body.old_password.toString();
+
+        if (npw !== confirm_npw) {
+            res.render('account/password_edit', {
+                layout: 'account',
+                user: req.user,
+                user_id: id,
+                error: "Mật khẩu không trùng khớp!",
+                account: {
+                    ...acc,
+                },
+                title: 'Chỉnh sửa mật khẩu',
+            });
+            return;
+        }
+
+        if (!(await hash.comparePassword(opw, acc.PASSWORD))) {
+            res.render('account/password_edit', {
+                layout: 'account',
+                user: req.user,
+                user_id: id,
+                error: "Mật khẩu cũ không đúng!",
+                account: {
+                    ...acc,
+                },
+                title: 'Chỉnh sửa mật khẩu',
+            });
+            return;
+        }
+
+        let rows = await accountM.update({
+            PASSWORD: await hash.getHashPassword(npw),
+        }, id);
+
+        acc = await accountM.getByID(id);
 
         let editProfile = false;
         if (req.user && req.user.ID === id)
-        editProfile = true;
+            editProfile = true;
 
         res.render('account/profile', {
             layout: 'account',
@@ -219,7 +284,35 @@ router.get('/:id/profile', async (req, res, next) => {
                 TIME_format: utils.formatDate(acc.TIME),
             },
             title: 'Hồ sơ của ' + acc.FULL_NAME,
-            editProfile
+            editProfile,
+            msg: "Cập nhập mật khẩu thành công!",
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+router.get('/:id/profile', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+
+        let editProfile = false;
+        if (req.user && req.user.ID === id)
+            editProfile = true;
+
+        res.render('account/profile', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate(acc.DOB),
+                TIME_format: utils.formatDate(acc.TIME),
+            },
+            title: 'Hồ sơ của ' + acc.FULL_NAME,
+            editProfile,
         });
     } catch (err) {
         console.log(err);
@@ -261,15 +354,15 @@ router.post('/:id/watch_list', async (req, res, next) => {
         };
 
         // check product is already exist ??
-        const check_wl = await favoriteM.getByUserAndProductID(req.user.ID, proID);
+        const check_wl = await watchlistM.getByUserAndProductID(req.user.ID, proID);
         if (check_wl === null) {
-            const uId = await favoriteM.add(element);
+            const uId = await watchlistM.add(element);
         }
         else {
-            const affectRows = await favoriteM.delete(req.user.ID, proID);
+            const affectRows = await watchlistM.delete(req.user.ID, proID);
         }
         // get - convert watch list to product
-        const rs = await favoriteM.allByUserIDPaging(id, page);
+        const rs = await watchlistM.allByUserIDPaging(id, page);
         pss = rs.products; // cái này mới là danh sách favorite list
         let ps = []; // lấy chi tiết sản phẩm
         for (var i = 0; i < parseInt(pss.length); i++) {
@@ -313,10 +406,10 @@ router.post('/:id/watch_list', async (req, res, next) => {
         }
 
         let totalWatchList = 0;
-        if(typeof req.user !== "undefined"){
+        if (typeof req.user !== "undefined") {
             totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
         }
-      
+
         res.render('account/watch_list', {
             layout: 'account',
             user: req.user,
@@ -336,7 +429,7 @@ router.post('/:id/watch_list', async (req, res, next) => {
 
 router.get('/:id/watch_list', async (req, res, next) => {
     try {
-        if(typeof req.user === "undefined" || req.params.id === "0"){
+        if (typeof req.user === "undefined" || req.params.id === "0") {
             res.redirect("account/login");
             return;
         }
@@ -345,7 +438,7 @@ router.get('/:id/watch_list', async (req, res, next) => {
         const page = parseInt(req.query.page) || 1;
 
         // get - convert watch list to product
-        const rs = await watchListM.allByUserIDPaging(id, page);
+        const rs = await watchlistM.allByUserIDPaging(id, page);
         pss = rs.products; // cái này mới là danh sách favorite list
         let ps = []; // lấy chi tiết sản phẩm
         for (var i = 0; i < parseInt(pss.length); i++) {
@@ -389,7 +482,7 @@ router.get('/:id/watch_list', async (req, res, next) => {
         }
 
         let totalWatchList = 0;
-        if(typeof req.user !== "undefined"){
+        if (typeof req.user !== "undefined") {
             totalWatchList = await watchlistM.countProductByUserID(req.user.ID);
         }
 
@@ -410,6 +503,193 @@ router.get('/:id/watch_list', async (req, res, next) => {
     }
 });
 
+router.get('/:id/password/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+            return next(createError(403));
+
+        res.render('account/password_edit', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate2(acc.DOB),
+            },
+            title: 'Chỉnh sửa mật khẩu',
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+router.post('/:id/password/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        let acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+            return next(createError(403));
+
+        const npw = req.body.new_password.toString();
+        const confirm_npw = req.body.confirm_new_password.toString();
+        const opw = req.body.old_password.toString();
+
+        if (npw !== confirm_npw) {
+            res.render('account/password_edit', {
+                layout: 'account',
+                user: req.user,
+                user_id: id,
+                error: "Mật khẩu không trùng khớp!",
+                account: {
+                    ...acc,
+                },
+                title: 'Chỉnh sửa mật khẩu',
+            });
+            return;
+        }
+
+        if (!(await hash.comparePassword(opw, acc.PASSWORD))) {
+            res.render('account/password_edit', {
+                layout: 'account',
+                user: req.user,
+                user_id: id,
+                error: "Mật khẩu cũ không đúng!",
+                account: {
+                    ...acc,
+                },
+                title: 'Chỉnh sửa mật khẩu',
+            });
+            return;
+        }
+
+        let rows = await accountM.update({
+            PASSWORD: await hash.getHashPassword(npw),
+        }, id);
+
+        acc = await accountM.getByID(id);
+
+        let editProfile = false;
+        if (req.user && req.user.ID === id)
+            editProfile = true;
+
+        res.render('account/profile', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate(acc.DOB),
+                TIME_format: utils.formatDate(acc.TIME),
+            },
+            title: 'Hồ sơ của ' + acc.FULL_NAME,
+            editProfile,
+            msg: "Cập nhập mật khẩu thành công!",
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+
+router.get('/:id/won_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+        const page = parseInt(req.query.page) || 1;
+
+        const wls = await auctionHistoryM.getWonList(id);
+        wl = wls.wonl; // list history chi co iduser va id product va time
+
+        let wonList = []; // chi tiet dau gia 
+        let stt = 0
+        for (var i = 0; i < parseInt(wl.length); i++) {
+
+            const producti = await productM.getByID(wl[i].PRODUCT_ID);
+            const imgSrc = await imageM.getByID(producti[0].MAIN_IMAGE);
+            const seller = await accountM.getByID(producti[0].SELLER_ID);
+
+            if (Date.parse(producti[0].END_TIME) <= Date.now()) {
+                stt++;
+                wonList.push({
+                    sttWL: stt,
+                    proIDWL: wl[i].PRODUCT_ID,
+                    priceWL: wl[i].PRICE,
+                    sellerIDWL: seller.FULL_NAME,
+                    mainImgWL: imgSrc[0],
+                    proNameWL: producti[0].PRODUCT_NAME,
+                    startTimeWL: await utils.parseTime(producti[0].START_TIME),
+                    endTimeWL: await utils.parseTime(producti[0].END_TIME),
+                    startPriceWL: producti[0].STARTING_PRICE
+                });
+            }
+
+        }
+
+        // cái này dùng cho header thôi
+        const cats = await categoryM.all();
+
+
+        res.render('account/won_list', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            title: acc.FULL_NAME,
+            cats: cats,
+            wonList: wonList,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+router.get('/:id/bidding_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const bls = await auctionHistoryM.getAllByUserID(id); // bls là list product đã đấu giá
+
+        let bidList = [];
+        var stt = 0
+        for (var i = 0; i < parseInt(bls.length); i++) {
+            const proB = await productM.allByProIDBidding(bls[i].PRODUCT_ID)
+            if (proB.length > 0) {
+                const imgSrc = await imageM.getByID(proB[0].MAIN_IMAGE);
+                const seller = await accountM.getByID(proB[0].SELLER_ID);
+                stt++;
+                bidList.push({
+                    sttBL: stt,
+                    proIDBL: proB[0].ID,
+                    mainImgBL: imgSrc[0],
+                    proNameBL: proB[0].PRODUCT_NAME,
+                    startPriceBL: proB[0].STARTING_PRICE,
+                    nowPriceBL: proB[0].CURRENT_PRICE,
+                    yourPriceBL: bls[i].PRICE,
+                    sellerIDBL: seller.FULL_NAME,
+                    endTimeBL: await utils.parseTime(proB[0].END_TIME),
+                    isEqualYourPriceBL: proB[0].CURRENT_PRICE != bls[i].PRICE,
+                })
+            }
+        }
+
+        // cái này dùng cho header thôi
+        const cats = await categoryM.all();
+        res.render('account/bidding_list', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            bidList: bidList,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
 
 router.get('/:id', async (req, res, next) => {
     try {
