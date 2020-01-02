@@ -167,6 +167,30 @@ router.get('/:id/profile/edit', async (req, res, next) => {
     }
 });
 
+router.get('/:id/password/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+        return next(createError(403));
+
+        res.render('account/password_edit', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate2(acc.DOB),
+            },
+            title: 'Chỉnh sửa mật khẩu',
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.post('/:id/profile/edit', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
@@ -200,6 +224,75 @@ router.post('/:id/profile/edit', async (req, res, next) => {
     }
 });
 
+router.post('/:id/password/edit', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        let acc = await accountM.getByID(id);
+
+        if (!req.user || req.user.ID !== id)
+        return next(createError(403));
+
+        const npw = req.body.new_password.toString();
+        const confirm_npw = req.body.confirm_new_password.toString();
+        const opw = req.body.old_password.toString();
+
+        if(npw !== confirm_npw){
+            res.render('account/password_edit', {
+                layout: 'account',
+                user: req.user,
+                user_id: id,
+                error: "Mật khẩu không trùng khớp!",
+                account: {
+                    ...acc,
+                },
+                title: 'Chỉnh sửa mật khẩu',
+            });
+            return;
+        }
+
+        if(!(await hash.comparePassword(opw,acc.PASSWORD))){
+            res.render('account/password_edit', {
+                layout: 'account',
+                user: req.user,
+                user_id: id,
+                error: "Mật khẩu cũ không đúng!",
+                account: {
+                    ...acc,
+                },
+                title: 'Chỉnh sửa mật khẩu',
+            });
+            return;
+        }
+
+        let rows = await accountM.update({
+            PASSWORD: await hash.getHashPassword(npw),
+        }, id);
+
+        acc = await accountM.getByID(id);
+
+        let editProfile = false;
+        if (req.user && req.user.ID === id)
+        editProfile = true;
+
+        res.render('account/profile', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            account: {
+                ...acc,
+                DOB_format: utils.formatDate(acc.DOB),
+                TIME_format: utils.formatDate(acc.TIME),
+            },
+            title: 'Hồ sơ của ' + acc.FULL_NAME,
+            editProfile,
+            msg: "Cập nhập mật khẩu thành công!",
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.get('/:id/profile', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
@@ -219,7 +312,7 @@ router.get('/:id/profile', async (req, res, next) => {
                 TIME_format: utils.formatDate(acc.TIME),
             },
             title: 'Hồ sơ của ' + acc.FULL_NAME,
-            editProfile
+            editProfile,
         });
     } catch (err) {
         console.log(err);
@@ -483,11 +576,6 @@ router.get('/:id/bidding_list', async (req, res, next) => {
         console.log(bls)
 
         
-        // for (var i = 0; i < parseInt(bls.length); i++) {
-        //     //duyệt từng cái
-        //     bls[i].
-
-        // }
         bl = bls.wonl; 
     
         let wonList = []; // chi tiet dau gia 
@@ -517,18 +605,7 @@ router.get('/:id/bidding_list', async (req, res, next) => {
 
         // cái này dùng cho header thôi
         const cats = await categoryM.all();
-        // set page
-        const pages = [];
-        for (var i = 0; i < wonList.sttWL; i++) {
-            pages[i] = { value: i + 1, active: (i + 1) === page };
-        }
-        const navs = {};
-        if (page > 1) {
-            navs.prev = page - 1;
-        }
-        if (page < wonList.sttWL) {
-            navs.next = page + 1;
-        }
+
 
         res.render('account/won_list', {
             layout: 'account',
@@ -537,7 +614,6 @@ router.get('/:id/bidding_list', async (req, res, next) => {
             title: acc.FULL_NAME,
             cats: cats,
             wonList: wonList,
-            pages: pages,
             navs: navs,
         });
     } catch (err) {
