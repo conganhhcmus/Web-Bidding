@@ -36,6 +36,25 @@ module.exports = {
             historys: rows,
         }
     },
+    getWonList: async (user_id) => {
+        const sql = `SELECT tb3.PRODUCT_ID,tb3.PRICE FROM (
+                                                SELECT tb2.* FROM (
+                                                    SELECT PRODUCT_ID, MAX(PRICE) AS MAXP FROM ${tbName}  GROUP BY PRODUCT_ID
+                                                    )
+                                                AS tb1 INNER JOIN ${tbName} AS tb2 ON tb1.PRODUCT_ID = tb2.PRODUCT_ID AND tb1.MAXP = tb2.PRICE
+                                                ) as tb3 WHERE tb3.USER_ID = ${user_id}`
+
+        const rows = await db.load(sql);
+        return {
+            wonl: rows,
+        }
+    },
+
+    getAllByUserID: async (user_id) => {
+        const sql = `SELECT * FROM ${tbName} WHERE USER_ID = ${user_id}`
+        const rows = await db.load(sql);
+        return rows
+    },
 
     getNguoiGiuGiaCaoNhat: async proid => {
         const sql = `SELECT USER_ID FROM ${tbName}

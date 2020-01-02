@@ -3,13 +3,13 @@ const router = express.Router();
 const categoryM = require('../models/category.M');
 const productM = require('../models/product.M');
 const accountM = require('../models/account.M');
+const auctionHistoryM = require('../models/auctionHistory.M');
 const imageM = require('../models/image.M');
 const hash = require("../utils/hash");
 const passport = require('passport');
-const watchListM = require('../models/watchList.M');
 const utils = require('../utils/utilsFunction');
 const createError = require('http-errors');
-const favoriteM = require('../models/watchList.M');
+const watchlistM = require('../models/watchList.M');
 
 // Đăng nhập dùng passport
 router.post('/login', function (req, res, next) {
@@ -261,15 +261,15 @@ router.post('/:id/watch_list', async (req, res, next) => {
         };
 
         // check product is already exist ??
-        const check_wl = await favoriteM.getByUserAndProductID(req.user.ID, proID);
+        const check_wl = await watchlistM.getByUserAndProductID(req.user.ID, proID);
         if (check_wl === null) {
-            const uId = await favoriteM.add(element);
+            const uId = await watchlistM.add(element);
         }
         else {
-            const affectRows = await favoriteM.delete(req.user.ID, proID);
+            const affectRows = await watchlistM.delete(req.user.ID, proID);
         }
         // get - convert watch list to product
-        const rs = await favoriteM.allByUserIDPaging(id, page);
+        const rs = await watchlistM.allByUserIDPaging(id, page);
         pss = rs.products; // cái này mới là danh sách favorite list
         let ps = []; // lấy chi tiết sản phẩm
         for (var i = 0; i < parseInt(pss.length); i++) {
@@ -345,7 +345,7 @@ router.get('/:id/watch_list', async (req, res, next) => {
         const page = parseInt(req.query.page) || 1;
 
         // get - convert watch list to product
-        const rs = await watchListM.allByUserIDPaging(id, page);
+        const rs = await watchlistM.allByUserIDPaging(id, page);
         pss = rs.products; // cái này mới là danh sách favorite list
         let ps = []; // lấy chi tiết sản phẩm
         for (var i = 0; i < parseInt(pss.length); i++) {
@@ -410,6 +410,141 @@ router.get('/:id/watch_list', async (req, res, next) => {
     }
 });
 
+router.get('/:id/won_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const acc = await accountM.getByID(id);
+        const page = parseInt(req.query.page) || 1;
+
+        const wls = await auctionHistoryM.getWonList(id);
+        wl = wls.wonl; // list history chi co iduser va id product va time
+    
+        let wonList = []; // chi tiet dau gia 
+        let stt = 0
+        for (var i = 0; i < parseInt(wl.length); i++) {
+    
+            const producti = await productM.getByID(wl[i].PRODUCT_ID);
+            const imgSrc = await imageM.getByID(producti[0].MAIN_IMAGE);
+            const seller = await accountM.getByID(producti[0].SELLER_ID);
+    
+            if (Date.parse(producti[0].END_TIME) <= Date.now()||1) {// Xoa so 1 di sadjajksdalkdjalkdasdgasdgaksdh
+                stt++;
+                wonList.push({
+                    sttWL: stt,
+                    proIDWL: wl[i].PRODUCT_ID,
+                    priceWL : wl[i].PRICE,
+                    sellerIDWL: seller.FULL_NAME,
+                    mainImgWL : imgSrc[0],
+                    proNameWL: producti[0].PRODUCT_NAME,
+                    startTimeWL : await utils.parseTime(producti[0].START_TIME),
+                    endTimeWL : await utils.parseTime(producti[0].END_TIME),
+                    startPriceWL :producti[0].STARTING_PRICE      
+                });
+            }
+    
+        }
+
+        // cái này dùng cho header thôi
+        const cats = await categoryM.all();
+        // set page
+        const pages = [];
+        for (var i = 0; i < wonList.sttWL; i++) {
+            pages[i] = { value: i + 1, active: (i + 1) === page };
+        }
+        const navs = {};
+        if (page > 1) {
+            navs.prev = page - 1;
+        }
+        if (page < wonList.sttWL) {
+            navs.next = page + 1;
+        }
+
+        res.render('account/won_list', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            title: acc.FULL_NAME,
+            cats: cats,
+            wonList: wonList,
+            pages: pages,
+            navs: navs,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
+router.get('/:id/bidding_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const bls = await auctionHistoryM.getAllByUserID(id); // bls là list product đã đấu giá
+        console.log(bls)
+
+        
+        // for (var i = 0; i < parseInt(bls.length); i++) {
+        //     //duyệt từng cái
+        //     bls[i].
+
+        // }
+        bl = bls.wonl; 
+    
+        let wonList = []; // chi tiet dau gia 
+        let stt = 0
+        for (var i = 0; i < parseInt(wl.length); i++) {
+    
+            const producti = await productM.getByID(wl[i].PRODUCT_ID);
+            const imgSrc = await imageM.getByID(producti[0].MAIN_IMAGE);
+            const seller = await accountM.getByID(producti[0].SELLER_ID);
+    
+            if (Date.parse(producti[0].END_TIME) <= Date.now()||1) {// Xoa so 1 di sadjajksdalkdjalkdasdgasdgaksdh
+                stt++;
+                wonList.push({
+                    sttWL: stt,
+                    proIDWL: wl[i].PRODUCT_ID,
+                    priceWL : wl[i].PRICE,
+                    sellerIDWL: seller.FULL_NAME,
+                    mainImgWL : imgSrc[0],
+                    proNameWL: producti[0].PRODUCT_NAME,
+                    startTimeWL : await utils.parseTime(producti[0].START_TIME),
+                    endTimeWL : await utils.parseTime(producti[0].END_TIME),
+                    startPriceWL :producti[0].STARTING_PRICE      
+                });
+            }
+    
+        }
+
+        // cái này dùng cho header thôi
+        const cats = await categoryM.all();
+        // set page
+        const pages = [];
+        for (var i = 0; i < wonList.sttWL; i++) {
+            pages[i] = { value: i + 1, active: (i + 1) === page };
+        }
+        const navs = {};
+        if (page > 1) {
+            navs.prev = page - 1;
+        }
+        if (page < wonList.sttWL) {
+            navs.next = page + 1;
+        }
+
+        res.render('account/won_list', {
+            layout: 'account',
+            user: req.user,
+            user_id: id,
+            title: acc.FULL_NAME,
+            cats: cats,
+            wonList: wonList,
+            pages: pages,
+            navs: navs,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
 
 router.get('/:id', async (req, res, next) => {
     try {
