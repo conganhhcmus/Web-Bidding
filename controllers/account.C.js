@@ -173,7 +173,7 @@ router.get('/:id/password/edit', async (req, res, next) => {
         const acc = await accountM.getByID(id);
 
         if (!req.user || req.user.ID !== id)
-        return next(createError(403));
+            return next(createError(403));
 
         res.render('account/password_edit', {
             layout: 'account',
@@ -230,13 +230,13 @@ router.post('/:id/password/edit', async (req, res, next) => {
         let acc = await accountM.getByID(id);
 
         if (!req.user || req.user.ID !== id)
-        return next(createError(403));
+            return next(createError(403));
 
         const npw = req.body.new_password.toString();
         const confirm_npw = req.body.confirm_new_password.toString();
         const opw = req.body.old_password.toString();
 
-        if(npw !== confirm_npw){
+        if (npw !== confirm_npw) {
             res.render('account/password_edit', {
                 layout: 'account',
                 user: req.user,
@@ -250,7 +250,7 @@ router.post('/:id/password/edit', async (req, res, next) => {
             return;
         }
 
-        if(!(await hash.comparePassword(opw,acc.PASSWORD))){
+        if (!(await hash.comparePassword(opw, acc.PASSWORD))) {
             res.render('account/password_edit', {
                 layout: 'account',
                 user: req.user,
@@ -272,7 +272,7 @@ router.post('/:id/password/edit', async (req, res, next) => {
 
         let editProfile = false;
         if (req.user && req.user.ID === id)
-        editProfile = true;
+            editProfile = true;
 
         res.render('account/profile', {
             layout: 'account',
@@ -509,7 +509,7 @@ router.get('/:id/password/edit', async (req, res, next) => {
         const acc = await accountM.getByID(id);
 
         if (!req.user || req.user.ID !== id)
-        return next(createError(403));
+            return next(createError(403));
 
         res.render('account/password_edit', {
             layout: 'account',
@@ -532,13 +532,13 @@ router.post('/:id/password/edit', async (req, res, next) => {
         let acc = await accountM.getByID(id);
 
         if (!req.user || req.user.ID !== id)
-        return next(createError(403));
+            return next(createError(403));
 
         const npw = req.body.new_password.toString();
         const confirm_npw = req.body.confirm_new_password.toString();
         const opw = req.body.old_password.toString();
 
-        if(npw !== confirm_npw){
+        if (npw !== confirm_npw) {
             res.render('account/password_edit', {
                 layout: 'account',
                 user: req.user,
@@ -552,7 +552,7 @@ router.post('/:id/password/edit', async (req, res, next) => {
             return;
         }
 
-        if(!(await hash.comparePassword(opw,acc.PASSWORD))){
+        if (!(await hash.comparePassword(opw, acc.PASSWORD))) {
             res.render('account/password_edit', {
                 layout: 'account',
                 user: req.user,
@@ -574,7 +574,7 @@ router.post('/:id/password/edit', async (req, res, next) => {
 
         let editProfile = false;
         if (req.user && req.user.ID === id)
-        editProfile = true;
+            editProfile = true;
 
         res.render('account/profile', {
             layout: 'account',
@@ -620,11 +620,11 @@ router.get('/:id/won_list', async (req, res, next) => {
                     proIDWL: wl[i].PRODUCT_ID,
                     priceWL: wl[i].PRICE,
                     sellerIDWL: seller.FULL_NAME,
-                    mainImgWL : imgSrc[0],
+                    mainImgWL: imgSrc[0],
                     proNameWL: producti[0].PRODUCT_NAME,
-                    startTimeWL : await utils.parseTime(producti[0].START_TIME),
-                    endTimeWL : await utils.parseTime(producti[0].END_TIME),
-                    startPriceWL :producti[0].STARTING_PRICE      
+                    startTimeWL: await utils.parseTime(producti[0].START_TIME),
+                    endTimeWL: await utils.parseTime(producti[0].END_TIME),
+                    startPriceWL: producti[0].STARTING_PRICE
                 });
             }
 
@@ -632,7 +632,7 @@ router.get('/:id/won_list', async (req, res, next) => {
 
         // cái này dùng cho header thôi
         const cats = await categoryM.all();
- 
+
 
         res.render('account/won_list', {
             layout: 'account',
@@ -661,7 +661,7 @@ router.get('/:id/bidding_list', async (req, res, next) => {
             if (proB.length > 0) {
                 const imgSrc = await imageM.getByID(proB[0].MAIN_IMAGE);
                 const seller = await accountM.getByID(proB[0].SELLER_ID);
-                stt ++;
+                stt++;
                 bidList.push({
                     sttBL: stt,
                     proIDBL: proB[0].ID,
@@ -671,15 +671,14 @@ router.get('/:id/bidding_list', async (req, res, next) => {
                     nowPriceBL: proB[0].CURRENT_PRICE,
                     yourPriceBL: bls[i].PRICE,
                     sellerIDBL: seller.FULL_NAME,
-                    endTimeBL : await utils.parseTime(proB[0].END_TIME),
+                    endTimeBL: await utils.parseTime(proB[0].END_TIME),
                     isEqualYourPriceBL: proB[0].CURRENT_PRICE != bls[i].PRICE,
                 })
             }
         }
-        
+
         // cái này dùng cho header thôi
         const cats = await categoryM.all();
-
         res.render('account/bidding_list', {
             layout: 'account',
             user: req.user,
