@@ -691,6 +691,52 @@ router.get('/:id/bidding_list', async (req, res, next) => {
     }
 });
 
+router.get('/:id/selling_list', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+
+        const bls = await productM.allSellingBySellerID(id); // bls là list product của seller
+
+        let sellList = [];
+        var stt = 0
+        for (var i = 0; i < parseInt(bls.length); i++) {
+            const proB = bls[i];
+            const imgSrc = (await imageM.getByID(proB.MAIN_IMAGE))[0];
+            const a = await auctionHistoryM.getNguoiGiuGiaCaoNhat(proB.ID);
+            console.log(a);
+            let seller = null;
+            let name = "Chưa có ai ra giá";
+            if (a !== null) {
+                seller = await accountM.getByID(a.USER_ID);
+                name = seller.FULL_NAME;
+            }
+            
+            stt++;
+            sellList.push({
+                sttBL: stt,
+                proIDBL: proB.ID,
+                mainImgBL: imgSrc,
+                proNameBL: proB.PRODUCT_NAME,
+                startPriceBL: proB.STARTING_PRICE,
+                nowPriceBL: proB.CURRENT_PRICE,
+                bidder: name,
+                endTimeBL: await utils.parseTime(proB.END_TIME),
+            })
+        }
+
+        // cái này dùng cho header thôi
+
+        res.render('account/selling_list', {
+            layout: 'account',
+            user: req.user,
+            sellList: sellList,
+        });
+    } catch (err) {
+        console.log(err);
+        next(createError(500));
+    }
+});
+
 router.get('/:id', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);

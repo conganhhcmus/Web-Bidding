@@ -10,6 +10,12 @@ module.exports = {
         return rows;
     },
 
+    allSellingBySellerID: async id => {
+        const sql = `SELECT * FROM ${tbName} WHERE SELLER_ID = ${id} AND END_TIME > '${utils.getTimeNow()}'`;
+        const rows = await db.load(sql);
+        return rows;
+    },
+
     top5Price: async () => {
         const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY CURRENT_PRICE DESC LIMIT 4 `;
         const rows = await db.load(sql);
