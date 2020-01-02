@@ -11,6 +11,8 @@ create table AUCTION_HISTORY
    USER_ID              int(11) unsigned not null  comment '',
    TIME                 datetime not null  comment '',
    PRICE                bigint(20) not null  comment '',
+   MAX_PRICE            bigint(20) not null  comment '',
+	WIN_ID					int(11) unsigned not null  comment '',
    primary key (ID)
 )
 ENGINE = InnoDB
