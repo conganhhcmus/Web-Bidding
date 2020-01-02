@@ -654,7 +654,6 @@ router.get('/:id/bidding_list', async (req, res, next) => {
 
         const bls = await auctionHistoryM.getAllByUserID(id); // bls là list product đã đấu giá
 
-<<<<<<< HEAD
         let bidList = [];
         var stt = 0
         for (var i = 0; i < parseInt(bls.length); i++) {
@@ -675,54 +674,17 @@ router.get('/:id/bidding_list', async (req, res, next) => {
                     endTimeBL : await utils.parseTime(proB[0].END_TIME),
                     isEqualYourPriceBL: proB[0].CURRENT_PRICE != bls[i].PRICE,
                 })
-=======
-        
-        bl = bls.wonl; 
-    
-        let wonList = []; // chi tiet dau gia 
-        let stt = 0
-        for (var i = 0; i < parseInt(wl.length); i++) {
-    
-            const producti = await productM.getByID(wl[i].PRODUCT_ID);
-            const imgSrc = await imageM.getByID(producti[0].MAIN_IMAGE);
-            const seller = await accountM.getByID(producti[0].SELLER_ID);
-    
-            if (Date.parse(producti[0].END_TIME) <= Date.now()||1) {// Xoa so 1 di sadjajksdalkdjalkdasdgasdgaksdh
-                stt++;
-                wonList.push({
-                    sttWL: stt,
-                    proIDWL: wl[i].PRODUCT_ID,
-                    priceWL : wl[i].PRICE,
-                    sellerIDWL: seller.FULL_NAME,
-                    mainImgWL : imgSrc[0],
-                    proNameWL: producti[0].PRODUCT_NAME,
-                    startTimeWL : await utils.parseTime(producti[0].START_TIME),
-                    endTimeWL : await utils.parseTime(producti[0].END_TIME),
-                    startPriceWL :producti[0].STARTING_PRICE      
-                });
->>>>>>> 120c039d3e2458286062c8861589659421636346
             }
         }
         
         // cái này dùng cho header thôi
         const cats = await categoryM.all();
-<<<<<<< HEAD
-=======
-
->>>>>>> 120c039d3e2458286062c8861589659421636346
 
         res.render('account/bidding_list', {
             layout: 'account',
             user: req.user,
             user_id: id,
-<<<<<<< HEAD
             bidList: bidList,
-=======
-            title: acc.FULL_NAME,
-            cats: cats,
-            wonList: wonList,
-            navs: navs,
->>>>>>> 120c039d3e2458286062c8861589659421636346
         });
     } catch (err) {
         console.log(err);

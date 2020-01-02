@@ -41,5 +41,24 @@ module.exports = {
         }
 
         return temp;
-    }
+    },
+
+    top5DG: async () => {
+        let temp = await productM.top5DauGia();
+
+        for (var i = 0; i < temp.length; i++) {
+            temp[i].imgSrc = (await imageM.allByProID(temp[i].ID))[0];
+            var temp1 = new Date(temp[i].END_TIME);
+            temp[i].remain = utils.getRemainTime(temp1)[0];
+            var temp1 = new Date(temp[i].START_TIME);
+            var temp2 = utils.getRemainTime(temp1);
+            temp[i].isNew = temp2[1] == 0 && temp2[2] == 0 && temp2[3] <= 30 && temp2[5] == 1;
+    
+            temp[i].CURRENT_PRICE_VND = await utils.getMoneyVNDString(temp[i].CURRENT_PRICE);
+            temp[i].BUYNOW_PRICE_VND = await utils.getMoneyVNDString(temp[i].BUYNOW_PRICE);
+
+        }
+
+        return temp;
+    },
 }

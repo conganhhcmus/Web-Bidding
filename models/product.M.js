@@ -16,6 +16,19 @@ module.exports = {
         return rows;
     },
 
+    top5DauGia: async () => {
+        const temp = 'SELECT PRODUCT_ID, COUNT(*) AS SL FROM AUCTION_HISTORY GROUP BY PRODUCT_ID ORDER BY SL DESC LIMIT 4';
+        const table = await db.load(temp);
+
+        const rows = [];
+        for(var i = 0; i < table.length; i++){
+            const a = `SELECT * FROM ${tbName} WHERE ID = ${table[i].PRODUCT_ID}`;
+            rows[i] = (await db.load(a))[0];
+        }
+
+        return rows;
+    },
+
     top5End: async () => {
         const sql = `SELECT * FROM ${tbName} WHERE END_TIME > '${utils.getTimeNow()}' ORDER BY END_TIME ASC LIMIT 4 `;
         const rows = await db.load(sql);
